@@ -1,1 +1,0 @@
-# Yuva-janta-party-yjp-
