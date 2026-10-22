@@ -3,22 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071b15">
 
-<title>EyeBook - Connect and Share</title>
-<meta name="theme-color" content="#063d2e">
-<meta name="description" content="EyeBook is a social media platform for sharing photos, videos, music, stories, and moments.">
+<title>EyeBook — Connect Beyond</title>
+
+<meta name="description"
+content="EyeBook is a social platform to connect, share photos, videos, stories and moments.">
 
 <style>
 :root {
-    --bg: #041f18;
-    --panel: #082c21;
-    --panel2: #0d3829;
-    --green: #00c878;
-    --green2: #087f50;
-    --text: #f2fff8;
-    --muted: #a6c5b6;
-    --border: #20533f;
+    --bg: #071b15;
+    --surface: #0d2820;
+    --surface2: #12372b;
+    --green: #00d084;
+    --green-dark: #008f5a;
+    --text: #f3fff8;
+    --muted: #a2bdb0;
+    --border: #234b3b;
     --danger: #ff7777;
+    --radius: 16px;
 }
 
 * {
@@ -28,9 +31,9 @@
 }
 
 body {
+    font-family: Inter, Arial, sans-serif;
     background: var(--bg);
     color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
     padding-bottom: 78px;
 }
 
@@ -38,102 +41,24 @@ button, input, textarea {
     font: inherit;
 }
 
-button, a {
-    -webkit-tap-highlight-color: transparent;
-}
-
 button {
     cursor: pointer;
 }
 
-header {
-    background: #063d2e;
-    border-bottom: 1px solid var(--border);
-    padding: 12px 15px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    font-size: 25px;
-    font-weight: 900;
-    letter-spacing: -1px;
-    color: var(--green);
+button:disabled {
+    opacity: .55;
+    cursor: not-allowed;
 }
 
-.logo-icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #00c878, #087f50);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    box-shadow: 0 0 14px rgba(0, 200, 120, 0.18);
-}
-
-.logo-icon svg {
-    width: 31px;
-    height: 31px;
-}
-
-.logo-text span {
-    color: #fff;
-}
-
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.btn {
-    border: 0;
-    border-radius: 9px;
-    padding: 10px 12px;
-    background: var(--green2);
-    color: #fff;
-    font-weight: bold;
-}
-
-.btn-primary {
-    background: var(--green);
-    color: #032419;
-}
-
-.btn:hover {
-    filter: brightness(1.08);
-}
-
-.container {
-    max-width: 700px;
-    margin: 18px auto;
-    padding: 0 12px;
-}
-
-.card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 15px;
-    padding: 15px;
-    margin-bottom: 16px;
-}
-
-h2, h3 {
-    margin-bottom: 12px;
-}
-
-p {
-    overflow-wrap: anywhere;
+.hidden {
+    display: none !important;
 }
 
 .muted {
@@ -142,100 +67,342 @@ p {
     line-height: 1.5;
 }
 
-input, textarea {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    color: var(--text);
-    background: #041f18;
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(7, 27, 21, .96);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+    max-width: 1100px;
+    margin: auto;
+    padding: 13px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 25px;
+    font-weight: 850;
+    letter-spacing: -.8px;
+    color: var(--green);
+}
+
+.brand span {
+    color: white;
+}
+
+.brand-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    background: linear-gradient(140deg, #00dc8b, #08794e);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 6px 22px #00d08420;
+    flex-shrink: 0;
+}
+
+.brand-icon svg {
+    width: 30px;
+    height: 30px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.icon-btn {
+    width: 41px;
+    height: 41px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: var(--surface);
+    color: white;
     border: 1px solid var(--border);
-    border-radius: 9px;
+    font-size: 19px;
+}
+
+.btn {
+    border: 1px solid transparent;
+    border-radius: 11px;
+    padding: 11px 15px;
+    background: var(--surface2);
+    color: white;
+    font-weight: 700;
+    transition: .18s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.1);
+}
+
+.btn-primary {
+    background: var(--green);
+    color: #032519;
+}
+
+.btn-outline {
+    border-color: var(--border);
+    background: transparent;
+}
+
+.btn-danger {
+    background: #4b2020;
+    color: #ffdede;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.layout {
+    max-width: 1100px;
+    margin: 22px auto;
+    padding: 0 16px;
+}
+
+.columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 290px;
+    gap: 22px;
+    align-items: start;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 17px;
+    margin-bottom: 17px;
+}
+
+.card-title {
+    font-size: 17px;
+    font-weight: 800;
+    margin-bottom: 13px;
+}
+
+.field {
+    width: 100%;
+    background: #071e17;
+    color: white;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    padding: 13px 14px;
+    margin-top: 9px;
+    margin-bottom: 5px;
+}
+
+.field::placeholder {
+    color: #829c8e;
+}
+
+textarea.field {
+    resize: vertical;
+    min-height: 95px;
+}
+
+.field:focus {
+    border-color: var(--green);
     outline: none;
 }
 
-input:focus, textarea:focus {
-    border-color: var(--green);
-}
-
-input[type="file"] {
+label {
+    display: block;
     font-size: 13px;
-}
-
-textarea {
-    resize: vertical;
-    min-height: 75px;
-}
-
-.hidden {
-    display: none !important;
-}
-
-.notice {
-    background: #103c2c;
-    padding: 13px;
-    border-radius: 10px;
     color: var(--muted);
-    font-size: 13px;
-    line-height: 1.6;
-    margin-bottom: 15px;
+    margin-top: 12px;
 }
 
-#authMessage {
+.auth-wrap {
+    max-width: 440px;
+    margin: 35px auto;
+    padding: 0 16px;
+}
+
+.auth-card {
+    padding: 25px;
+    background: linear-gradient(150deg, #103529, #0a241b);
+}
+
+.auth-brand {
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.auth-heading {
+    font-size: 27px;
+    text-align: center;
+    margin-bottom: 7px;
+}
+
+.auth-subtitle {
+    text-align: center;
+    color: var(--muted);
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+.full {
+    width: 100%;
     margin-top: 10px;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 17px 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    height: 1px;
+    background: var(--border);
+    flex: 1;
+}
+
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #f6fff9;
+    color: #183329;
+    border-radius: 11px;
+    padding: 12px;
+    width: 100%;
+    border: 0;
+    font-weight: 750;
+}
+
+.google-g {
+    font-size: 19px;
+    font-weight: 900;
+    color: #4285f4;
+}
+
+.text-button {
+    border: 0;
+    background: none;
+    color: var(--green);
+    padding: 8px 0;
+    font-weight: 700;
+}
+
+.status {
     color: var(--green);
     font-size: 13px;
+    margin-top: 12px;
     overflow-wrap: anywhere;
 }
 
-.stories {
-    display: flex;
-    gap: 13px;
-    overflow-x: auto;
-    padding: 7px 0 12px;
+.status.error {
+    color: var(--danger);
 }
 
-.story {
-    min-width: 65px;
-    max-width: 75px;
+.top-welcome {
+    padding: 21px;
+    background: linear-gradient(120deg, #10432f, #0c2920);
+    border: 1px solid #236346;
+    border-radius: var(--radius);
+    margin-bottom: 18px;
+}
+
+.top-welcome h2 {
+    font-size: 23px;
+    margin-bottom: 7px;
+}
+
+.top-welcome p {
+    color: #b8d7c6;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.story-row {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    padding: 3px 1px 10px;
+}
+
+.story-item {
+    flex: 0 0 68px;
     text-align: center;
     font-size: 12px;
+    color: var(--muted);
     cursor: pointer;
     overflow-wrap: anywhere;
 }
 
 .story-ring {
-    width: 59px;
-    height: 59px;
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 7px;
     border-radius: 50%;
-    border: 3px solid var(--green);
     padding: 3px;
-    margin: 0 auto 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--panel2);
-    overflow: hidden;
+    background: linear-gradient(135deg, #00e68b, #087c50);
 }
 
-.story-ring img {
+.story-inner {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background: var(--surface2);
+    border: 2px solid var(--surface);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    color: white;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.story-inner img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
+}
+
+.composer-head,
+.post-head {
+    display: flex;
+    align-items: center;
+    gap: 11px;
 }
 
 .avatar {
-    width: 44px;
-    height: 44px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
-    background: var(--green2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    overflow: hidden;
+    background: linear-gradient(135deg, #00d084, #08794e);
+    display: grid;
+    place-items: center;
+    color: white;
+    font-weight: 800;
     flex-shrink: 0;
+    overflow: hidden;
 }
 
 .avatar img {
@@ -244,105 +411,293 @@ textarea {
     object-fit: cover;
 }
 
-.post-head {
+.composer-head .field {
+    margin: 0;
+    border-radius: 30px;
+    min-height: 44px;
+}
+
+.composer-options {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 13px;
+}
+
+.file-label {
+    background: var(--surface2);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 12px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.file-label input {
+    display: none;
+}
+
+.post {
+    overflow: hidden;
+}
+
+.post-head {
+    margin-bottom: 13px;
+}
+
+.post-author {
+    flex: 1;
+    min-width: 0;
+}
+
+.post-author strong {
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.post-author .muted {
+    margin-top: 3px;
+}
+
+.post-text {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    line-height: 1.7;
+    font-size: 15px;
+    margin: 10px 0;
 }
 
 .post-media {
-    display: block;
     width: 100%;
-    max-height: 520px;
+    max-height: 550px;
     object-fit: contain;
-    border-radius: 10px;
+    background: #03110c;
+    border-radius: 11px;
+    display: block;
+    margin-top: 10px;
+}
+
+.post-audio {
+    width: 100%;
     margin-top: 12px;
-    background: #03150f;
 }
 
 .post-actions {
     display: flex;
     gap: 7px;
-    flex-wrap: wrap;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+}
+
+.action-btn {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 4px;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.action-btn:hover {
+    background: var(--surface2);
+    color: white;
+}
+
+.action-btn.liked {
+    color: var(--green);
+}
+
+.comment-box {
+    display: flex;
+    gap: 7px;
     margin-top: 12px;
 }
 
-.action {
-    flex: 1;
-    min-width: 75px;
-    background: var(--panel2);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 10px 5px;
-    border-radius: 8px;
+.comment-box .field {
+    margin: 0;
+    min-width: 0;
 }
 
-.action.liked {
-    color: var(--green);
-    border-color: var(--green);
-}
-
-.comments {
+.comment-list {
     margin-top: 10px;
 }
 
 .comment {
-    background: var(--panel2);
-    padding: 9px;
-    border-radius: 8px;
+    background: var(--surface2);
+    padding: 10px;
+    border-radius: 10px;
     margin-top: 7px;
     font-size: 13px;
     overflow-wrap: anywhere;
+}
+
+.profile-cover {
+    height: 130px;
+    border-radius: 13px;
+    background: linear-gradient(120deg, #00b875, #073c2a, #10291f);
+    margin-bottom: -38px;
+}
+
+.profile-main {
+    position: relative;
+    padding: 0 7px;
+}
+
+.profile-main .avatar {
+    width: 80px;
+    height: 80px;
+    border: 4px solid var(--surface);
+    font-size: 25px;
+}
+
+.profile-main h2 {
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+
+.stat-row {
+    display: flex;
+    gap: 25px;
+    margin: 17px 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.stat-row strong {
+    display: block;
+    color: white;
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.search-results {
+    margin-top: 10px;
+}
+
+.search-result {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.empty {
+    text-align: center;
+    padding: 28px 12px;
+    color: var(--muted);
+    font-size: 14px;
 }
 
 .bottom-nav {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100%;
-    background: #063d2e;
-    border-top: 1px solid var(--border);
+    right: 0;
+    z-index: 120;
     display: flex;
-    justify-content: space-around;
-    padding: 9px 3px;
-    z-index: 100;
+    justify-content: center;
+    gap: 0;
+    background: rgba(7, 27, 21, .97);
+    border-top: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    padding: 6px max(4px, env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom));
 }
 
-.bottom-nav button {
-    border: none;
-    color: var(--text);
+.nav-btn {
+    flex: 1;
+    max-width: 130px;
+    border: 0;
     background: transparent;
+    color: var(--muted);
+    padding: 7px 3px;
     font-size: 11px;
-    padding: 4px;
+    font-weight: 650;
 }
 
-.bottom-nav span {
+.nav-icon {
+    width: 25px;
+    height: 25px;
     display: block;
-    font-size: 20px;
-    margin-bottom: 3px;
+    margin: 0 auto 4px;
+    font-size: 21px;
+}
+
+.nav-btn.active {
+    color: var(--green);
+}
+
+.notice {
+    color: var(--muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 15px;
 }
 
 footer {
     text-align: center;
     color: var(--muted);
     font-size: 12px;
-    padding: 15px;
+    padding: 22px 10px;
 }
 
-@media (max-width: 400px) {
-    .logo {
-        font-size: 21px;
+@media (max-width: 760px) {
+    .columns {
+        grid-template-columns: minmax(0, 1fr);
     }
 
-    .logo-icon {
-        width: 36px;
-        height: 36px;
+    .desktop-only {
+        display: none;
     }
 
-    .header-actions .btn {
-        padding: 9px 8px;
+    .layout {
+        margin-top: 15px;
+        padding: 0 11px;
+    }
+
+    .header-inner {
+        padding: 10px 12px;
+    }
+
+    .brand {
+        font-size: 22px;
+    }
+
+    .brand-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .auth-wrap {
+        margin-top: 24px;
+    }
+
+    .auth-card {
+        padding: 20px;
+    }
+
+    .post-actions {
+        gap: 2px;
+    }
+
+    .action-btn {
         font-size: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
     }
 }
 </style>
@@ -351,167 +706,356 @@ footer {
 <body>
 
 <header>
-    <div class="logo">
-        <div class="logo-icon">
-            <svg viewBox="0 0 100 100"
-                 xmlns="http://www.w3.org/2000/svg"
-                 role="img"
-                 aria-label="EyeBook logo">
-                <path d="M8 50 Q50 8 92 50 Q50 92 8 50 Z"
-                      fill="none"
-                      stroke="#ffffff"
-                      stroke-width="7"
-                      stroke-linejoin="round"/>
-                <circle cx="50" cy="50" r="19" fill="#ffffff"/>
-                <circle cx="50" cy="50" r="10" fill="#063d2e"/>
-                <circle cx="54" cy="46" r="3" fill="#00c878"/>
-            </svg>
+    <div class="header-inner">
+        <div class="brand">
+            <div class="brand-icon">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 50 Q50 7 93 50 Q50 93 7 50Z"
+                          fill="none" stroke="white" stroke-width="7"/>
+                    <circle cx="50" cy="50" r="20" fill="white"/>
+                    <circle cx="50" cy="50" r="11" fill="#07513a"/>
+                    <circle cx="54" cy="46" r="4" fill="#00d084"/>
+                </svg>
+            </div>
+            <div>Eye<span>Book</span></div>
         </div>
-        <div class="logo-text">Eye<span>Book</span></div>
-    </div>
 
-    <div class="header-actions">
-        <button class="btn" onclick="showPage('profile')">Profile</button>
-        <button class="btn btn-primary" onclick="showPage('download')">Get App</button>
+        <div class="header-actions">
+            <button class="icon-btn" aria-label="Search"
+                    onclick="navigate('search')">⌕</button>
+            <button class="icon-btn" aria-label="Notifications"
+                    onclick="navigate('notifications')">♧</button>
+            <button class="btn btn-outline" id="headerLogin"
+                    onclick="navigate('auth')">Login</button>
+        </div>
     </div>
 </header>
 
-<main class="container">
+<!-- LOGIN / REGISTER -->
 
-    <!-- Authentication -->
-    <section id="authPage" class="card">
-        <h2>Welcome to EyeBook 💚</h2>
-        <p class="muted">Connect, share, and express yourself.</p>
+<section id="authPage" class="page active">
+    <div class="auth-wrap">
+        <div class="card auth-card">
 
-        <input id="authName" placeholder="Full Name">
-        <input id="authEmail" type="email" placeholder="Email Address" autocomplete="email">
-        <input id="authPassword" type="password" placeholder="Password (minimum 6 characters)" autocomplete="current-password">
+            <div class="brand auth-brand">
+                <div class="brand-icon">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 50 Q50 7 93 50 Q50 93 7 50Z"
+                              fill="none" stroke="white" stroke-width="7"/>
+                        <circle cx="50" cy="50" r="20" fill="white"/>
+                        <circle cx="50" cy="50" r="11" fill="#07513a"/>
+                        <circle cx="54" cy="46" r="4" fill="#00d084"/>
+                    </svg>
+                </div>
+                <div>Eye<span>Book</span></div>
+            </div>
 
-        <button class="btn btn-primary" style="width:100%;margin-top:8px"
-                onclick="signUp()">Create Account</button>
+            <h1 class="auth-heading" id="authHeading">Welcome back</h1>
+            <p class="auth-subtitle" id="authSubtitle">
+                Connect with people and share your moments.
+            </p>
 
-        <button class="btn" style="width:100%;margin-top:8px"
-                onclick="signIn()">Login</button>
+            <button class="google-btn" id="googleButton" onclick="googleLogin()">
+                <span class="google-g">G</span>
+                Continue with Google
+            </button>
 
-        <p id="authMessage"></p>
-    </section>
+            <div class="divider">OR CONTINUE WITH EMAIL</div>
 
-    <!-- Application -->
-    <section id="appContent" class="hidden">
+            <div id="registerFields" class="hidden">
+                <label for="fullName">Full name</label>
+                <input id="fullName" class="field"
+                       autocomplete="name" placeholder="Your name">
 
-        <div class="notice">
-            <strong>Welcome to EyeBook!</strong><br>
-            Your world, your moments, your community.
+                <label for="username">Username</label>
+                <input id="username" class="field"
+                       autocomplete="username" placeholder="Choose a username">
+            </div>
+
+            <label for="email">Email address</label>
+            <input id="email" class="field" type="email"
+                   autocomplete="email" placeholder="you@example.com">
+
+            <label for="password">Password</label>
+            <input id="password" class="field" type="password"
+                   autocomplete="current-password"
+                   placeholder="At least 6 characters">
+
+            <button class="btn btn-primary full" id="emailAction"
+                    onclick="emailAction()">Login</button>
+
+            <button class="text-button" id="forgotButton"
+                    onclick="resetPassword()">Forgot password?</button>
+
+            <p style="text-align:center;margin-top:10px;font-size:13px;color:var(--muted)">
+                <span id="switchText">New to EyeBook?</span>
+                <button class="text-button" id="switchButton"
+                        onclick="toggleAuthMode()">Create account</button>
+            </p>
+
+            <div class="divider">PHONE VERIFICATION</div>
+
+            <label for="phone">Mobile number with country code</label>
+            <input id="phone" class="field" type="tel"
+                   autocomplete="tel" placeholder="+91 9876543210">
+
+            <div id="recaptcha-container" style="margin-top:10px"></div>
+
+            <button class="btn btn-outline full" onclick="sendPhoneCode()">
+                Send OTP
+            </button>
+
+            <div id="otpSection" class="hidden">
+                <label for="otp">Verification code</label>
+                <input id="otp" class="field" inputmode="numeric"
+                       autocomplete="one-time-code" placeholder="Enter OTP">
+                <button class="btn btn-primary full" onclick="verifyPhoneCode()">
+                    Verify and Sign In
+                </button>
+            </div>
+
+            <p id="authStatus" class="status" role="status"></p>
+
+            <p class="muted" style="margin-top:15px">
+                By continuing, you agree to use EyeBook respectfully and follow
+                applicable laws and community rules.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- MAIN APPLICATION -->
+
+<section id="appPage" class="page">
+    <div class="layout">
+
+        <div class="top-welcome">
+            <h2 id="welcomeTitle">Welcome to EyeBook</h2>
+            <p>Your community. Your moments. Your voice.</p>
         </div>
 
-        <!-- Home -->
-        <section id="homePage">
+        <div class="columns">
+            <div>
 
-            <div class="card">
-                <h3>Stories</h3>
-                <div class="stories" id="storiesList"></div>
+                <!-- HOME -->
+                <section id="homeView" class="view">
 
-                <textarea id="storyText" placeholder="Share your story..."></textarea>
+                    <div class="card">
+                        <div class="card-title">Stories</div>
+                        <div class="story-row" id="storyList"></div>
 
-                <button class="btn btn-primary" onclick="addStory()">
-                    Publish Story
-                </button>
-            </div>
+                        <textarea id="storyText" class="field"
+                                  placeholder="Share a moment with your followers..."></textarea>
 
-            <!-- Create Post -->
-            <div class="card">
-                <h3>Create a Post</h3>
+                        <button class="btn btn-primary"
+                                onclick="publishStory()">Share Story</button>
 
-                <textarea id="postText" placeholder="What's on your mind?"></textarea>
-
-                <label class="muted" for="postFile">Choose a photo or video</label>
-                <input type="file" id="postFile" accept="image/*,video/*">
-
-                <label class="muted" for="musicFile">Add an audio track (optional)</label>
-                <input type="file" id="musicFile" accept="audio/*">
-
-                <button class="btn btn-primary" style="width:100%"
-                        onclick="createPost()">
-                    Publish Post
-                </button>
-
-                <p class="muted" style="margin-top:10px">
-                    Media uploads require a configured storage service.
-                </p>
-            </div>
-
-            <h3>Latest Posts</h3>
-            <div id="feed">
-                <div class="card muted">No posts yet. Be the first to share!</div>
-            </div>
-        </section>
-
-        <!-- Profile -->
-        <section id="profilePage" class="hidden">
-            <div class="card">
-                <h2>My Profile</h2>
-
-                <div class="avatar" id="profileAvatar">E</div>
-
-                <h3 id="profileName" style="margin-top:10px">EyeBook User</h3>
-                <p id="profileEmail" class="muted"></p>
-
-                <input id="displayName" placeholder="Display Name">
-                <textarea id="bioText" placeholder="Write a short bio"></textarea>
-
-                <button class="btn btn-primary" onclick="saveProfile()">
-                    Save Profile
-                </button>
-
-                <button class="btn" onclick="signOutUser()">Logout</button>
-            </div>
-        </section>
-
-        <!-- APK Download -->
-        <section id="downloadPage" class="hidden">
-            <div class="card">
-                <div class="logo" style="margin-bottom:15px">
-                    <div class="logo-icon">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 50 Q50 8 92 50 Q50 92 8 50 Z"
-                                  fill="none" stroke="#fff" stroke-width="7"/>
-                            <circle cx="50" cy="50" r="19" fill="#fff"/>
-                            <circle cx="50" cy="50" r="10" fill="#063d2e"/>
-                            <circle cx="54" cy="46" r="3" fill="#00c878"/>
-                        </svg>
+                        <p class="muted" style="margin-top:9px">
+                            Stories are hidden after 24 hours in this app's feed.
+                            Expired records may still require backend cleanup.
+                        </p>
                     </div>
-                    <div class="logo-text">Eye<span>Book</span></div>
+
+                    <div class="card">
+                        <div class="card-title">Create a post</div>
+
+                        <div class="composer-head">
+                            <div class="avatar" id="composerAvatar">E</div>
+                            <input id="postText" class="field"
+                                   placeholder="What's happening?"
+                                   aria-label="Post text">
+                        </div>
+
+                        <div class="composer-options">
+                            <label class="file-label">
+                                ▧ Photo / Video
+                                <input id="mediaFile" type="file"
+                                       accept="image/*,video/*">
+                            </label>
+
+                            <label class="file-label">
+                                ♫ Music / Audio
+                                <input id="audioFile" type="file"
+                                       accept="audio/*">
+                            </label>
+
+                            <button class="btn btn-primary"
+                                    onclick="publishPost()">Publish</button>
+                        </div>
+
+                        <p id="uploadStatus" class="status"></p>
+                        <p class="muted" style="margin-top:8px">
+                            Only upload media you own or have permission to share.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title">Your Feed</div>
+                        <div id="feed">
+                            <div class="empty">Sign in to load your feed.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SEARCH -->
+                <section id="searchView" class="view hidden">
+                    <div class="card">
+                        <div class="card-title">Discover EyeBook</div>
+                        <input id="searchInput" class="field"
+                               placeholder="Search public posts..."
+                               oninput="searchPosts()">
+                        <div id="searchResults" class="search-results"></div>
+                    </div>
+                </section>
+
+                <!-- PROFILE -->
+                <section id="profileView" class="view hidden">
+                    <div class="card">
+                        <div class="profile-cover"></div>
+
+                        <div class="profile-main">
+                            <div class="avatar" id="profileAvatar">E</div>
+                            <h2 id="profileName">Your profile</h2>
+                            <p id="profileUsername" class="muted">@username</p>
+                            <p id="profileEmail" class="muted"></p>
+
+                            <div class="stat-row">
+                                <div><strong id="postCount">0</strong>Posts</div>
+                                <div><strong id="followingCount">0</strong>Following</div>
+                            </div>
+                        </div>
+
+                        <label for="editName">Display name</label>
+                        <input id="editName" class="field" placeholder="Your name">
+
+                        <label for="editUsername">Username</label>
+                        <input id="editUsername" class="field" placeholder="username">
+
+                        <label for="editBio">Bio</label>
+                        <textarea id="editBio" class="field"
+                                  placeholder="Tell people about yourself..."></textarea>
+
+                        <label for="profilePhoto">Profile picture</label>
+                        <input id="profilePhoto" class="field" type="file"
+                               accept="image/*">
+
+                        <button class="btn btn-primary full"
+                                onclick="saveProfile()">Save Profile</button>
+
+                        <button class="btn btn-outline full"
+                                onclick="signOutUser()">Log Out</button>
+
+                        <p id="profileStatus" class="status"></p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title">My Posts</div>
+                        <div id="myPosts"></div>
+                    </div>
+                </section>
+
+                <!-- NOTIFICATIONS -->
+                <section id="notificationsView" class="view hidden">
+                    <div class="card">
+                        <div class="card-title">Notifications</div>
+                        <div class="empty">
+                            Notifications will appear here when the notification
+                            backend is configured.
+                        </div>
+                    </div>
+                </section>
+
+                <!-- APP DOWNLOAD -->
+                <section id="downloadView" class="view hidden">
+                    <div class="card">
+                        <div class="brand" style="margin-bottom:18px">
+                            <div class="brand-icon">E</div>
+                            <div>Eye<span>Book</span></div>
+                        </div>
+
+                        <h2 style="margin-bottom:10px">EyeBook for Android</h2>
+                        <p class="muted">
+                            Install EyeBook on your Android device.
+                        </p>
+
+                        <a id="apkDownload" class="btn btn-primary full"
+                           style="display:block;text-align:center;text-decoration:none"
+                           href="#" onclick="return downloadApp(event)">
+                            Download Android App
+                        </a>
+
+                        <p class="muted" style="margin-top:12px">
+                            This button needs a real APK URL after the Android
+                            application has been built and hosted.
+                        </p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- DESKTOP SIDEBAR -->
+            <aside class="desktop-only">
+                <div class="card">
+                    <div class="card-title">Your Account</div>
+                    <div style="display:flex;gap:10px;align-items:center">
+                        <div class="avatar" id="sideAvatar">E</div>
+                        <div style="min-width:0">
+                            <strong id="sideName">EyeBook User</strong>
+                            <p id="sideEmail" class="muted"></p>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline full"
+                            onclick="navigate('profile')">View Profile</button>
                 </div>
 
-                <h2>EyeBook for Android</h2>
+                <div class="card">
+                    <div class="card-title">About EyeBook</div>
+                    <p class="muted">
+                        A place to share your moments, discover new people,
+                        and connect with your community.
+                    </p>
+                </div>
 
-                <p class="muted">
-                    Download EyeBook to your Android device and stay connected.
-                </p>
+                <div class="card">
+                    <div class="card-title">Quick Links</div>
+                    <button class="text-button" onclick="navigate('home')">Home</button><br>
+                    <button class="text-button" onclick="navigate('search')">Discover</button><br>
+                    <button class="text-button" onclick="navigate('download')">Get the App</button>
+                </div>
+            </aside>
+        </div>
 
-                <a id="apkLink" href="#"
-                   class="btn btn-primary"
-                   style="display:block;text-align:center;text-decoration:none;margin-top:15px">
-                    Download EyeBook APK
-                </a>
+        <footer>EyeBook © 2026 · Connect Beyond</footer>
+    </div>
+</section>
 
-                <p class="muted" style="margin-top:12px">
-                    The APK file must be built and uploaded before downloading.
-                </p>
-            </div>
-        </section>
+<!-- BOTTOM NAVIGATION -->
 
-    </section>
-</main>
+<nav id="bottomNav" class="bottom-nav hidden">
+    <button class="nav-btn active" data-page="home"
+            onclick="navigate('home')">
+        <span class="nav-icon">⌂</span>Home
+    </button>
 
-<nav class="bottom-nav">
-    <button onclick="showPage('home')"><span>🏠</span>Home</button>
-    <button onclick="showPage('home');focusPost()"><span>➕</span>Create</button>
-    <button onclick="showPage('profile')"><span>👤</span>Profile</button>
-    <button onclick="showPage('download')"><span>📲</span>App</button>
+    <button class="nav-btn" data-page="search"
+            onclick="navigate('search')">
+        <span class="nav-icon">⌕</span>Discover
+    </button>
+
+    <button class="nav-btn" data-page="create"
+            onclick="focusComposer()">
+        <span class="nav-icon">＋</span>Create
+    </button>
+
+    <button class="nav-btn" data-page="notifications"
+            onclick="navigate('notifications')">
+        <span class="nav-icon">♧</span>Activity
+    </button>
+
+    <button class="nav-btn" data-page="profile"
+            onclick="navigate('profile')">
+        <span class="nav-icon">◉</span>Profile
+    </button>
 </nav>
-
-<footer>EyeBook © 2026 | Connect with the world.</footer>
 
 <script type="module">
 import { initializeApp }
@@ -519,28 +1063,49 @@ from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
 
 import {
     getAuth,
+    onAuthStateChanged,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    onAuthStateChanged,
-    signOut,
-    updateProfile
+    signInWithPopup,
+    GoogleAuthProvider,
+    RecaptchaVerifier,
+    signInWithPhoneNumber,
+    updateProfile,
+    sendPasswordResetEmail,
+    signOut
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
 
 import {
     getFirestore,
     collection,
     addDoc,
+    doc,
+    getDoc,
+    setDoc,
+    updateDoc,
+    deleteDoc,
     query,
     orderBy,
+    limit,
     onSnapshot,
     serverTimestamp,
-    doc,
-    setDoc,
-    getDoc
+    increment,
+    where,
+    getDocs,
+    arrayUnion,
+    arrayRemove
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
+import {
+    getStorage,
+    ref,
+    uploadBytes,
+    getDownloadURL
+} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-storage.js";
+
 /*
-  Replace the placeholder values below with your Firebase Web App config.
+  STEP 1:
+  Replace all placeholder values with your Firebase Web App config.
 */
 const firebaseConfig = {
     apiKey: "YOUR_API_KEY",
@@ -552,248 +1117,525 @@ const firebaseConfig = {
 };
 
 /*
-  Paste the actual hosted APK URL here after building the Android app.
-  Example: https://your-domain.example/eyebook.apk
+  STEP 2:
+  Add the real hosted APK URL when the Android APK exists.
 */
 const APK_URL = "";
 
+/*
+  These limits are starter safeguards, not a complete anti-abuse system.
+*/
+const MAX_MEDIA_BYTES = 20 * 1024 * 1024;
+const MAX_AUDIO_BYTES = 15 * 1024 * 1024;
+
 const $ = id => document.getElementById(id);
 
-let app = null;
-let auth = null;
-let db = null;
+let app, auth, db, storage;
 let currentUser = null;
-
-let unsubscribePosts = null;
+let registerMode = false;
+let confirmationResult = null;
+let recaptchaVerifier = null;
+let unsubscribeFeed = null;
 let unsubscribeStories = null;
-
-let postsCache = [];
-let storiesCache = [];
+let allPosts = [];
+let allStories = [];
+let followingIds = new Set();
+let profileData = {};
 let localPosts = [];
 let localStories = [];
 
-const isConfigured =
+const configured =
     firebaseConfig.apiKey !== "YOUR_API_KEY" &&
-    firebaseConfig.projectId !== "YOUR_PROJECT_ID";
+    firebaseConfig.projectId !== "YOUR_PROJECT_ID" &&
+    firebaseConfig.appId !== "YOUR_APP_ID";
 
-function showMessage(id, text) {
-    $(id).textContent = text;
+function setStatus(id, message, error = false) {
+    const el = $(id);
+    if (!el) return;
+    el.textContent = message;
+    el.classList.toggle("error", error);
 }
 
-if (isConfigured) {
+function friendlyError(error) {
+    const code = error?.code || "";
+
+    const messages = {
+        "auth/email-already-in-use": "This email already has an account. Please log in.",
+        "auth/invalid-email": "Please enter a valid email address.",
+        "auth/weak-password": "Please use a stronger password.",
+        "auth/user-not-found": "No account was found. Please register first.",
+        "auth/wrong-password": "Incorrect email or password.",
+        "auth/invalid-credential": "Incorrect login details. Check your email and password.",
+        "auth/popup-closed-by-user": "Google login was cancelled.",
+        "auth/unauthorized-domain": "Add this website domain to Firebase Authentication authorized domains.",
+        "auth/operation-not-allowed": "Enable this login method in Firebase Authentication.",
+        "permission-denied": "Access denied. Check your Firestore security rules.",
+        "storage/unauthorized": "Storage access denied. Check Firebase Storage rules."
+    };
+
+    return messages[code] || error?.message || "Something went wrong.";
+}
+
+function initials(name) {
+    return (name || "E").trim().slice(0, 1).toUpperCase();
+}
+
+function setAvatar(el, name, photoURL) {
+    el.replaceChildren();
+
+    if (photoURL) {
+        const img = document.createElement("img");
+        img.src = photoURL;
+        img.alt = "Profile";
+        el.append(img);
+    } else {
+        el.textContent = initials(name);
+    }
+}
+
+function escapeText(value) {
+    return String(value ?? "");
+}
+
+if (!configured) {
+    $("authHeading").textContent = "Welcome to EyeBook";
+    setStatus(
+        "authStatus",
+        "Firebase is not configured yet. Add your real Firebase config to enable accounts.",
+        true
+    );
+} else {
     try {
         app = initializeApp(firebaseConfig);
         auth = getAuth(app);
         db = getFirestore(app);
+        storage = getStorage(app);
 
         onAuthStateChanged(auth, async user => {
             currentUser = user;
 
-            $("authPage").classList.toggle("hidden", !!user);
-            $("appContent").classList.toggle("hidden", !user);
+            $("authPage").classList.toggle("active", !user);
+            $("appPage").classList.toggle("active", !!user);
+            $("bottomNav").classList.toggle("hidden", !user);
+            $("headerLogin").classList.toggle("hidden", !!user);
 
-            if (user) {
-                $("profileName").textContent =
-                    user.displayName || "EyeBook User";
-
-                $("profileEmail").textContent = user.email || "";
-                $("displayName").value = user.displayName || "";
-
-                await loadProfile();
-
-                listenPosts();
-                listenStories();
-
-                renderFeed();
-                renderStories();
-            } else {
-                if (unsubscribePosts) {
-                    unsubscribePosts();
-                    unsubscribePosts = null;
-                }
-
-                if (unsubscribeStories) {
-                    unsubscribeStories();
-                    unsubscribeStories = null;
-                }
+            if (!user) {
+                cleanupListeners();
+                return;
             }
+
+            $("welcomeTitle").textContent =
+                "Welcome, " + (user.displayName || "EyeBook User");
+
+            await loadProfile();
+            listenFeed();
+            listenStories();
+            await loadFollowing();
+
+            renderFeed();
+            renderStories();
         });
     } catch (error) {
-        showMessage("authMessage", "Firebase initialization failed: " + error.message);
+        setStatus("authStatus", friendlyError(error), true);
     }
-} else {
-    showMessage("authMessage", "Please configure Firebase to get started.");
 }
 
-/* Create Account */
-window.signUp = async function() {
+/* AUTH MODE */
+
+window.toggleAuthMode = function() {
+    registerMode = !registerMode;
+
+    $("registerFields").classList.toggle("hidden", !registerMode);
+    $("authHeading").textContent =
+        registerMode ? "Create your account" : "Welcome back";
+
+    $("authSubtitle").textContent = registerMode
+        ? "Join EyeBook and connect with your community."
+        : "Connect with people and share your moments.";
+
+    $("emailAction").textContent =
+        registerMode ? "Create Account" : "Login";
+
+    $("switchText").textContent =
+        registerMode ? "Already have an account?" : "New to EyeBook?";
+
+    $("switchButton").textContent =
+        registerMode ? "Login" : "Create account";
+
+    $("forgotButton").classList.toggle("hidden", registerMode);
+    $("password").autocomplete =
+        registerMode ? "new-password" : "current-password";
+
+    setStatus("authStatus", "");
+};
+
+window.emailAction = async function() {
     if (!auth) {
-        showMessage("authMessage", "Please add your Firebase configuration first.");
+        setStatus("authStatus", "Configure Firebase first.", true);
         return;
     }
 
-    const name = $("authName").value.trim();
-    const email = $("authEmail").value.trim();
-    const password = $("authPassword").value;
+    const email = $("email").value.trim();
+    const password = $("password").value;
 
-    if (!name || !email || password.length < 6) {
-        showMessage("authMessage", "Enter your name, email, and a password of at least 6 characters.");
+    if (!email || password.length < 6) {
+        setStatus(
+            "authStatus",
+            "Enter a valid email and a password with at least 6 characters.",
+            true
+        );
         return;
     }
 
     try {
-        const result = await createUserWithEmailAndPassword(
-            auth, email, password
-        );
+        setStatus("authStatus", "Please wait...");
 
-        await updateProfile(result.user, {
-            displayName: name
-        });
+        if (registerMode) {
+            const name = $("fullName").value.trim();
+            const username = $("username").value.trim().toLowerCase();
 
-        await setDoc(doc(db, "users", result.user.uid), {
-            name: name,
-            email: email,
-            bio: "",
-            createdAt: serverTimestamp()
-        });
+            if (!name || !/^[a-z0-9_]{3,20}$/.test(username)) {
+                setStatus(
+                    "authStatus",
+                    "Enter your name and a username of 3–20 letters, numbers or underscores.",
+                    true
+                );
+                return;
+            }
 
-        showMessage("authMessage", "Account created successfully!");
+            const credential =
+                await createUserWithEmailAndPassword(auth, email, password);
+
+            await updateProfile(credential.user, {
+                displayName: name
+            });
+
+            await setDoc(doc(db, "users", credential.user.uid), {
+                uid: credential.user.uid,
+                name,
+                username,
+                email,
+                bio: "",
+                photoURL: "",
+                followers: [],
+                following: [],
+                createdAt: serverTimestamp()
+            });
+
+            setStatus("authStatus", "Account created.");
+        } else {
+            await signInWithEmailAndPassword(auth, email, password);
+        }
     } catch (error) {
-        showMessage("authMessage", "Registration failed: " + error.message);
+        setStatus("authStatus", friendlyError(error), true);
     }
 };
 
-/* Login */
-window.signIn = async function() {
+/* GOOGLE LOGIN */
+
+window.googleLogin = async function() {
     if (!auth) {
-        showMessage("authMessage", "Please configure Firebase first.");
+        setStatus("authStatus", "Configure Firebase first.", true);
         return;
     }
 
     try {
-        await signInWithEmailAndPassword(
+        const provider = new GoogleAuthProvider();
+        provider.setCustomParameters({ prompt: "select_account" });
+
+        const result = await signInWithPopup(auth, provider);
+        const userRef = doc(db, "users", result.user.uid);
+        const snapshot = await getDoc(userRef);
+
+        if (!snapshot.exists()) {
+            await setDoc(userRef, {
+                uid: result.user.uid,
+                name: result.user.displayName || "EyeBook User",
+                username: "user_" + result.user.uid.slice(0, 8),
+                email: result.user.email || "",
+                photoURL: result.user.photoURL || "",
+                bio: "",
+                followers: [],
+                following: [],
+                createdAt: serverTimestamp()
+            });
+        }
+    } catch (error) {
+        setStatus("authStatus", friendlyError(error), true);
+    }
+};
+
+/* PASSWORD RESET */
+
+window.resetPassword = async function() {
+    if (!auth) {
+        setStatus("authStatus", "Configure Firebase first.", true);
+        return;
+    }
+
+    const email = $("email").value.trim();
+
+    if (!email) {
+        setStatus("authStatus", "Enter your email first.", true);
+        return;
+    }
+
+    try {
+        await sendPasswordResetEmail(auth, email);
+        setStatus("authStatus", "Password reset email sent. Check your inbox.");
+    } catch (error) {
+        setStatus("authStatus", friendlyError(error), true);
+    }
+};
+
+/* PHONE OTP */
+
+window.sendPhoneCode = async function() {
+    if (!auth) {
+        setStatus("authStatus", "Configure Firebase first.", true);
+        return;
+    }
+
+    const phone = $("phone").value.trim();
+
+    if (!/^\+[1-9]\d{7,14}$/.test(phone)) {
+        setStatus(
+            "authStatus",
+            "Enter a valid number with country code, for example +919876543210.",
+            true
+        );
+        return;
+    }
+
+    try {
+        if (!recaptchaVerifier) {
+            recaptchaVerifier = new RecaptchaVerifier(
+                auth,
+                "recaptcha-container",
+                { size: "normal" }
+            );
+        }
+
+        confirmationResult = await signInWithPhoneNumber(
             auth,
-            $("authEmail").value.trim(),
-            $("authPassword").value
+            phone,
+            recaptchaVerifier
         );
+
+        $("otpSection").classList.remove("hidden");
+        setStatus("authStatus", "OTP sent. Check your phone.");
     } catch (error) {
-        showMessage("authMessage", "Login failed: " + error.message);
+        if (recaptchaVerifier) {
+            try {
+                await recaptchaVerifier.clear();
+            } catch (_) {}
+            recaptchaVerifier = null;
+        }
+
+        setStatus("authStatus", friendlyError(error), true);
     }
 };
 
-/* Logout */
+window.verifyPhoneCode = async function() {
+    if (!confirmationResult) {
+        setStatus("authStatus", "Request an OTP first.", true);
+        return;
+    }
+
+    const otp = $("otp").value.trim();
+
+    if (!/^\d{6}$/.test(otp)) {
+        setStatus("authStatus", "Enter the 6-digit OTP.", true);
+        return;
+    }
+
+    try {
+        const result = await confirmationResult.confirm(otp);
+        const userRef = doc(db, "users", result.user.uid);
+        const snapshot = await getDoc(userRef);
+
+        if (!snapshot.exists()) {
+            await setDoc(userRef, {
+                uid: result.user.uid,
+                name: result.user.displayName || "EyeBook User",
+                username: "user_" + result.user.uid.slice(0, 8),
+                phoneNumber: result.user.phoneNumber || "",
+                email: result.user.email || "",
+                photoURL: result.user.photoURL || "",
+                bio: "",
+                followers: [],
+                following: [],
+                createdAt: serverTimestamp()
+            });
+        }
+
+        confirmationResult = null;
+    } catch (error) {
+        setStatus("authStatus", friendlyError(error), true);
+    }
+};
+
+/* LOGOUT */
+
 window.signOutUser = async function() {
-    if (auth) {
+    if (!auth) return;
+
+    try {
         await signOut(auth);
+        navigate("auth");
+    } catch (error) {
+        alert(friendlyError(error));
     }
 };
 
-/* Navigation */
-window.showPage = function(page) {
-    ["homePage", "profilePage", "downloadPage"].forEach(id => {
-        $(id).classList.add("hidden");
+/* NAVIGATION */
+
+window.navigate = function(page) {
+    if (!currentUser && page !== "auth") {
+        page = "auth";
+    }
+
+    $("authPage").classList.toggle("active", page === "auth");
+    $("appPage").classList.toggle("active", page !== "auth");
+
+    document.querySelectorAll(".view").forEach(view => {
+        view.classList.add("hidden");
     });
 
-    if (page === "home") {
-        $("homePage").classList.remove("hidden");
-    }
+    const view = $(page + "View");
 
-    if (page === "profile") {
-        $("profilePage").classList.remove("hidden");
-    }
+    if (view) view.classList.remove("hidden");
 
-    if (page === "download") {
-        $("downloadPage").classList.remove("hidden");
-    }
+    document.querySelectorAll(".nav-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.page === page);
+    });
 
     window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
-window.focusPost = function() {
-    $("postText").focus();
+window.focusComposer = function() {
+    navigate("home");
+    setTimeout(() => $("postText").focus(), 100);
 };
 
-/* Create Post */
-window.createPost = async function() {
-    if (!currentUser) {
-        alert("Please log in first.");
+/* PROFILE */
+
+async function loadProfile() {
+    if (!currentUser) return;
+
+    try {
+        const snap = await getDoc(doc(db, "users", currentUser.uid));
+
+        profileData = snap.exists() ? snap.data() : {};
+
+        const name = profileData.name ||
+            currentUser.displayName || "EyeBook User";
+
+        const username = profileData.username ||
+            ("user_" + currentUser.uid.slice(0, 8));
+
+        const photo = profileData.photoURL || currentUser.photoURL || "";
+
+        $("profileName").textContent = name;
+        $("profileUsername").textContent = "@" + username;
+        $("profileEmail").textContent = currentUser.email ||
+            currentUser.phoneNumber || "";
+
+        $("editName").value = name;
+        $("editUsername").value = username;
+        $("editBio").value = profileData.bio || "";
+
+        $("sideName").textContent = name;
+        $("sideEmail").textContent =
+            currentUser.email || currentUser.phoneNumber || "";
+
+        setAvatar($("profileAvatar"), name, photo);
+        setAvatar($("composerAvatar"), name, photo);
+        setAvatar($("sideAvatar"), name, photo);
+
+        $("followingCount").textContent =
+            Array.isArray(profileData.following)
+                ? profileData.following.length : 0;
+    } catch (error) {
+        setStatus("profileStatus", friendlyError(error), true);
+    }
+}
+
+window.saveProfile = async function() {
+    if (!currentUser) return;
+
+    const name = $("editName").value.trim();
+    const username = $("editUsername").value.trim().toLowerCase();
+    const bio = $("editBio").value.trim();
+    const file = $("profilePhoto").files[0];
+
+    if (!name || !/^[a-z0-9_]{3,20}$/.test(username)) {
+        setStatus(
+            "profileStatus",
+            "Enter a name and a username of 3–20 letters, numbers or underscores.",
+            true
+        );
         return;
-    }
-
-    const text = $("postText").value.trim();
-    const file = $("postFile").files[0];
-    const music = $("musicFile").files[0];
-
-    if (!text && !file && !music) {
-        alert("Add some text, a photo, a video, or music.");
-        return;
-    }
-
-    /*
-      This starter version stores text-only posts in Firestore.
-      Media previews are local and are not permanently uploaded.
-      Connect Firebase Storage or another media storage service
-      before enabling public photo, video, and audio uploads.
-    */
-
-    const post = {
-        text: text,
-        author: currentUser.displayName || currentUser.email,
-        uid: currentUser.uid,
-        mediaUrl: "",
-        mediaType: "",
-        musicUrl: "",
-        musicName: music ? music.name : "",
-        createdAt: new Date()
-    };
-
-    if (file) {
-        post.mediaUrl = URL.createObjectURL(file);
-        post.mediaType = file.type.startsWith("video/")
-            ? "video"
-            : "image";
-    }
-
-    if (music) {
-        post.musicUrl = URL.createObjectURL(music);
     }
 
     try {
-        if (isConfigured && !file && !music) {
-            await addDoc(collection(db, "posts"), {
-                ...post,
-                createdAt: serverTimestamp()
-            });
-        } else {
-            localPosts.unshift(post);
-            renderFeed();
+        let photoURL = profileData.photoURL || currentUser.photoURL || "";
+
+        if (file) {
+            if (!file.type.startsWith("image/") ||
+                file.size > MAX_MEDIA_BYTES) {
+                throw new Error("Choose an image smaller than 20 MB.");
+            }
+
+            const storageRef = ref(
+                storage,
+                "profilePhotos/" + currentUser.uid + "/" + Date.now()
+            );
+
+            await uploadBytes(storageRef, file);
+            photoURL = await getDownloadURL(storageRef);
         }
 
-        $("postText").value = "";
-        $("postFile").value = "";
-        $("musicFile").value = "";
+        await updateProfile(currentUser, {
+            displayName: name,
+            photoURL
+        });
 
-        alert(
-            file || music
-                ? "Local media preview created. Configure online storage to share these files with everyone."
-                : "Post published successfully!"
-        );
+        await setDoc(doc(db, "users", currentUser.uid), {
+            uid: currentUser.uid,
+            name,
+            username,
+            email: currentUser.email || "",
+            phoneNumber: currentUser.phoneNumber || "",
+            bio,
+            photoURL
+        }, { merge: true });
+
+        profileData = { ...profileData, name, username, bio, photoURL };
+
+        await loadProfile();
+
+        setStatus("profileStatus", "Profile updated successfully.");
     } catch (error) {
-        alert("Unable to publish post: " + error.message);
+        setStatus("profileStatus", friendlyError(error), true);
     }
 };
 
-/* Load Public Posts */
-function listenPosts() {
+/* FEED */
+
+function listenFeed() {
     if (!db) return;
+
+    if (unsubscribeFeed) unsubscribeFeed();
 
     const q = query(
         collection(db, "posts"),
-        orderBy("createdAt", "desc")
+        orderBy("createdAt", "desc"),
+        limit(50)
     );
 
-    unsubscribePosts = onSnapshot(q, snapshot => {
-        postsCache = snapshot.docs.map(d => ({
+    unsubscribeFeed = onSnapshot(q, snapshot => {
+        allPosts = snapshot.docs.map(d => ({
             id: d.id,
             ...d.data()
         }));
@@ -801,310 +1643,557 @@ function listenPosts() {
         renderFeed();
     }, error => {
         console.error(error);
-
         $("feed").textContent =
-            "Unable to load posts. Check Firestore rules and your internet connection.";
+            "Unable to load posts. Check Firestore rules.";
     });
 }
 
-/* Render Feed */
-function renderFeed() {
-    const all = [...localPosts, ...postsCache];
+async function uploadMedia(file, folder, maxBytes) {
+    if (!file) return "";
 
-    $("feed").replaceChildren();
-
-    if (!all.length) {
-        const empty = document.createElement("div");
-        empty.className = "card muted";
-        empty.textContent = "No posts yet. Be the first to share!";
-        $("feed").append(empty);
-        return;
+    if (file.size > maxBytes) {
+        throw new Error("File is too large for the current upload limit.");
     }
 
-    all.forEach(post => {
-        const card = document.createElement("article");
-        card.className = "card";
+    const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
 
-        const head = document.createElement("div");
-        head.className = "post-head";
+    const storageRef = ref(
+        storage,
+        folder + "/" + currentUser.uid + "/" +
+        Date.now() + "_" + safeName
+    );
 
-        const avatar = document.createElement("div");
-        avatar.className = "avatar";
-        avatar.textContent = (post.author || "E").slice(0, 1).toUpperCase();
+    await uploadBytes(storageRef, file);
 
-        const info = document.createElement("div");
-
-        const name = document.createElement("b");
-        name.textContent = post.author || "EyeBook User";
-
-        const time = document.createElement("div");
-        time.className = "muted";
-        time.textContent = "EyeBook";
-
-        info.append(name, time);
-        head.append(avatar, info);
-        card.append(head);
-
-        if (post.text) {
-            const paragraph = document.createElement("p");
-            paragraph.style.whiteSpace = "pre-wrap";
-            paragraph.textContent = post.text;
-            card.append(paragraph);
-        }
-
-        if (post.mediaUrl && post.mediaType === "image") {
-            const image = document.createElement("img");
-            image.className = "post-media";
-            image.src = post.mediaUrl;
-            image.alt = "Post image";
-            card.append(image);
-        }
-
-        if (post.mediaUrl && post.mediaType === "video") {
-            const video = document.createElement("video");
-            video.className = "post-media";
-            video.src = post.mediaUrl;
-            video.controls = true;
-            card.append(video);
-        }
-
-        if (post.musicUrl) {
-            const audio = document.createElement("audio");
-            audio.src = post.musicUrl;
-            audio.controls = true;
-            audio.style.width = "100%";
-            audio.style.marginTop = "10px";
-            card.append(audio);
-        }
-
-        const actions = document.createElement("div");
-        actions.className = "post-actions";
-
-        const like = document.createElement("button");
-        like.className = "action";
-        like.textContent = "❤️ Like";
-
-        like.onclick = () => {
-            alert("A secure, persistent like system must be connected to Firestore.");
-        };
-
-        const comment = document.createElement("button");
-        comment.className = "action";
-        comment.textContent = "💬 Comment";
-
-        comment.onclick = () => {
-            const value = prompt("Write your comment:");
-
-            if (value && value.trim()) {
-                alert("A persistent comment system must be connected to Firestore.");
-            }
-        };
-
-        const share = document.createElement("button");
-        share.className = "action";
-        share.textContent = "🔗 Share";
-
-        share.onclick = async () => {
-            if (navigator.share) {
-                try {
-                    await navigator.share({
-                        title: "EyeBook",
-                        text: post.text || "Check out this EyeBook post."
-                    });
-                } catch (error) {}
-            } else {
-                alert("Sharing is not supported on this device.");
-            }
-        };
-
-        actions.append(like, comment, share);
-        card.append(actions);
-
-        $("feed").append(card);
-    });
+    return await getDownloadURL(storageRef);
 }
 
-/* Publish Story */
-window.addStory = async function() {
-    if (!currentUser) {
-        alert("Please log in first.");
+window.publishPost = async function() {
+    if (!currentUser) return;
+
+    const text = $("postText").value.trim();
+    const media = $("mediaFile").files[0];
+    const audio = $("audioFile").files[0];
+
+    if (!text && !media && !audio) {
+        setStatus("uploadStatus", "Add text, a photo, video, or audio.", true);
         return;
     }
 
-    const text = $("storyText").value.trim();
-
-    if (!text) {
-        alert("Please write a story first.");
+    if (media && !/^(image|video)\//.test(media.type)) {
+        setStatus("uploadStatus", "Choose a photo or video file.", true);
         return;
     }
 
-    const story = {
-        text: text,
-        author: currentUser.displayName || currentUser.email,
-        uid: currentUser.uid,
-        createdAt: new Date(),
-        expiresAt: Date.now() + 24 * 60 * 60 * 1000
-    };
+    if (audio && !audio.type.startsWith("audio/")) {
+        setStatus("uploadStatus", "Choose a valid audio file.", true);
+        return;
+    }
 
     try {
-        if (isConfigured) {
-            await addDoc(collection(db, "stories"), {
-                text: story.text,
-                author: story.author,
-                uid: story.uid,
-                createdAt: serverTimestamp(),
-                expiresAt: story.expiresAt
-            });
-        } else {
-            localStories.unshift(story);
+        setStatus("uploadStatus", "Publishing your post...");
+
+        let mediaURL = "";
+        let audioURL = "";
+
+        if (media) {
+            mediaURL = await uploadMedia(
+                media,
+                "postMedia",
+                MAX_MEDIA_BYTES
+            );
         }
 
-        $("storyText").value = "";
-        renderStories();
+        if (audio) {
+            audioURL = await uploadMedia(
+                audio,
+                "postAudio",
+                MAX_AUDIO_BYTES
+            );
+        }
 
-        alert("Story published successfully!");
+        const post = {
+            uid: currentUser.uid,
+            author: currentUser.displayName || "EyeBook User",
+            username: profileData.username || "",
+            photoURL: profileData.photoURL || currentUser.photoURL || "",
+            text,
+            mediaURL,
+            mediaType: media ? media.type : "",
+            audioURL,
+            audioName: audio ? audio.name : "",
+            likes: [],
+            commentCount: 0,
+            createdAt: serverTimestamp()
+        };
+
+        await addDoc(collection(db, "posts"), post);
+
+        $("postText").value = "";
+        $("mediaFile").value = "";
+        $("audioFile").value = "";
+
+        setStatus("uploadStatus", "Your post has been published.");
     } catch (error) {
-        alert("Unable to publish story: " + error.message);
+        setStatus("uploadStatus", friendlyError(error), true);
     }
 };
 
-/* Load Stories */
+function renderFeed() {
+    const feed = $("feed");
+    feed.replaceChildren();
+
+    const combined = [...localPosts, ...allPosts];
+
+    if (!combined.length) {
+        const empty = document.createElement("div");
+        empty.className = "empty";
+        empty.textContent = "No posts yet. Share your first moment!";
+        feed.append(empty);
+        $("postCount").textContent = "0";
+        $("myPosts").textContent = "No posts yet.";
+        return;
+    }
+
+    $("postCount").textContent = combined.filter(
+        p => p.uid === currentUser?.uid
+    ).length;
+
+    $("myPosts").replaceChildren();
+
+    combined.forEach(post => {
+        const card = createPostCard(post);
+        feed.append(card);
+
+        if (post.uid === currentUser?.uid) {
+            $("myPosts").append(createPostCard(post, true));
+        }
+    });
+}
+
+function createPostCard(post, profileCopy = false) {
+    const card = document.createElement("article");
+    card.className = "card post";
+
+    const head = document.createElement("div");
+    head.className = "post-head";
+
+    const avatar = document.createElement("div");
+    avatar.className = "avatar";
+    setAvatar(avatar, post.author, post.photoURL);
+
+    const author = document.createElement("div");
+    author.className = "post-author";
+
+    const strong = document.createElement("strong");
+    strong.textContent = post.author || "EyeBook User";
+
+    const small = document.createElement("div");
+    small.className = "muted";
+    small.textContent = post.username ? "@" + post.username : "EyeBook";
+
+    author.append(strong, small);
+    head.append(avatar, author);
+    card.append(head);
+
+    if (post.text) {
+        const p = document.createElement("p");
+        p.className = "post-text";
+        p.textContent = post.text;
+        card.append(p);
+    }
+
+    if (post.mediaURL) {
+        if ((post.mediaType || "").startsWith("video/")) {
+            const video = document.createElement("video");
+            video.className = "post-media";
+            video.controls = true;
+            video.preload = "metadata";
+            video.src = post.mediaURL;
+            card.append(video);
+        } else {
+            const image = document.createElement("img");
+            image.className = "post-media";
+            image.loading = "lazy";
+            image.alt = "Post media";
+            image.src = post.mediaURL;
+            card.append(image);
+        }
+    }
+
+    if (post.audioURL) {
+        const audio = document.createElement("audio");
+        audio.className = "post-audio";
+        audio.controls = true;
+        audio.preload = "none";
+        audio.src = post.audioURL;
+        card.append(audio);
+    }
+
+    if (profileCopy) return card;
+
+    const actions = document.createElement("div");
+    actions.className = "post-actions";
+
+    const liked = Array.isArray(post.likes) &&
+        post.likes.includes(currentUser?.uid);
+
+    const likeBtn = document.createElement("button");
+    likeBtn.className = "action-btn" + (liked ? " liked" : "");
+    likeBtn.textContent = liked ? "♥ Liked" : "♡ Like";
+    likeBtn.onclick = () => toggleLike(post);
+
+    const commentBtn = document.createElement("button");
+    commentBtn.className = "action-btn";
+    commentBtn.textContent = "▤ Comment";
+    commentBtn.onclick = () => {
+        const box = card.querySelector(".comment-box");
+        box.classList.toggle("hidden");
+    };
+
+    const shareBtn = document.createElement("button");
+    shareBtn.className = "action-btn";
+    shareBtn.textContent = "↗ Share";
+    shareBtn.onclick = () => sharePost(post);
+
+    actions.append(likeBtn, commentBtn, shareBtn);
+    card.append(actions);
+
+    const commentBox = document.createElement("div");
+    commentBox.className = "comment-box hidden";
+
+    const commentInput = document.createElement("input");
+    commentInput.className = "field";
+    commentInput.placeholder = "Write a comment...";
+
+    const sendBtn = document.createElement("button");
+    sendBtn.className = "btn btn-primary";
+    sendBtn.textContent = "Send";
+
+    sendBtn.onclick = async () => {
+        const value = commentInput.value.trim();
+
+        if (!value) return;
+
+        try {
+            await addDoc(collection(db, "posts", post.id, "comments"), {
+                uid: currentUser.uid,
+                author: currentUser.displayName || "EyeBook User",
+                text: value,
+                createdAt: serverTimestamp()
+            });
+
+            commentInput.value = "";
+            await loadComments(post.id, commentList);
+        } catch (error) {
+            alert(friendlyError(error));
+        }
+    };
+
+    commentBox.append(commentInput, sendBtn);
+    card.append(commentBox);
+
+    const commentList = document.createElement("div");
+    commentList.className = "comment-list";
+    card.append(commentList);
+
+    loadComments(post.id, commentList);
+
+    return card;
+}
+
+async function toggleLike(post) {
+    if (!currentUser || !post.id) return;
+
+    const liked = Array.isArray(post.likes) &&
+        post.likes.includes(currentUser.uid);
+
+    try {
+        await updateDoc(doc(db, "posts", post.id), {
+            likes: liked
+                ? arrayRemove(currentUser.uid)
+                : arrayUnion(currentUser.uid)
+        });
+    } catch (error) {
+        alert(friendlyError(error));
+    }
+}
+
+async function loadComments(postId, target) {
+    if (!db || !postId) return;
+
+    try {
+        const q = query(
+            collection(db, "posts", postId, "comments"),
+            orderBy("createdAt", "asc"),
+            limit(30)
+        );
+
+        const snapshot = await getDocs(q);
+        target.replaceChildren();
+
+        snapshot.forEach(item => {
+            const data = item.data();
+            const el = document.createElement("div");
+            el.className = "comment";
+
+            const name = document.createElement("strong");
+            name.textContent = (data.author || "User") + ": ";
+
+            const text = document.createElement("span");
+            text.textContent = data.text || "";
+
+            el.append(name, text);
+            target.append(el);
+        });
+    } catch (error) {
+        console.error("Comment loading failed:", error);
+    }
+}
+
+window.sharePost = async function(post) {
+    const shareData = {
+        title: "EyeBook",
+        text: post.text || "Check out this post on EyeBook.",
+        url: location.href
+    };
+
+    try {
+        if (navigator.share) {
+            await navigator.share(shareData);
+        } else if (navigator.clipboard) {
+            await navigator.clipboard.writeText(
+                shareData.text + "\n" + shareData.url
+            );
+            alert("Share text copied.");
+        } else {
+            alert("Sharing is not available in this browser.");
+        }
+    } catch (_) {}
+};
+
+/* STORIES */
+
 function listenStories() {
     if (!db) return;
 
+    if (unsubscribeStories) unsubscribeStories();
+
     unsubscribeStories = onSnapshot(
-        collection(db, "stories"),
+        query(collection(db, "stories"), orderBy("createdAt", "desc"), limit(100)),
         snapshot => {
-            storiesCache = snapshot.docs.map(d => ({
+            allStories = snapshot.docs.map(d => ({
                 id: d.id,
                 ...d.data()
             }));
-
             renderStories();
         },
         error => console.error("Story loading failed:", error)
     );
 }
 
-/* Render Stories */
+window.publishStory = async function() {
+    if (!currentUser) return;
+
+    const text = $("storyText").value.trim();
+
+    if (!text) {
+        alert("Write something for your story.");
+        return;
+    }
+
+    try {
+        await addDoc(collection(db, "stories"), {
+            uid: currentUser.uid,
+            author: currentUser.displayName || "EyeBook User",
+            text,
+            createdAt: serverTimestamp(),
+            expiresAt: Date.now() + 24 * 60 * 60 * 1000
+        });
+
+        $("storyText").value = "";
+    } catch (error) {
+        alert(friendlyError(error));
+    }
+};
+
 function renderStories() {
-    const list = $("storiesList");
+    const list = $("storyList");
     list.replaceChildren();
 
-    const add = document.createElement("div");
-    add.className = "story";
+    const create = document.createElement("button");
+    create.className = "story-item";
+    create.style.background = "transparent";
+    create.style.border = "0";
+    create.style.color = "var(--muted)";
 
-    const addRing = document.createElement("div");
-    addRing.className = "story-ring";
-    addRing.textContent = "+";
+    const ring = document.createElement("div");
+    ring.className = "story-ring";
 
-    const addLabel = document.createElement("div");
-    addLabel.textContent = "Your Story";
+    const inner = document.createElement("div");
+    inner.className = "story-inner";
+    inner.textContent = "+";
 
-    add.append(addRing, addLabel);
-    add.onclick = () => $("storyText").focus();
+    ring.append(inner);
 
-    list.append(add);
+    const label = document.createElement("div");
+    label.textContent = "Your story";
 
-    const stories = [...localStories, ...storiesCache].filter(story => {
-        if (!story.expiresAt) return true;
+    create.append(ring, label);
+    create.onclick = () => $("storyText").focus();
+    list.append(create);
 
+    const active = [...localStories, ...allStories].filter(story => {
         const expiry = typeof story.expiresAt === "number"
             ? story.expiresAt
-            : story.expiresAt.toMillis
-                ? story.expiresAt.toMillis()
-                : 0;
+            : story.expiresAt?.toMillis?.() || 0;
 
         return expiry > Date.now();
     });
 
-    stories.forEach(story => {
-        const item = document.createElement("div");
-        item.className = "story";
+    active.forEach(story => {
+        const item = document.createElement("button");
+        item.className = "story-item";
+        item.style.background = "transparent";
+        item.style.border = "0";
+        item.style.color = "var(--muted)";
 
-        const ring = document.createElement("div");
-        ring.className = "story-ring";
-        ring.textContent = (story.author || "E").slice(0, 1).toUpperCase();
+        const r = document.createElement("div");
+        r.className = "story-ring";
 
-        const label = document.createElement("div");
-        label.textContent = story.author || "User";
+        const i = document.createElement("div");
+        i.className = "story-inner";
+        i.textContent = initials(story.author);
 
-        item.append(ring, label);
+        r.append(i);
+
+        const name = document.createElement("div");
+        name.textContent = story.author || "User";
+
+        item.append(r, name);
 
         item.onclick = () => {
-            alert(story.text || "EyeBook Story");
+            const dialog = document.createElement("div");
+            dialog.className = "card";
+            dialog.style.position = "fixed";
+            dialog.style.inset = "20% 8% auto";
+            dialog.style.zIndex = "200";
+            dialog.style.boxShadow = "0 0 0 100vmax #000b";
+
+            const title = document.createElement("h3");
+            title.textContent = story.author || "Story";
+
+            const content = document.createElement("p");
+            content.textContent = story.text || "";
+
+            const close = document.createElement("button");
+            close.className = "btn btn-primary full";
+            close.textContent = "Close";
+            close.onclick = () => dialog.remove();
+
+            dialog.append(title, content, close);
+            document.body.append(dialog);
         };
 
         list.append(item);
     });
 }
 
-/* Save Profile */
-window.saveProfile = async function() {
-    if (!currentUser) return;
+/* FOLLOW SYSTEM */
 
-    const name = $("displayName").value.trim();
-    const bio = $("bioText").value.trim();
-
-    if (!name) {
-        alert("Please enter your display name.");
-        return;
-    }
-
-    try {
-        await updateProfile(currentUser, {
-            displayName: name
-        });
-
-        await setDoc(doc(db, "users", currentUser.uid), {
-            name: name,
-            bio: bio,
-            email: currentUser.email || ""
-        }, { merge: true });
-
-        $("profileName").textContent = name;
-
-        alert("Profile updated successfully!");
-    } catch (error) {
-        alert("Unable to save profile: " + error.message);
-    }
-};
-
-/* Load Profile */
-async function loadProfile() {
+async function loadFollowing() {
     if (!currentUser || !db) return;
 
     try {
-        const snapshot = await getDoc(
-            doc(db, "users", currentUser.uid)
+        const snap = await getDoc(doc(db, "users", currentUser.uid));
+        const data = snap.exists() ? snap.data() : {};
+
+        followingIds = new Set(
+            Array.isArray(data.following) ? data.following : []
         );
 
-        if (snapshot.exists()) {
-            const data = snapshot.data();
-
-            $("bioText").value = data.bio || "";
-            $("displayName").value =
-                data.name || currentUser.displayName || "";
-        }
+        $("followingCount").textContent = followingIds.size;
     } catch (error) {
-        console.error("Profile loading failed:", error);
+        console.error("Following list failed:", error);
     }
 }
 
-/* APK Download */
-if (APK_URL) {
-    $("apkLink").href = APK_URL;
-    $("apkLink").setAttribute("download", "EyeBook.apk");
-} else {
-    $("apkLink").addEventListener("click", event => {
-        event.preventDefault();
+/*
+  Search currently searches recent public posts loaded into the feed.
+  A separate user directory/search index can be added later.
+*/
+window.searchPosts = function() {
+    const term = $("searchInput").value.trim().toLowerCase();
+    const results = $("searchResults");
+    results.replaceChildren();
 
-        alert(
-            "The EyeBook APK has not been built and uploaded yet. Please add the real APK download URL after building the Android app."
-        );
+    if (!term) {
+        results.textContent = "Type something to search public posts.";
+        return;
+    }
+
+    const matches = allPosts.filter(post =>
+        (post.text || "").toLowerCase().includes(term) ||
+        (post.author || "").toLowerCase().includes(term) ||
+        (post.username || "").toLowerCase().includes(term)
+    );
+
+    if (!matches.length) {
+        results.textContent = "No matching posts found.";
+        return;
+    }
+
+    matches.forEach(post => {
+        const item = document.createElement("div");
+        item.className = "search-result";
+
+        const avatar = document.createElement("div");
+        avatar.className = "avatar";
+        setAvatar(avatar, post.author, post.photoURL);
+
+        const content = document.createElement("div");
+        content.style.minWidth = "0";
+
+        const name = document.createElement("strong");
+        name.textContent = post.author || "User";
+
+        const body = document.createElement("p");
+        body.className = "muted";
+        body.textContent = post.text || "Media post";
+
+        content.append(name, body);
+        item.append(avatar, content);
+        results.append(item);
     });
+};
+
+/* APK */
+
+window.downloadApp = function(event) {
+    if (!APK_URL) {
+        event.preventDefault();
+        alert("The Android APK has not been built and uploaded yet.");
+        return false;
+    }
+
+    $("apkDownload").href = APK_URL;
+    return true;
+};
+
+/* CLEANUP */
+
+function cleanupListeners() {
+    if (unsubscribeFeed) {
+        unsubscribeFeed();
+        unsubscribeFeed = null;
+    }
+
+    if (unsubscribeStories) {
+        unsubscribeStories();
+        unsubscribeStories = null;
+    }
 }
 </script>
 
 </body>
-</html>
+                </html>
