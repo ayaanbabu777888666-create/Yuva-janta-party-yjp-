@@ -3,142 +3,140 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#06251c">
-<title>EyeBook — Connect with the World</title>
+<title>EyeBook Social</title>
 
 <style>
 :root {
-  --bg:#061d17;
-  --panel:#0b3025;
-  --panel2:#103c2e;
-  --green:#00c878;
-  --text:#f3fff9;
-  --muted:#a9c5b8;
-  --border:rgba(180,230,205,.16);
-  --danger:#ff8585;
+  --green: #138b50;
+  --dark: #08733d;
+  --light: #eaf8ef;
+  --border: #d9e6dd;
 }
-*{box-sizing:border-box}
-body{
-  margin:0;background:var(--bg);color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;min-height:100vh
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #f2f7f3;
+  color: #17251c;
+  font-family: Arial, sans-serif;
 }
-button,input,textarea{font:inherit}
-button{cursor:pointer}
-button:disabled{opacity:.55;cursor:not-allowed}
-input,textarea{
-  width:100%;padding:13px 14px;border-radius:12px;
-  background:#06251c;border:1px solid var(--border);
-  color:white;outline:none
+header {
+  background: var(--green);
+  color: white;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
 }
-input:focus,textarea:focus{border-color:var(--green)}
-textarea{min-height:85px;resize:vertical}
-a{color:var(--green);text-decoration:none}
-.hidden{display:none!important}
-.muted{color:var(--muted)}
-.small{font-size:13px}
-.primary,.secondary,.danger{
-  border:0;border-radius:11px;padding:12px 15px;font-weight:700
+.logo {
+  color: white;
+  font-weight: 800;
+  font-size: 22px;
+  text-decoration: none;
 }
-.primary{background:var(--green);color:#03251a}
-.secondary{background:var(--panel2);color:white;border:1px solid var(--border)}
-.danger{background:#9d3030;color:white}
-.full{width:100%}
-
-header{
-  position:sticky;top:0;z-index:10;background:#052018;
-  border-bottom:1px solid var(--border);
-  padding:12px max(14px,calc((100% - 850px)/2));
-  display:flex;align-items:center;justify-content:space-between;gap:10px
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
-.logo{
-  display:inline-flex;align-items:center;gap:7px;
-  font-size:24px;font-weight:900;color:var(--green);
-  white-space:nowrap;letter-spacing:-.5px
+button, .button {
+  border: 0;
+  border-radius: 9px;
+  padding: 11px 13px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
 }
-.eyebook-logo{width:32px;height:32px;flex-shrink:0}
-.header-actions{display:flex;align-items:center;gap:7px}
-.apk-download{
-  display:inline-flex;align-items:center;justify-content:center;
-  background:var(--green);color:#03251a;padding:7px 9px;
-  border-radius:7px;font-size:11px;font-weight:800;white-space:nowrap
+.primary { background: var(--green); color: white; }
+.secondary { background: white; color: var(--dark); }
+.apk-download {
+  background: white;
+  color: var(--dark);
+  padding: 9px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
 }
-.page{max-width:850px;margin:20px auto;padding:0 12px 90px}
-.card{
-  background:linear-gradient(145deg,#0d3528,#09271f);
-  border:1px solid var(--border);border-radius:17px;
-  padding:18px;margin-bottom:15px
+main {
+  max-width: 720px;
+  margin: 20px auto;
+  padding: 0 12px 40px;
 }
-.auth-card{max-width:510px;margin:25px auto;padding:22px}
-.auth-brand{text-align:center;margin-bottom:20px}
-.auth-brand h1{font-size:28px;margin:12px 0}
-.field{margin:15px 0}
-.field label{display:block;font-weight:700;margin-bottom:8px}
-.auth-links{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:15px 0}
-.divider{display:flex;align-items:center;gap:10px;margin:20px 0;color:var(--muted);font-size:12px}
-.divider:before,.divider:after{content:"";height:1px;background:var(--border);flex:1}
-.status{margin-top:12px;line-height:1.5;overflow-wrap:anywhere}
-.error{color:var(--danger)}
-.success{color:#48e6a2}
-.notice{padding:12px;border-radius:10px;background:#00c87812;color:var(--muted);font-size:13px;line-height:1.5;margin-top:15px}
-#recaptcha-container{margin:12px 0;overflow:hidden}
-.section-title{font-size:22px;margin:0 0 14px}
-.bottom-nav{
-  position:fixed;z-index:20;bottom:0;left:0;right:0;
-  background:#08382a;border-top:1px solid var(--border);
-  display:flex;padding:7px 2px calc(7px + env(safe-area-inset-bottom))
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 17px;
+  margin-bottom: 15px;
+  box-shadow: 0 3px 12px #102e1a0b;
 }
-.nav-button{flex:1;background:transparent;border:0;color:var(--muted);padding:7px 1px;font-size:12px}
-.nav-button span{display:block;font-size:20px;margin-bottom:3px}
-.nav-button.active{color:var(--green);font-weight:700}
-.story-list{display:flex;gap:12px;overflow:auto;padding:5px 0 12px}
-.story-item{flex:0 0 78px;text-align:center;background:transparent;border:0;color:white;font-size:12px;overflow-wrap:anywhere}
-.story-circle{
-  width:62px;height:62px;margin:0 auto 7px;border-radius:50%;padding:3px;
-  background:linear-gradient(135deg,#00d989,#1686ff,#d14cff);
-  display:flex;align-items:center;justify-content:center
+h2, h3 { margin-top: 0; }
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd9cf;
+  border-radius: 9px;
+  margin: 6px 0 12px;
+  font: inherit;
 }
-.story-circle img{width:100%;height:100%;object-fit:cover;border:3px solid var(--bg);border-radius:50%}
-.post-head,.user-row,.profile-top{display:flex;align-items:center;gap:11px}
-.avatar{
-  width:42px;height:42px;border-radius:50%;background:#07885a;
-  display:flex;align-items:center;justify-content:center;
-  font-weight:800;overflow:hidden;flex-shrink:0
+textarea { min-height: 80px; resize: vertical; }
+label { font-size: 14px; font-weight: bold; }
+.full { width: 100%; margin-top: 7px; }
+.hidden { display: none !important; }
+.muted { color: #65746a; font-size: 13px; line-height: 1.5; }
+.error { color: #b42318; font-size: 13px; white-space: pre-wrap; }
+.success { color: #08733d; font-size: 13px; }
+.tabs { display: flex; gap: 7px; flex-wrap: wrap; }
+.tabs button { flex: 1; min-width: 90px; }
+.phone-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #cbd9cf;
+  border-radius: 9px;
+  padding: 0 10px;
+  margin: 6px 0 12px;
+  background: white;
 }
-.avatar img{width:100%;height:100%;object-fit:cover}
-.post-owner{font-weight:800}
-.post-time{font-size:12px;color:var(--muted);margin-top:4px}
-.post-text{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6;margin:12px 0}
-.post-media{width:100%;max-height:600px;object-fit:contain;background:#04150f;border-radius:12px;display:block;margin-top:10px}
-.post-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}
-.post-actions button{background:var(--panel2);color:white;border:1px solid var(--border);padding:8px 11px;border-radius:9px}
-.comment{padding:8px 0;border-top:1px solid var(--border);line-height:1.5;overflow-wrap:anywhere}
-.comment-form,.search-row{display:flex;gap:8px;margin-top:10px}
-.comment-form input,.search-row input{min-width:0}
-.user-row{padding:12px 0;border-bottom:1px solid var(--border)}
-.user-info{flex:1;min-width:0;overflow-wrap:anywhere}
-.file-input{display:block;margin:10px 0;padding:10px;border:1px dashed var(--border);border-radius:10px;color:var(--muted)}
-.empty{text-align:center;padding:25px 10px;color:var(--muted);line-height:1.6}
-.profile-avatar{width:75px;height:75px;font-size:24px}
-.message-layout{display:grid;grid-template-columns:minmax(110px,200px) 1fr;gap:10px}
-.message-users,.chat-box{border:1px solid var(--border);border-radius:12px;padding:10px;min-width:0}
-.message-user{width:100%;text-align:left;background:transparent;color:white;border:0;border-bottom:1px solid var(--border);padding:10px 4px;overflow-wrap:anywhere}
-.chat-messages{height:270px;overflow:auto;padding:8px 0}
-.chat-bubble{max-width:85%;width:fit-content;margin:7px 0;padding:9px 11px;border-radius:11px;background:var(--panel2);overflow-wrap:anywhere}
-.chat-bubble.mine{margin-left:auto;background:#087f50}
-footer{text-align:center;color:var(--muted);font-size:12px;padding:15px 10px 95px}
-@media(min-width:760px){
-  .bottom-nav{position:static;max-width:850px;margin:0 auto 10px;border:1px solid var(--border);border-radius:12px}
-  footer{padding-bottom:25px}.page{padding-bottom:20px}
+.country-code {
+  font-weight: bold;
+  white-space: nowrap;
+  color: var(--dark);
 }
-@media(max-width:500px){
-  .card{padding:14px}.auth-card{padding:18px 15px}
-  .logo{font-size:20px}.eyebook-logo{width:27px;height:27px}
-  .message-layout{grid-template-columns:1fr}
-  .message-users{max-height:130px;overflow:auto}
-  header{padding-left:10px;padding-right:10px;gap:5px}
-  .header-actions{gap:4px}
-  .apk-download{padding:7px 5px;font-size:10px}
-  .header-actions button{padding:7px 7px;font-size:11px}
+.phone-input input {
+  border: none;
+  outline: none;
+  margin: 0;
+  min-width: 0;
+  flex: 1;
+  padding: 12px 4px;
+}
+.post {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.post:last-child { border-bottom: 0; }
+.post img, .post video {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-top: 8px;
+}
+.story-list { display: flex; gap: 10px; overflow-x: auto; }
+.story {
+  min-width: 110px;
+  border: 2px solid var(--green);
+  border-radius: 12px;
+  padding: 10px;
+}
+@media(max-width:480px) {
+  .logo { font-size: 18px; }
+  header { padding: 9px; }
+  .apk-download { font-size: 10px; }
+  .card { padding: 13px; }
 }
 </style>
 </head>
@@ -146,246 +144,188 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:15px 10px 95p
 <body>
 
 <header>
-  <a class="logo" href="#" id="homeLogo" aria-label="EyeBook Home">
-    <svg class="eyebook-logo" viewBox="0 0 48 48" aria-hidden="true">
-      <rect x="3" y="3" width="42" height="42" rx="14" fill="#00c878"/>
-      <circle cx="24" cy="24" r="13" fill="#06251c"/>
-      <circle cx="24" cy="24" r="8" fill="#00c878"/>
-      <circle cx="24" cy="24" r="3.5" fill="#06251c"/>
-    </svg>
-    <span>EyeBook</span>
-  </a>
-
+  <a href="#" class="logo" id="homeLogo">◉ EyeBook</a>
   <div class="header-actions">
-    <a href="eyebook.apk" class="apk-download" download>⬇ Download APK</a>
+    <a href="eyebook.apk" class="apk-download" download>⬇ APK</a>
     <button class="secondary" id="headerLogin">Login</button>
     <button class="secondary hidden" id="headerLogout">Log out</button>
   </div>
 </header>
 
-<main class="page">
+<main>
+  <div id="message" class="muted"></div>
 
-<section id="authSection">
-  <div class="card auth-card">
+  <!-- LOGIN AND EMAIL REGISTRATION -->
+  <section id="authPage" class="card">
+    <h2>Welcome to EyeBook</h2>
+    <p class="muted">Connect with friends and share your moments.</p>
 
-    <div class="auth-brand">
-      <div class="logo" style="justify-content:center">
-        <svg class="eyebook-logo" viewBox="0 0 48 48" aria-hidden="true">
-          <rect x="3" y="3" width="42" height="42" rx="14" fill="#00c878"/>
-          <circle cx="24" cy="24" r="13" fill="#06251c"/>
-          <circle cx="24" cy="24" r="8" fill="#00c878"/>
-          <circle cx="24" cy="24" r="3.5" fill="#06251c"/>
-        </svg>
-        <span>EyeBook</span>
-      </div>
-      <h1 id="authTitle">Welcome to EyeBook</h1>
-      <p class="muted">Connect with people and share your moments.</p>
+    <div class="tabs">
+      <button class="primary" id="showLogin">Login</button>
+      <button class="secondary" id="showEmailSignup">Email Sign Up</button>
     </div>
 
-    <div id="loginPanel">
-      <button class="secondary full" id="googleButton" type="button">Continue with Google</button>
-      <div class="divider">OR LOGIN WITH EMAIL</div>
+    <form id="emailForm">
+      <label>Email Address</label>
+      <input id="email" type="email" autocomplete="email"
+             placeholder="you@example.com" required>
 
-      <form id="authForm">
-        <div class="field">
-          <label for="email">Email address</label>
-          <input id="email" type="email" autocomplete="email" placeholder="you@example.com" required>
-        </div>
-        <div class="field">
-          <label for="password">Password</label>
-          <input id="password" type="password" minlength="6" autocomplete="current-password" placeholder="At least 6 characters" required>
-        </div>
-        <button class="primary full" id="authSubmit" type="submit">Login</button>
-      </form>
+      <label>Password</label>
+      <input id="password" type="password" minlength="6"
+             autocomplete="current-password"
+             placeholder="At least 6 characters" required>
 
-      <div class="auth-links">
-        <a href="#" id="forgotLink">Forgot password?</a>
-        <a href="#" id="showPhoneSignup">Create account with phone</a>
-      </div>
-    </div>
+      <button class="primary full" id="emailSubmit" type="submit">Login</button>
+    </form>
 
-    <div id="phoneSignupPanel" class="hidden">
-      <div class="divider">CREATE ACCOUNT WITH PHONE</div>
+    <button class="secondary full" id="googleLogin">Continue with Google</button>
 
-      <div id="phoneStep">
-        <form id="phoneForm">
-          <div class="field">
-            <label for="phone">Mobile number</label>
-            <input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Enter your 10-digit mobile number" maxlength="20" required>
-          </div>
-          <div id="recaptcha-container"></div>
-          <button class="primary full" id="sendOtpButton" type="submit">Continue</button>
-        </form>
-      </div>
+    <hr style="border:0;border-top:1px solid var(--border);margin:20px 0">
 
-      <div id="otpStep" class="hidden">
-        <p class="muted">Enter the verification code sent to your mobile number.</p>
-        <form id="otpForm">
-          <div class="field">
-            <label for="otp">Verification code</label>
-            <input id="otp" inputmode="numeric" autocomplete="one-time-code" placeholder="Enter OTP" required>
-          </div>
-          <button class="primary full" id="verifyOtpButton" type="submit">Verify &amp; Continue</button>
-        </form>
-        <button class="secondary full" id="backToPhone" type="button" style="margin-top:10px">Change mobile number</button>
-      </div>
-
-      <div id="detailsStep" class="hidden">
-        <p class="muted">Phone verified. Complete your account details.</p>
-        <form id="detailsForm">
-          <div class="field">
-            <label for="signupName">Full name</label>
-            <input id="signupName" maxlength="60" autocomplete="name" placeholder="Enter your full name" required>
-          </div>
-          <div class="field">
-            <label for="signupEmail">Email address</label>
-            <input id="signupEmail" type="email" autocomplete="email" placeholder="you@example.com" required>
-          </div>
-          <div class="field">
-            <label for="signupPassword">Create password</label>
-            <input id="signupPassword" type="password" minlength="6" autocomplete="new-password" placeholder="At least 6 characters" required>
-          </div>
-          <div class="field">
-            <label for="signupConfirm">Confirm password</label>
-            <input id="signupConfirm" type="password" minlength="6" autocomplete="new-password" placeholder="Enter password again" required>
-          </div>
-          <button class="primary full" id="createAccountButton" type="submit">Create Account</button>
-        </form>
-      </div>
-
-      <div class="auth-links">
-        <a href="#" id="backToLogin">Back to Login</a>
-      </div>
-    </div>
-
-    <div id="authStatus" class="status" role="status" aria-live="polite"></div>
-    <div class="notice">Never share your password or verification code with anyone.</div>
-  </div>
-</section>
-
-<section id="appSection" class="hidden">
-  <div class="card">
-    <h2 id="welcomeTitle">Welcome to EyeBook</h2>
-    <p class="muted">Connect, share and express yourself.</p>
-  </div>
-
-  <section id="homeSection" class="app-page">
-    <div class="card">
-      <h2 class="section-title">Stories</h2>
-      <div id="storyList" class="story-list"><div class="empty">No stories yet.</div></div>
-      <button class="secondary full" data-go="create">＋ Add a story</button>
-    </div>
-    <div class="card">
-      <h2 class="section-title">Your feed</h2>
-      <p class="muted small">Recent posts from the EyeBook community.</p>
-    </div>
-    <div id="feed"><div class="empty">Loading posts...</div></div>
+    <button class="primary full" id="openPhoneSignup">
+      📱 Create Account with Mobile Number
+    </button>
+    <p class="muted">
+      Indian country code +91 is already selected. Enter only your 10-digit mobile number.
+    </p>
   </section>
 
-  <section id="createSection" class="app-page hidden">
-    <div class="card">
-      <h2 class="section-title">Create a post</h2>
-      <form id="postForm">
-        <div class="field">
-          <label for="postText">What's on your mind?</label>
-          <textarea id="postText" maxlength="5000" placeholder="Share your thoughts..."></textarea>
-        </div>
-        <div class="field">
-          <label for="postFile">Photo or video</label>
-          <input class="file-input" id="postFile" type="file" accept="image/*,video/mp4,video/webm,video/quicktime">
-        </div>
-        <button class="primary full" id="publishButton">Publish post</button>
-      </form>
-      <div id="postStatus" class="status"></div>
-    </div>
+  <!-- PHONE SIGNUP -->
+  <section id="phonePage" class="card hidden">
+    <button class="secondary" id="backToAuth">← Back</button>
+    <h2>Create Account with Mobile Number</h2>
 
-    <div class="card">
-      <h2 class="section-title">Create a story</h2>
-      <textarea id="storyText" maxlength="1000" placeholder="Add a short story..."></textarea>
-      <input class="file-input" id="storyFile" type="file" accept="image/*,video/mp4,video/webm,video/quicktime">
-      <button class="primary full" id="publishStoryButton">Share story</button>
-      <div id="storyStatus" class="status"></div>
-    </div>
-  </section>
+    <div id="phoneStep">
+      <label>Indian Mobile Number</label>
 
-  <section id="searchSection" class="app-page hidden">
-    <div class="card">
-      <h2 class="section-title">Find people</h2>
-      <form class="search-row" id="searchForm">
-        <input id="searchInput" type="search" placeholder="Search by name" required>
-        <button class="primary">Search</button>
-      </form>
-      <div id="searchResults"></div>
-    </div>
-  </section>
-
-  <section id="messagesSection" class="app-page hidden">
-    <div class="card">
-      <h2 class="section-title">Messages</h2>
-      <div class="message-layout">
-        <div id="messageUsers" class="message-users">Search for a user to start chatting.</div>
-        <div class="chat-box">
-          <strong id="chatTitle">Select a conversation</strong>
-          <div id="chatMessages" class="chat-messages"><div class="empty">Your messages appear here.</div></div>
-          <form id="messageForm" class="comment-form">
-            <input id="messageInput" maxlength="2000" placeholder="Write a message..." required>
-            <button class="primary">Send</button>
-          </form>
-        </div>
+      <div class="phone-input">
+        <span class="country-code">🇮🇳 +91</span>
+        <input id="phoneNumber" type="tel" inputmode="numeric"
+               maxlength="10" autocomplete="tel-national"
+               placeholder="Enter 10-digit number">
       </div>
-      <div id="messageStatus" class="status"></div>
+
+      <div id="recaptcha-container"></div>
+      <button class="primary full" id="sendOtp">Continue</button>
     </div>
+
+    <div id="otpStep" class="hidden">
+      <label>Enter SMS OTP</label>
+      <input id="otpCode" type="text" inputmode="numeric"
+             autocomplete="one-time-code" maxlength="6"
+             placeholder="Enter 6-digit OTP">
+      <button class="primary full" id="verifyOtp">Verify & Continue</button>
+      <button class="secondary full" id="resendOtp">Change Number / Resend OTP</button>
+    </div>
+
+    <div id="profileStep" class="hidden">
+      <h3>Set Up Your Profile</h3>
+      <p class="muted">Your number is verified. Now create your EyeBook ID.</p>
+
+      <label>Your Name</label>
+      <input id="profileName" maxlength="60" placeholder="Enter your name">
+
+      <label>Create EyeBook ID</label>
+      <input id="eyeBookId" maxlength="24"
+             placeholder="e.g. ayaan123">
+
+      <label>Profile Photo (optional)</label>
+      <input id="profilePhoto" type="file" accept="image/*">
+
+      <button class="primary full" id="createEyeBookId">Create EyeBook ID</button>
+    </div>
+
+    <p id="phoneStatus" class="muted"></p>
+    <p id="phoneError" class="error"></p>
   </section>
 
-  <section id="profileSection" class="app-page hidden">
+  <!-- SOCIAL APP -->
+  <section id="appPage" class="hidden">
     <div class="card">
-      <h2 class="section-title">Your profile</h2>
-      <div class="profile-top">
-        <div class="avatar profile-avatar" id="profileAvatar">E</div>
-        <div>
-          <h2 id="profileName">Your name</h2>
-          <p id="profileEmail" class="muted small"></p>
-          <p id="profileUsername" class="muted small"></p>
-        </div>
+      <h2 id="welcomeTitle">Welcome to EyeBook</h2>
+      <div id="myProfile"></div>
+      <button class="secondary" id="editProfile">Edit Profile</button>
+    </div>
+
+    <div class="card">
+      <div class="tabs">
+        <button class="primary" data-tab="feed">🏠 Feed</button>
+        <button class="secondary" data-tab="stories">⭕ Stories</button>
+        <button class="secondary" data-tab="search">🔎 Users</button>
+        <button class="secondary" data-tab="messages">💬 Messages</button>
+        <button class="secondary" data-tab="profile">👤 Profile</button>
       </div>
-      <p class="muted">Posts: <strong id="myPostCount">0</strong></p>
-      <form id="profileForm">
-        <div class="field">
-          <label for="editName">Display name</label>
-          <input id="editName" maxlength="60" required>
-        </div>
-        <div class="field">
-          <label for="editBio">Bio</label>
-          <textarea id="editBio" maxlength="300" placeholder="Tell people about yourself"></textarea>
-        </div>
-        <div class="field">
-          <label for="avatarFile">Profile photo</label>
-          <input class="file-input" id="avatarFile" type="file" accept="image/*">
-        </div>
-        <button class="primary full">Save profile</button>
-      </form>
-      <div id="profileStatus" class="status"></div>
     </div>
-    <div class="card">
-      <h2 class="section-title">Your posts</h2>
-      <div id="myPosts"></div>
-    </div>
-    <div class="card">
-      <button class="danger full" id="logoutButton">Log out</button>
-    </div>
+
+    <section id="feedTab">
+      <div class="card">
+        <h3>Create a Post</h3>
+        <textarea id="postText" placeholder="What's on your mind?"></textarea>
+        <label>Photo or Video</label>
+        <input id="postFile" type="file" accept="image/*,video/*">
+        <button class="primary full" id="publishPost">Publish Post</button>
+      </div>
+      <div class="card">
+        <h3>Recent Posts</h3>
+        <div id="postsList">Loading posts…</div>
+      </div>
+    </section>
+
+    <section id="storiesTab" class="hidden">
+      <div class="card">
+        <h3>Create a Story</h3>
+        <textarea id="storyText" placeholder="Write a story…"></textarea>
+        <input id="storyFile" type="file" accept="image/*,video/*">
+        <button class="primary full" id="publishStory">Publish Story</button>
+      </div>
+      <div class="card">
+        <h3>Recent Stories</h3>
+        <div id="storiesList" class="story-list"></div>
+      </div>
+    </section>
+
+    <section id="searchTab" class="hidden">
+      <div class="card">
+        <h3>Find People</h3>
+        <input id="userSearch" placeholder="Search name or EyeBook ID">
+        <button class="primary full" id="searchUsers">Search</button>
+        <div id="usersList"></div>
+      </div>
+    </section>
+
+    <section id="messagesTab" class="hidden">
+      <div class="card">
+        <h3>Messages</h3>
+        <label>Recipient's EyeBook ID</label>
+        <input id="recipientId" placeholder="Enter EyeBook ID">
+        <textarea id="messageText" placeholder="Write a message…"></textarea>
+        <button class="primary full" id="sendMessage">Send Message</button>
+        <h3 style="margin-top:20px">Recent Messages</h3>
+        <div id="messagesList"></div>
+      </div>
+    </section>
+
+    <section id="profileTab" class="hidden">
+      <div class="card">
+        <h3>My Profile</h3>
+        <div id="profileDetails"></div>
+        <button class="primary full" id="editProfile2">Edit Profile</button>
+      </div>
+    </section>
+
+    <section id="editProfilePanel" class="card hidden">
+      <h3>Edit Profile</h3>
+      <label>Name</label>
+      <input id="editName">
+      <label>EyeBook ID</label>
+      <input id="editId">
+      <label>Bio</label>
+      <textarea id="editBio"></textarea>
+      <button class="primary full" id="saveProfile">Save Profile</button>
+      <button class="secondary full" id="cancelEdit">Cancel</button>
+    </section>
   </section>
-</section>
 </main>
-
-<nav id="bottomNav" class="bottom-nav hidden">
-  <button class="nav-button active" data-page="home"><span>⌂</span>Home</button>
-  <button class="nav-button" data-page="search"><span>⌕</span>Search</button>
-  <button class="nav-button" data-page="create"><span>＋</span>Create</button>
-  <button class="nav-button" data-page="messages"><span>✉</span>Messages</button>
-  <button class="nav-button" data-page="profile"><span>♙</span>Profile</button>
-</nav>
-
-<footer>EyeBook © <span id="year"></span> · Connect with the world.</footer>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
@@ -393,15 +333,12 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:15px 10px 95p
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
 
 <script>
-"use strict";
-
 /*
-  IMPORTANT:
-  Replace the configuration below with the exact Web App configuration
-  from Firebase Console > Project settings > General > Your apps.
+  Firebase Console > Project settings > Your apps
+  से अपनी वास्तविक configuration भरें।
 */
 const firebaseConfig = {
-  apiKey: "PASTE_YOUR_REAL_FIREBASE_API_KEY_HERE",
+  apiKey: "PASTE_YOUR_FIREBASE_API_KEY",
   authDomain: "eyebook-7885f.firebaseapp.com",
   projectId: "eyebook-7885f",
   storageBucket: "eyebook-7885f.firebasestorage.app",
@@ -409,965 +346,771 @@ const firebaseConfig = {
   appId: "1:297441359052:web:3aa43bbd674731f6143e69"
 };
 
+firebase.initializeApp(firebaseConfig);
+
+const auth = firebase.auth();
+const db = firebase.firestore();
+const storage = firebase.storage();
+
+let currentUser = null;
+let currentProfile = null;
+let confirmationResult = null;
+let recaptchaVerifier = null;
+let phoneSignupPending = false;
+let phoneVerifiedUser = null;
+let isEmailSignup = false;
+
 const $ = id => document.getElementById(id);
-$("year").textContent = new Date().getFullYear();
 
-let app, auth, db, storage, currentUser = null, currentProfile = null;
-let confirmationResult = null, recaptchaVerifier = null;
-let pendingPhoneUser = null;
-let feedUnsubscribe = null, storiesUnsubscribe = null, chatUnsubscribe = null;
-let activeChatUser = null, allPosts = [];
-
-function status(id, msg, type = "") {
-  const el = $(id);
-  if (el) {
-    el.textContent = msg || "";
-    el.className = "status" + (type ? " " + type : "");
-  }
+function setMessage(text, error = false) {
+  $("message").textContent = text || "";
+  $("message").className = error ? "error" : "muted";
 }
-
-function friendlyError(e) {
-  const c = e?.code || "";
-  const messages = {
-    "auth/api-key-not-valid": "Firebase API Key is invalid. Paste the correct Web App configuration.",
-    "auth/invalid-api-key": "Firebase API Key is invalid. Check your Firebase configuration.",
-    "auth/email-already-in-use": "This email is already registered. Try logging in or use another email.",
-    "auth/invalid-email": "Enter a valid email address.",
-    "auth/weak-password": "Choose a password with at least 6 characters.",
-    "auth/user-not-found": "No account found. Check your login details.",
-    "auth/wrong-password": "Incorrect password.",
-    "auth/invalid-credential": "Incorrect login details. Please check and try again.",
-    "auth/too-many-requests": "Too many attempts. Please wait and try again.",
-    "auth/unauthorized-domain": "This website domain is not authorized in Firebase Authentication.",
-    "auth/operation-not-allowed": "Enable this sign-in method in Firebase Authentication.",
-    "auth/invalid-phone-number": "Enter a valid phone number with country code.",
-    "auth/missing-phone-number": "Enter your mobile number.",
-    "auth/quota-exceeded": "The SMS verification limit has been reached. Try later.",
-    "auth/captcha-check-failed": "reCAPTCHA verification failed. Refresh and try again.",
-    "auth/invalid-verification-code": "The OTP is incorrect. Check it and try again.",
-    "auth/code-expired": "The OTP expired. Request a new one.",
-    "auth/account-exists-with-different-credential": "This email is already linked to another sign-in method. Log in to that account first.",
-    "permission-denied": "Firebase denied access. Check Firestore security rules.",
-    "storage/unauthorized": "Storage access denied. Check Firebase Storage rules."
-  };
-  return messages[c] || e?.message || "Something went wrong. Please try again.";
+function phoneStatus(text, error = false) {
+  $("phoneStatus").textContent = error ? "" : (text || "");
+  $("phoneError").textContent = error ? (text || "") : "";
 }
-
-function ready() {
-  if (!auth || !db || !storage) {
-    status("authStatus", "Firebase could not start. Check the Firebase configuration and internet connection.", "error");
-    return false;
-  }
-  return true;
-}
-
-function showLogin() {
-  $("authTitle").textContent = "Welcome to EyeBook";
-  $("loginPanel").classList.remove("hidden");
-  $("phoneSignupPanel").classList.add("hidden");
-  $("phoneStep").classList.remove("hidden");
-  $("otpStep").classList.add("hidden");
-  $("detailsStep").classList.add("hidden");
-  status("authStatus", "");
-  $("authSection").classList.remove("hidden");
-  $("appSection").classList.add("hidden");
-  $("bottomNav").classList.add("hidden");
-}
-
-function showPhoneSignup(step = "phone") {
-  $("authTitle").textContent = "Create your EyeBook account";
-  $("loginPanel").classList.add("hidden");
-  $("phoneSignupPanel").classList.remove("hidden");
-  $("phoneStep").classList.toggle("hidden", step !== "phone");
-  $("otpStep").classList.toggle("hidden", step !== "otp");
-  $("detailsStep").classList.toggle("hidden", step !== "details");
-  status("authStatus", "");
-  $("authSection").classList.remove("hidden");
-  $("appSection").classList.add("hidden");
-  $("bottomNav").classList.add("hidden");
-}
-
-function go(name) {
-  if (!currentUser) {
-    showLogin();
-    return;
-  }
-  const pages = ["home", "search", "create", "messages", "profile"];
-  if (!pages.includes(name)) name = "home";
-  document.querySelectorAll(".app-page").forEach(x => x.classList.add("hidden"));
-  $(name + "Section").classList.remove("hidden");
-  document.querySelectorAll(".nav-button").forEach(x =>
-    x.classList.toggle("active", x.dataset.page === name)
+function showPage(id) {
+  ["authPage", "phonePage", "appPage"].forEach(page =>
+    $(page).classList.toggle("hidden", page !== id)
   );
-  if (name === "profile") renderProfile();
-  if (name === "messages") loadMessageUsers();
-  window.scrollTo({ top: 0, behavior: "smooth" });
 }
-
-document.querySelectorAll("[data-go]").forEach(b =>
-  b.addEventListener("click", () => go(b.dataset.go))
-);
-document.querySelectorAll(".nav-button").forEach(b =>
-  b.addEventListener("click", () => go(b.dataset.page))
-);
-
-$("homeLogo").addEventListener("click", e => {
-  e.preventDefault();
-  currentUser ? go("home") : showLogin();
-});
-$("headerLogin").addEventListener("click", showLogin);
-$("headerLogout").addEventListener("click", logout);
-$("logoutButton").addEventListener("click", logout);
-$("showPhoneSignup").addEventListener("click", e => {
-  e.preventDefault();
-  showPhoneSignup("phone");
-});
-$("backToLogin").addEventListener("click", e => {
-  e.preventDefault();
-  resetCaptcha();
-  showLogin();
-});
-$("backToPhone").addEventListener("click", () => {
-  confirmationResult = null;
-  showPhoneSignup("phone");
-});
-
-function initials(name) {
-  return String(name || "EyeBook").trim().split(/\s+/).slice(0, 2)
-    .map(s => s[0]?.toUpperCase() || "").join("") || "E";
+function friendlyError(err) {
+  const messages = {
+    "auth/invalid-api-key": "Invalid Firebase API key. Check your Firebase configuration.",
+    "auth/api-key-not-valid-please-pass-a-valid-api-key": "Firebase rejected the API key. Copy the exact config from Firebase Console.",
+    "auth/operation-not-allowed": "Enable this sign-in method in Firebase Authentication.",
+    "auth/invalid-phone-number": "Enter a valid Indian mobile number.",
+    "auth/invalid-verification-code": "Incorrect or expired OTP.",
+    "auth/code-expired": "OTP expired. Request a new code.",
+    "auth/too-many-requests": "Too many attempts. Wait and try again later.",
+    "auth/unauthorized-domain": "Add this website domain to Firebase Authorized domains.",
+    "auth/captcha-check-failed": "reCAPTCHA failed. Reload and try again.",
+    "auth/quota-exceeded": "Firebase SMS quota has been reached."
+  };
+  return messages[err?.code] || err?.message || "Something went wrong.";
 }
-
-function setAvatar(el, p) {
-  el.replaceChildren();
-  if (p?.photoURL) {
-    const im = document.createElement("img");
-    im.src = p.photoURL;
-    im.alt = "Profile photo";
-    el.appendChild(im);
-  } else {
-    el.textContent = initials(p?.displayName);
-  }
+function normalizeEyeId(value) {
+  return value.trim().toLowerCase().replace(/[^a-z0-9_.]/g, "");
 }
-
-async function ensureProfile(user, name = "") {
-  const ref = db.collection("users").doc(user.uid);
-  const snap = await ref.get();
-
-  if (!snap.exists) {
-    const p = {
-      uid: user.uid,
-      displayName: name || user.displayName ||
-        (user.email ? user.email.split("@")[0] : "EyeBook User"),
-      email: user.email || "",
-      phoneNumber: user.phoneNumber || "",
-      photoURL: user.photoURL || "",
-      bio: "",
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-    };
-    await ref.set(p);
-    return p;
-  }
-
-  const d = snap.data();
-  const updates = {};
-  if (!d.uid) updates.uid = user.uid;
-  if (!d.email && user.email) updates.email = user.email;
-  if (!d.phoneNumber && user.phoneNumber) updates.phoneNumber = user.phoneNumber;
-  if (name && !d.displayName) updates.displayName = name;
-
-  if (Object.keys(updates).length) {
-    updates.updatedAt = firebase.firestore.FieldValue.serverTimestamp();
-    await ref.update(updates);
-  }
-  return { ...d, ...updates, uid: user.uid };
-}
-
-/* Email/password login */
-$("authForm").addEventListener("submit", async e => {
-  e.preventDefault();
-  if (!ready()) return;
-
-  const email = $("email").value.trim();
-  const password = $("password").value;
-  $("authSubmit").disabled = true;
-  status("authStatus", "Signing in...");
-
+function resetRecaptcha() {
   try {
-    await auth.signInWithEmailAndPassword(email, password);
+    if (recaptchaVerifier) recaptchaVerifier.clear();
+  } catch (_) {}
+  recaptchaVerifier = null;
+}
+async function setupRecaptcha() {
+  resetRecaptcha();
+  recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+    "recaptcha-container",
+    {
+      size: "normal",
+      callback: () => phoneStatus("Verification complete."),
+      "expired-callback": () => phoneStatus("reCAPTCHA expired. Verify again.", true)
+    }
+  );
+  await recaptchaVerifier.render();
+}
+
+$("showLogin").onclick = () => {
+  isEmailSignup = false;
+  $("emailSubmit").textContent = "Login";
+  $("password").autocomplete = "current-password";
+};
+$("showEmailSignup").onclick = () => {
+  isEmailSignup = true;
+  $("emailSubmit").textContent = "Create Email Account";
+  $("password").autocomplete = "new-password";
+};
+
+$("emailForm").addEventListener("submit", async event => {
+  event.preventDefault();
+  try {
+    setMessage("Please wait…");
+    const email = $("email").value.trim();
+    const password = $("password").value;
+    if (isEmailSignup) {
+      await auth.createUserWithEmailAndPassword(email, password);
+    } else {
+      await auth.signInWithEmailAndPassword(email, password);
+    }
   } catch (err) {
-    status("authStatus", friendlyError(err), "error");
-  } finally {
-    $("authSubmit").disabled = false;
+    setMessage(friendlyError(err), true);
   }
 });
 
-/* Google sign-in */
-$("googleButton").addEventListener("click", async () => {
-  if (!ready()) return;
+$("googleLogin").onclick = async () => {
   try {
     await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   } catch (err) {
-    status("authStatus", friendlyError(err), "error");
+    setMessage(friendlyError(err), true);
   }
-});
+};
 
-/* Password reset */
-$("forgotLink").addEventListener("click", async e => {
-  e.preventDefault();
-  if (!ready()) return;
-  const email = $("email").value.trim();
-  if (!email) {
-    status("authStatus", "Enter your email address first.", "error");
-    return;
-  }
-  try {
-    await auth.sendPasswordResetEmail(email);
-    status("authStatus", "If an account exists, a password-reset email has been sent.", "success");
-  } catch (err) {
-    status("authStatus", friendlyError(err), "error");
-  }
-});
+$("openPhoneSignup").onclick = async () => {
+  phoneSignupPending = true;
+  phoneVerifiedUser = null;
+  confirmationResult = null;
 
-function resetCaptcha() {
-  if (recaptchaVerifier) {
-    try { recaptchaVerifier.clear(); } catch (e) {}
-    recaptchaVerifier = null;
-  }
-  $("recaptcha-container").replaceChildren();
-}
-
-/* Step 1: Send OTP */
-$("phoneForm").addEventListener("submit", async e => {
-  e.preventDefault();
-  if (!ready()) return;
-
-  let phone = $("phone").value.trim().replace(/[\s()-]/g, "");
-  if (/^[6-9]\d{9}$/.test(phone)) phone = "+91" + phone;
-
-  if (!/^\+[1-9]\d{7,14}$/.test(phone)) {
-    status("authStatus", "Enter a valid mobile number. Indian numbers can be entered as 10 digits beginning 6–9.", "error");
-    return;
-  }
-
-  const btn = $("sendOtpButton");
-  btn.disabled = true;
-  status("authStatus", "Preparing phone verification...");
+  $("phoneStep").classList.remove("hidden");
+  $("otpStep").classList.add("hidden");
+  $("profileStep").classList.add("hidden");
+  $("phoneNumber").value = "";
+  $("otpCode").value = "";
+  $("profileName").value = "";
+  $("eyeBookId").value = "";
+  $("profilePhoto").value = "";
+  phoneStatus("");
+  showPage("phonePage");
 
   try {
-    resetCaptcha();
-    recaptchaVerifier = new firebase.auth.RecaptchaVerifier("recaptcha-container", {
-      size: "normal",
-      callback: () => {},
-      "expired-callback": () => status("authStatus", "reCAPTCHA expired. Please continue again.", "error")
-    });
-
-    await recaptchaVerifier.render();
-    confirmationResult = await auth.signInWithPhoneNumber(phone, recaptchaVerifier);
-    $("phone").value = phone;
-    showPhoneSignup("otp");
-    status("authStatus", "OTP sent. Check your mobile phone.", "success");
+    await setupRecaptcha();
   } catch (err) {
-    console.error(err);
-    status("authStatus", friendlyError(err), "error");
-    resetCaptcha();
-  } finally {
-    btn.disabled = false;
+    phoneStatus(friendlyError(err), true);
   }
+};
+
+$("backToAuth").onclick = () => {
+  phoneSignupPending = false;
+  phoneVerifiedUser = null;
+  resetRecaptcha();
+  showPage("authPage");
+};
+
+/* INDIA: +91 is fixed; user enters only 10 digits. */
+$("phoneNumber").addEventListener("input", () => {
+  $("phoneNumber").value =
+    $("phoneNumber").value.replace(/\D/g, "").slice(0, 10);
 });
 
-/* Step 2: Verify OTP, then show account details */
-$("otpForm").addEventListener("submit", async e => {
-  e.preventDefault();
+$("sendOtp").onclick = async () => {
+  const mobile = $("phoneNumber").value.trim();
+
+  if (!/^[6-9]\d{9}$/.test(mobile)) {
+    phoneStatus("Enter a valid 10-digit Indian mobile number.", true);
+    return;
+  }
+
+  const phone = "+91" + mobile;
+
+  try {
+    phoneStatus("Sending OTP…");
+    if (!recaptchaVerifier) await setupRecaptcha();
+
+    confirmationResult = await auth.signInWithPhoneNumber(
+      phone,
+      recaptchaVerifier
+    );
+
+    $("phoneStep").classList.add("hidden");
+    $("otpStep").classList.remove("hidden");
+    phoneStatus("OTP sent to +91 " + mobile + ". Check your SMS.");
+  } catch (err) {
+    phoneStatus(friendlyError(err), true);
+    try { await setupRecaptcha(); } catch (_) {}
+  }
+};
+
+$("resendOtp").onclick = async () => {
+  confirmationResult = null;
+  $("otpStep").classList.add("hidden");
+  $("phoneStep").classList.remove("hidden");
+  phoneStatus("Check your number, then request a new OTP.");
+  try { await setupRecaptcha(); }
+  catch (err) { phoneStatus(friendlyError(err), true); }
+};
+
+$("verifyOtp").onclick = async () => {
+  const code = $("otpCode").value.trim();
+
   if (!confirmationResult) {
-    status("authStatus", "Request an OTP first.", "error");
+    phoneStatus("Request an OTP first.", true);
     return;
   }
-
-  const code = $("otp").value.trim();
-  if (!/^\d{4,8}$/.test(code)) {
-    status("authStatus", "Enter the verification code you received.", "error");
+  if (!/^\d{6}$/.test(code)) {
+    phoneStatus("Enter the 6-digit OTP.", true);
     return;
   }
-
-  $("verifyOtpButton").disabled = true;
-  status("authStatus", "Verifying OTP...");
 
   try {
+    phoneStatus("Verifying OTP…");
     const result = await confirmationResult.confirm(code);
-    pendingPhoneUser = result.user;
-    confirmationResult = null;
-    showPhoneSignup("details");
-    status("authStatus", "Phone verified. Complete your account details.", "success");
+    phoneVerifiedUser = result.user;
+    phoneSignupPending = true;
+
+    $("otpStep").classList.add("hidden");
+    $("profileStep").classList.remove("hidden");
+    phoneStatus("Mobile verified. Complete your profile.");
   } catch (err) {
-    status("authStatus", friendlyError(err), "error");
-  } finally {
-    $("verifyOtpButton").disabled = false;
+    phoneStatus(friendlyError(err), true);
   }
-});
-
-/*
-  Step 3: Link email/password to the verified phone account.
-  This keeps the phone and email/password on the same Firebase user.
-*/
-$("detailsForm").addEventListener("submit", async e => {
-  e.preventDefault();
-  if (!ready()) return;
-
-  const name = $("signupName").value.trim();
-  const email = $("signupEmail").value.trim();
-  const password = $("signupPassword").value;
-  const confirm = $("signupConfirm").value;
-
-  if (!name) {
-    status("authStatus", "Enter your full name.", "error");
-    return;
-  }
-  if (password.length < 6) {
-    status("authStatus", "Password must contain at least 6 characters.", "error");
-    return;
-  }
-  if (password !== confirm) {
-    status("authStatus", "Passwords do not match.", "error");
-    return;
-  }
-  if (!pendingPhoneUser || !auth.currentUser) {
-    status("authStatus", "Your phone verification session has expired. Start again.", "error");
-    showPhoneSignup("phone");
-    return;
-  }
-
-  const btn = $("createAccountButton");
-  btn.disabled = true;
-  status("authStatus", "Creating your EyeBook account...");
-
-  try {
-    const credential = firebase.auth.EmailAuthProvider.credential(email, password);
-    const result = await pendingPhoneUser.linkWithCredential(credential);
-
-    await result.user.updateProfile({ displayName: name });
-    await ensureProfile(result.user, name);
-
-    pendingPhoneUser = null;
-    status("authStatus", "Account created successfully.", "success");
-    /* onAuthStateChanged will open the app */
-  } catch (err) {
-    console.error(err);
-    status("authStatus", friendlyError(err), "error");
-  } finally {
-    btn.disabled = false;
-  }
-});
-
-/* Firebase initialization and authentication state */
-try {
-  if (firebaseConfig.apiKey === "PASTE_YOUR_REAL_FIREBASE_API_KEY_HERE") {
-    throw new Error("Replace the placeholder API key with your real Firebase Web App API key.");
-  }
-
-  app = firebase.apps.length ? firebase.app() : firebase.initializeApp(firebaseConfig);
-  auth = firebase.auth();
-  db = firebase.firestore();
-  storage = firebase.storage();
-
-  auth.onAuthStateChanged(async user => {
-    if (!user) {
-      currentUser = null;
-      currentProfile = null;
-
-      if (feedUnsubscribe) feedUnsubscribe();
-      if (storiesUnsubscribe) storiesUnsubscribe();
-      if (chatUnsubscribe) chatUnsubscribe();
-      feedUnsubscribe = storiesUnsubscribe = chatUnsubscribe = null;
-
-      $("authSection").classList.remove("hidden");
-      $("appSection").classList.add("hidden");
-      $("bottomNav").classList.add("hidden");
-      $("headerLogin").classList.remove("hidden");
-      $("headerLogout").classList.add("hidden");
-      return;
-    }
-
-    try {
-      currentUser = user;
-      currentProfile = await ensureProfile(user);
-
-      $("authSection").classList.add("hidden");
-      $("appSection").classList.remove("hidden");
-      $("bottomNav").classList.remove("hidden");
-      $("headerLogin").classList.add("hidden");
-      $("headerLogout").classList.remove("hidden");
-      $("welcomeTitle").textContent = "Welcome, " + (currentProfile.displayName || "EyeBook user") + "!";
-
-      renderProfile();
-      startFeed();
-      startStories();
-      go("home");
-    } catch (err) {
-      console.error(err);
-      status("authStatus", "Signed in, but profile loading failed: " + friendlyError(err), "error");
-    }
-  });
-} catch (err) {
-  console.error(err);
-  status("authStatus", friendlyError(err), "error");
-}
-
-async function logout() {
-  try {
-    await auth.signOut();
-    pendingPhoneUser = null;
-    confirmationResult = null;
-    resetCaptcha();
-    showLogin();
-  } catch (err) {
-    alert(friendlyError(err));
-  }
-}
+};
 
 async function uploadFile(file, folder) {
   if (!file) return "";
-
-  const allowed = file.type.startsWith("image/") || file.type.startsWith("video/");
-  if (!allowed) throw new Error("Choose an image or video file.");
-
-  const max = folder === "avatars" ? 5 * 1024 * 1024 : 100 * 1024 * 1024;
-  if (file.size > max) {
-    throw new Error("File is too large. Maximum allowed size is " + (max / 1024 / 1024) + " MB.");
-  }
-
   const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
-  const path = folder + "/" + currentUser.uid + "/" + Date.now() + "_" + safeName;
+  const path = folder + "/" + currentUser.uid + "/" +
+    Date.now() + "_" + safeName;
   const ref = storage.ref().child(path);
-  const snap = await ref.put(file, { contentType: file.type });
-  return snap.ref.getDownloadURL();
+  await ref.put(file);
+  return ref.getDownloadURL();
 }
 
-function dateText(v) {
-  if (!v) return "Just now";
-  const d = v.toDate ? v.toDate() : new Date(v);
-  return isNaN(d.getTime()) ? "Recently" : d.toLocaleString();
+async function getEyeIdOwner(eyeId) {
+  return db.collection("users")
+    .where("eyeIdLower", "==", eyeId.toLowerCase())
+    .limit(1).get();
 }
 
-function startFeed() {
-  if (feedUnsubscribe) feedUnsubscribe();
+$("createEyeBookId").onclick = async () => {
+  const user = phoneVerifiedUser || auth.currentUser;
+  const name = $("profileName").value.trim();
+  const eyeId = normalizeEyeId($("eyeBookId").value);
+  const file = $("profilePhoto").files[0];
 
-  feedUnsubscribe = db.collection("posts").orderBy("createdAt", "desc").limit(50)
-    .onSnapshot(s => {
-      allPosts = s.docs.map(d => ({ id: d.id, ...d.data() }));
-      renderFeed();
-      renderMyPosts();
-    }, e => {
-      $("feed").textContent = "Could not load posts: " + friendlyError(e);
-    });
-}
-
-function postCard(p) {
-  const card = document.createElement("article");
-  card.className = "card";
-
-  const head = document.createElement("div");
-  head.className = "post-head";
-
-  const av = document.createElement("div");
-  av.className = "avatar";
-  setAvatar(av, { displayName: p.displayName, photoURL: p.photoURL });
-
-  const info = document.createElement("div");
-  const owner = document.createElement("div");
-  owner.className = "post-owner";
-  owner.textContent = p.displayName || "EyeBook user";
-
-  const time = document.createElement("div");
-  time.className = "post-time";
-  time.textContent = dateText(p.createdAt);
-
-  info.append(owner, time);
-  head.append(av, info);
-  card.append(head);
-
-  if (p.text) {
-    const t = document.createElement("div");
-    t.className = "post-text";
-    t.textContent = p.text;
-    card.append(t);
-  }
-
-  if (p.mediaURL) {
-    let m;
-    if (p.mediaType?.startsWith("video/")) {
-      m = document.createElement("video");
-      m.controls = true;
-      m.playsInline = true;
-    } else {
-      m = document.createElement("img");
-      m.alt = "Post media";
-      m.loading = "lazy";
-    }
-    m.className = "post-media";
-    m.src = p.mediaURL;
-    card.append(m);
-  }
-
-  const actions = document.createElement("div");
-  actions.className = "post-actions";
-
-  const liked = Array.isArray(p.likedBy) && p.likedBy.includes(currentUser.uid);
-  const like = document.createElement("button");
-  like.textContent = (liked ? "♥ Liked" : "♡ Like") + " (" + (p.likeCount || 0) + ")";
-  like.onclick = () => toggleLike(p);
-
-  const share = document.createElement("button");
-  share.textContent = "Share";
-  share.onclick = async () => {
-    try {
-      if (navigator.share) {
-        await navigator.share({ title: "EyeBook post", text: p.text || "EyeBook post", url: location.href });
-      } else if (navigator.clipboard) {
-        await navigator.clipboard.writeText(location.href);
-        alert("Link copied.");
-      } else {
-        alert("Sharing is not available in this browser.");
-      }
-    } catch (e) {}
-  };
-
-  actions.append(like, share);
-  card.append(actions);
-
-  const comments = document.createElement("div");
-  comments.className = "comment-list";
-  card.append(comments);
-  loadComments(p.id, comments);
-
-  const form = document.createElement("form");
-  form.className = "comment-form";
-
-  const input = document.createElement("input");
-  input.placeholder = "Write a comment...";
-  input.maxLength = 1000;
-  input.required = true;
-
-  const send = document.createElement("button");
-  send.className = "primary";
-  send.textContent = "Send";
-
-  form.append(input, send);
-  form.addEventListener("submit", async e => {
-    e.preventDefault();
-    const text = input.value.trim();
-    if (!text) return;
-
-    try {
-      await db.collection("posts").doc(p.id).collection("comments").add({
-        uid: currentUser.uid,
-        displayName: currentProfile.displayName || "User",
-        text,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp()
-      });
-      input.value = "";
-      loadComments(p.id, comments);
-    } catch (err) {
-      alert(friendlyError(err));
-    }
-  });
-
-  card.append(form);
-  return card;
-}
-
-function renderFeed() {
-  const el = $("feed");
-  el.replaceChildren();
-
-  if (!allPosts.length) {
-    const empty = document.createElement("div");
-    empty.className = "card empty";
-    empty.textContent = "No posts yet. Be the first to share something!";
-    el.append(empty);
+  if (!user || !user.phoneNumber) {
+    phoneStatus("Verify your mobile number first.", true);
     return;
   }
-  allPosts.forEach(p => el.append(postCard(p)));
-}
-
-async function toggleLike(p) {
-  try {
-    const ref = db.collection("posts").doc(p.id);
-    await db.runTransaction(async tx => {
-      const s = await tx.get(ref);
-      if (!s.exists) return;
-
-      const d = s.data();
-      const arr = Array.isArray(d.likedBy) ? d.likedBy : [];
-      const next = arr.includes(currentUser.uid)
-        ? arr.filter(x => x !== currentUser.uid)
-        : [...arr, currentUser.uid];
-
-      tx.update(ref, { likedBy: next, likeCount: next.length });
-    });
-  } catch (e) {
-    alert(friendlyError(e));
+  if (name.length < 2) {
+    phoneStatus("Enter your name (at least 2 characters).", true);
+    return;
   }
-}
-
-async function loadComments(id, el) {
-  try {
-    const s = await db.collection("posts").doc(id).collection("comments")
-      .orderBy("createdAt", "asc").limit(20).get();
-
-    el.replaceChildren();
-    s.forEach(d => {
-      const row = document.createElement("div");
-      row.className = "comment";
-      const b = document.createElement("strong");
-      b.textContent = (d.data().displayName || "User") + ": ";
-      const t = document.createElement("span");
-      t.textContent = d.data().text || "";
-      row.append(b, t);
-      el.append(row);
-    });
-  } catch (e) {
-    console.warn("Comments unavailable", e);
+  if (eyeId.length < 3) {
+    phoneStatus("EyeBook ID must be at least 3 characters.", true);
+    return;
   }
+
+  try {
+    phoneStatus("Creating EyeBook ID…");
+    currentUser = user;
+
+    const existing = await getEyeIdOwner(eyeId);
+    if (!existing.empty && existing.docs[0].id !== user.uid) {
+      phoneStatus("This EyeBook ID is already taken. Choose another.", true);
+      return;
+    }
+
+    let photoURL = "";
+    if (file) photoURL = await uploadFile(file, "profilePhotos");
+
+    const profile = {
+      uid: user.uid,
+      name,
+      eyeId,
+      eyeIdLower: eyeId.toLowerCase(),
+      bio: "",
+      photoURL,
+      phoneNumber: user.phoneNumber,
+      email: user.email || "",
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+
+    await db.collection("users").doc(user.uid).set(profile, { merge: true });
+    currentProfile = profile;
+    phoneSignupPending = false;
+    phoneVerifiedUser = null;
+    resetRecaptcha();
+
+    await openApp(user);
+    setMessage("Your EyeBook ID was created successfully!");
+  } catch (err) {
+    phoneStatus(friendlyError(err), true);
+  }
+};
+
+async function ensureProfile(user) {
+  const ref = db.collection("users").doc(user.uid);
+  const snap = await ref.get();
+
+  if (snap.exists) {
+    currentProfile = snap.data();
+    return true;
+  }
+
+  if (user.phoneNumber && phoneSignupPending) return false;
+
+  const eyeId = "user_" + user.uid.slice(0, 8).toLowerCase();
+  const profile = {
+    uid: user.uid,
+    name: user.displayName ||
+      (user.email ? user.email.split("@")[0] : "New User"),
+    eyeId,
+    eyeIdLower: eyeId,
+    bio: "",
+    photoURL: user.photoURL || "",
+    phoneNumber: user.phoneNumber || "",
+    email: user.email || "",
+    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  };
+
+  await ref.set(profile, { merge: true });
+  currentProfile = profile;
+  return true;
 }
 
-$("postForm").addEventListener("submit", async e => {
-  e.preventDefault();
+async function openApp(user) {
+  currentUser = user;
+  showPage("appPage");
+  $("headerLogin").classList.add("hidden");
+  $("headerLogout").classList.remove("hidden");
+
+  const snap = await db.collection("users").doc(user.uid).get();
+  currentProfile = snap.exists ? snap.data() : currentProfile;
+
+  const name = currentProfile?.name || user.displayName || "EyeBook User";
+  const eyeId = currentProfile?.eyeId || "";
+
+  $("welcomeTitle").textContent = "Welcome, " + name;
+  $("myProfile").textContent = "@" + eyeId;
+  $("profileDetails").textContent =
+    "Name: " + name +
+    " | EyeBook ID: @" + eyeId +
+    " | Mobile: " + (user.phoneNumber || "Not linked") +
+    " | Email: " + (user.email || "Not linked") +
+    " | Bio: " + (currentProfile?.bio || "");
+
+  await Promise.all([loadPosts(), loadStories(), loadMessages()]);
+}
+
+auth.onAuthStateChanged(async user => {
+  if (!user) {
+    currentUser = null;
+    currentProfile = null;
+    $("headerLogin").classList.remove("hidden");
+    $("headerLogout").classList.add("hidden");
+    showPage("authPage");
+    return;
+  }
+
+  currentUser = user;
+
+  if (phoneSignupPending && user.phoneNumber && !phoneVerifiedUser) {
+    showPage("phonePage");
+    return;
+  }
+
+  try {
+    const complete = await ensureProfile(user);
+    if (!complete) {
+      showPage("phonePage");
+      $("phoneStep").classList.add("hidden");
+      $("otpStep").classList.add("hidden");
+      $("profileStep").classList.remove("hidden");
+      return;
+    }
+    await openApp(user);
+  } catch (err) {
+    setMessage(
+      "Profile could not load. Check Firestore setup and security rules. " +
+      friendlyError(err), true
+    );
+  }
+});
+
+$("headerLogin").onclick = () => showPage("authPage");
+$("headerLogout").onclick = async () => {
+  phoneSignupPending = false;
+  phoneVerifiedUser = null;
+  try {
+    await auth.signOut();
+    setMessage("You have logged out.");
+  } catch (err) {
+    setMessage(friendlyError(err), true);
+  }
+};
+$("homeLogo").onclick = event => {
+  event.preventDefault();
+  if (currentUser) showTab("feed");
+  else showPage("authPage");
+};
+
+function showTab(tab) {
+  ["feed", "stories", "search", "messages", "profile"].forEach(name => {
+    $(name + "Tab").classList.toggle("hidden", name !== tab);
+  });
+  document.querySelectorAll("[data-tab]").forEach(btn => {
+    const active = btn.dataset.tab === tab;
+    btn.classList.toggle("primary", active);
+    btn.classList.toggle("secondary", !active);
+  });
+}
+document.querySelectorAll("[data-tab]").forEach(btn => {
+  btn.onclick = () => showTab(btn.dataset.tab);
+});
+
+async function loadPosts() {
   if (!currentUser) return;
+  try {
+    const snap = await db.collection("posts")
+      .orderBy("createdAt", "desc").limit(50).get();
+    const list = $("postsList");
+    list.innerHTML = "";
 
+    if (snap.empty) {
+      list.textContent = "No posts yet. Publish the first post!";
+      return;
+    }
+
+    snap.forEach(doc => {
+      const p = doc.data();
+      const node = document.createElement("div");
+      node.className = "post";
+
+      const title = document.createElement("strong");
+      title.textContent = p.name || "EyeBook User";
+      node.appendChild(title);
+
+      const handle = document.createElement("div");
+      handle.className = "muted";
+      handle.textContent = "@" + (p.eyeId || "");
+      node.appendChild(handle);
+
+      const body = document.createElement("p");
+      body.textContent = p.text || "";
+      node.appendChild(body);
+
+      if (p.mediaURL) {
+        if ((p.mediaType || "").startsWith("video/")) {
+          const video = document.createElement("video");
+          video.src = p.mediaURL;
+          video.controls = true;
+          node.appendChild(video);
+        } else {
+          const img = document.createElement("img");
+          img.src = p.mediaURL;
+          img.alt = "Post media";
+          node.appendChild(img);
+        }
+      }
+
+      const likes = p.likes || [];
+      const like = document.createElement("button");
+      like.className = "secondary";
+      like.textContent = likes.includes(currentUser.uid) ? "♥ Liked" : "♡ Like";
+      node.appendChild(like);
+
+      const count = document.createElement("span");
+      count.className = "muted";
+      count.textContent = " " + likes.length + " likes";
+      node.appendChild(count);
+
+      like.onclick = async () => {
+        try {
+          const ref = db.collection("posts").doc(doc.id);
+          await db.runTransaction(async tx => {
+            const s = await tx.get(ref);
+            if (!s.exists) return;
+            let arr = s.data().likes || [];
+            arr = arr.includes(currentUser.uid)
+              ? arr.filter(uid => uid !== currentUser.uid)
+              : [...arr, currentUser.uid];
+            tx.update(ref, { likes: arr });
+          });
+          await loadPosts();
+        } catch (err) {
+          setMessage(friendlyError(err), true);
+        }
+      };
+
+      const commentsTitle = document.createElement("p");
+      commentsTitle.className = "muted";
+      commentsTitle.textContent = "Comments";
+      node.appendChild(commentsTitle);
+
+      const commentInput = document.createElement("input");
+      commentInput.placeholder = "Write a comment…";
+      node.appendChild(commentInput);
+
+      const commentBtn = document.createElement("button");
+      commentBtn.className = "secondary";
+      commentBtn.textContent = "Comment";
+      commentBtn.onclick = async () => {
+        const text = commentInput.value.trim();
+        if (!text) return;
+        try {
+          await db.collection("posts").doc(doc.id)
+            .collection("comments").add({
+              uid: currentUser.uid,
+              name: currentProfile?.name || "EyeBook User",
+              text,
+              createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+          commentInput.value = "";
+          setMessage("Comment added.");
+        } catch (err) {
+          setMessage(friendlyError(err), true);
+        }
+      };
+      node.appendChild(commentBtn);
+      list.appendChild(node);
+    });
+  } catch (err) {
+    $("postsList").textContent =
+      "Unable to load posts. Check Firestore configuration and rules.";
+  }
+}
+
+$("publishPost").onclick = async () => {
   const text = $("postText").value.trim();
   const file = $("postFile").files[0];
 
   if (!text && !file) {
-    status("postStatus", "Write something or choose a photo/video first.", "error");
+    setMessage("Write something or attach media.", true);
     return;
   }
 
-  const b = $("publishButton");
-  b.disabled = true;
-  status("postStatus", "Publishing...");
-
   try {
-    const mediaURL = file ? await uploadFile(file, "posts") : "";
+    setMessage("Publishing post…");
+    const mediaURL = file ? await uploadFile(file, "postMedia") : "";
+
     await db.collection("posts").add({
       uid: currentUser.uid,
-      displayName: currentProfile.displayName || "EyeBook user",
-      photoURL: currentProfile.photoURL || "",
-      text, mediaURL,
+      name: currentProfile?.name || "EyeBook User",
+      eyeId: currentProfile?.eyeId || "",
+      text,
+      mediaURL,
       mediaType: file?.type || "",
-      likeCount: 0, likedBy: [],
+      likes: [],
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
     });
 
     $("postText").value = "";
     $("postFile").value = "";
-    status("postStatus", "Post published!", "success");
-    go("home");
+    setMessage("Post published!");
+    await loadPosts();
   } catch (err) {
-    status("postStatus", friendlyError(err), "error");
-  } finally {
-    b.disabled = false;
+    setMessage(friendlyError(err), true);
   }
-});
+};
 
-function startStories() {
-  if (storiesUnsubscribe) storiesUnsubscribe();
+async function loadStories() {
+  if (!currentUser) return;
+  try {
+    const snap = await db.collection("stories")
+      .orderBy("createdAt", "desc").limit(30).get();
+    const list = $("storiesList");
+    list.innerHTML = "";
 
-  storiesUnsubscribe = db.collection("stories")
-    .where("expiresAt", ">", firebase.firestore.Timestamp.now())
-    .orderBy("expiresAt", "asc").limit(50)
-    .onSnapshot(s => {
-      renderStories(s.docs.map(d => ({ id: d.id, ...d.data() })));
-    }, e => {
-      $("storyList").textContent = "Stories unavailable: " + friendlyError(e);
-    });
-}
-
-function renderStories(stories) {
-  const el = $("storyList");
-  el.replaceChildren();
-
-  const add = document.createElement("button");
-  add.className = "story-item";
-  add.innerHTML = '<div class="story-circle">+</div><span>Your story</span>';
-  add.onclick = () => go("create");
-  el.append(add);
-
-  stories.forEach(s => {
-    const b = document.createElement("button");
-    b.className = "story-item";
-    const c = document.createElement("div");
-    c.className = "story-circle";
-
-    if (s.mediaURL && s.mediaType?.startsWith("image/")) {
-      const im = document.createElement("img");
-      im.src = s.mediaURL;
-      im.alt = "Story";
-      c.append(im);
-    } else {
-      c.textContent = s.mediaURL ? "▶" : "✦";
+    if (snap.empty) {
+      list.textContent = "No stories yet.";
+      return;
     }
 
-    const label = document.createElement("span");
-    label.textContent = s.displayName || "User";
-    b.append(c, label);
-    b.onclick = () => alert((s.displayName || "Story") + "\n\n" + (s.text || "") + (s.mediaURL ? "\n\n" + s.mediaURL : ""));
-    el.append(b);
-  });
+    snap.forEach(doc => {
+      const s = doc.data();
+      const node = document.createElement("div");
+      node.className = "story";
 
-  if (!stories.length) {
-    const t = document.createElement("span");
-    t.className = "muted small";
-    t.textContent = "No stories yet.";
-    el.append(t);
+      const name = document.createElement("strong");
+      name.textContent = s.name || "User";
+      node.appendChild(name);
+
+      const text = document.createElement("p");
+      text.textContent = s.text || "";
+      node.appendChild(text);
+
+      if (s.mediaURL) {
+        const link = document.createElement("a");
+        link.href = s.mediaURL;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = "View media";
+        node.appendChild(link);
+      }
+      list.appendChild(node);
+    });
+  } catch (_) {
+    $("storiesList").textContent = "Unable to load stories.";
   }
 }
 
-$("publishStoryButton").addEventListener("click", async () => {
-  if (!currentUser) return;
-
+$("publishStory").onclick = async () => {
   const text = $("storyText").value.trim();
   const file = $("storyFile").files[0];
 
   if (!text && !file) {
-    status("storyStatus", "Write a story or choose a photo/video.", "error");
+    setMessage("Write a story or select media.", true);
     return;
   }
 
-  const btn = $("publishStoryButton");
-  btn.disabled = true;
-  status("storyStatus", "Uploading story...");
-
   try {
-    const mediaURL = file ? await uploadFile(file, "stories") : "";
+    const mediaURL = file ? await uploadFile(file, "storyMedia") : "";
+
     await db.collection("stories").add({
       uid: currentUser.uid,
-      displayName: currentProfile.displayName || "User",
-      text, mediaURL, mediaType: file?.type || "",
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      expiresAt: firebase.firestore.Timestamp.fromDate(new Date(Date.now() + 86400000))
+      name: currentProfile?.name || "EyeBook User",
+      eyeId: currentProfile?.eyeId || "",
+      text,
+      mediaURL,
+      mediaType: file?.type || "",
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
     });
 
     $("storyText").value = "";
     $("storyFile").value = "";
-    status("storyStatus", "Story shared. It expires after 24 hours.", "success");
-    go("home");
-  } catch (e) {
-    status("storyStatus", friendlyError(e), "error");
-  } finally {
-    btn.disabled = false;
+    setMessage("Story published!");
+    await loadStories();
+  } catch (err) {
+    setMessage(friendlyError(err), true);
   }
-});
+};
 
-$("searchForm").addEventListener("submit", async e => {
-  e.preventDefault();
-  if (!currentUser) return;
-
-  const q = $("searchInput").value.trim().toLowerCase();
-  const out = $("searchResults");
-  out.textContent = "Searching...";
+$("searchUsers").onclick = async () => {
+  const query = $("userSearch").value.trim().toLowerCase();
+  if (!query) {
+    setMessage("Enter a name or EyeBook ID.", true);
+    return;
+  }
 
   try {
-    const s = await db.collection("users").limit(100).get();
-    const users = s.docs.map(d => ({ uid: d.id, ...d.data() }))
-      .filter(u => u.uid !== currentUser.uid &&
-        (u.displayName || "").toLowerCase().includes(q));
+    const snap = await db.collection("users").limit(100).get();
+    const list = $("usersList");
+    list.innerHTML = "";
+    let count = 0;
 
-    out.replaceChildren();
-    if (!users.length) {
-      out.textContent = "No matching users found.";
-      return;
-    }
+    snap.forEach(doc => {
+      const u = doc.data();
+      if (!(u.name || "").toLowerCase().includes(query) &&
+          !(u.eyeId || "").toLowerCase().includes(query)) return;
 
-    users.forEach(u => {
-      const row = document.createElement("div");
-      row.className = "user-row";
-      const av = document.createElement("div");
-      av.className = "avatar";
-      setAvatar(av, u);
+      count++;
+      const div = document.createElement("div");
+      div.className = "post";
 
-      const name = document.createElement("div");
-      name.className = "user-info";
-      name.textContent = u.displayName || "User";
+      const name = document.createElement("strong");
+      name.textContent = u.name || "EyeBook User";
+      div.appendChild(name);
 
-      const b = document.createElement("button");
-      b.className = "secondary";
-      b.textContent = "Message";
-      b.onclick = () => {
-        activeChatUser = u;
-        go("messages");
-        startChat(u);
-      };
+      const id = document.createElement("p");
+      id.textContent = "@" + (u.eyeId || "");
+      div.appendChild(id);
 
-      row.append(av, name, b);
-      out.append(row);
+      list.appendChild(div);
     });
+
+    if (!count) list.textContent = "No matching users found.";
   } catch (err) {
-    out.textContent = "Search failed: " + friendlyError(err);
+    setMessage(friendlyError(err), true);
   }
-});
+};
 
-$("profileForm").addEventListener("submit", async e => {
-  e.preventDefault();
-  if (!currentUser) return;
+$("sendMessage").onclick = async () => {
+  const recipient = normalizeEyeId($("recipientId").value);
+  const text = $("messageText").value.trim();
 
-  const displayName = $("editName").value.trim();
-  const bio = $("editBio").value.trim();
-  const file = $("avatarFile").files[0];
-
-  if (!displayName) {
-    status("profileStatus", "Enter a display name.", "error");
+  if (!recipient || !text) {
+    setMessage("Enter recipient ID and message.", true);
     return;
   }
 
-  status("profileStatus", "Saving profile...");
-
   try {
-    let photoURL = currentProfile.photoURL || "";
-    if (file) photoURL = await uploadFile(file, "avatars");
+    const match = await db.collection("users")
+      .where("eyeIdLower", "==", recipient).limit(1).get();
 
-    await db.collection("users").doc(currentUser.uid).set({
-      uid: currentUser.uid, displayName, bio, photoURL,
-      email: currentUser.email || "",
-      phoneNumber: currentUser.phoneNumber || "",
-      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-    }, { merge: true });
-
-    currentProfile = { ...currentProfile, displayName, bio, photoURL };
-    await currentUser.updateProfile({ displayName, photoURL });
-    $("welcomeTitle").textContent = "Welcome, " + displayName + "!";
-    renderProfile();
-    $("avatarFile").value = "";
-    status("profileStatus", "Profile saved.", "success");
-  } catch (err) {
-    status("profileStatus", friendlyError(err), "error");
-  }
-});
-
-function renderProfile() {
-  if (!currentUser || !currentProfile) return;
-
-  $("profileName").textContent = currentProfile.displayName || "EyeBook user";
-  $("profileEmail").textContent = currentUser.email || currentUser.phoneNumber || "";
-  $("profileUsername").textContent = "@" + currentUser.uid.slice(0, 8);
-  $("editName").value = currentProfile.displayName || "";
-  $("editBio").value = currentProfile.bio || "";
-  setAvatar($("profileAvatar"), currentProfile);
-  renderMyPosts();
-}
-
-function renderMyPosts() {
-  const el = $("myPosts");
-  if (!el) return;
-  el.replaceChildren();
-
-  const mine = allPosts.filter(p => p.uid === currentUser?.uid);
-  $("myPostCount").textContent = mine.length;
-
-  if (!mine.length) {
-    el.textContent = "You have not shared any posts yet.";
-    return;
-  }
-  mine.forEach(p => el.append(postCard(p)));
-}
-
-function convoId(a, b) {
-  return [a, b].sort().join("_");
-}
-
-async function loadMessageUsers() {
-  if (!currentUser) return;
-  const el = $("messageUsers");
-  el.replaceChildren();
-
-  try {
-    const s = await db.collection("messages")
-      .where("participants", "array-contains", currentUser.uid).limit(50).get();
-
-    const ids = new Set();
-    s.forEach(d => (d.data().participants || []).forEach(id => {
-      if (id !== currentUser.uid) ids.add(id);
-    }));
-
-    if (!ids.size) {
-      el.textContent = "No conversations yet. Search for someone to message.";
+    if (match.empty) {
+      setMessage("No user found with that EyeBook ID.", true);
       return;
     }
 
-    for (const uid of ids) {
-      const u = await db.collection("users").doc(uid).get();
-      const data = u.exists ? { uid, ...u.data() } : { uid, displayName: "User" };
-      const b = document.createElement("button");
-      b.className = "message-user";
-      b.textContent = data.displayName || "User";
-      b.onclick = () => startChat(data);
-      el.append(b);
-    }
-  } catch (e) {
-    el.textContent = "Could not load conversations: " + friendlyError(e);
-  }
-}
-
-function startChat(user) {
-  if (!user?.uid || !currentUser) return;
-
-  activeChatUser = user;
-  if (chatUnsubscribe) chatUnsubscribe();
-
-  $("chatTitle").textContent = user.displayName || "Conversation";
-  $("chatMessages").textContent = "Loading messages...";
-
-  const ref = db.collection("messages").doc(convoId(currentUser.uid, user.uid));
-  ref.set({
-    participants: [currentUser.uid, user.uid],
-    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-  }, { merge: true }).catch(e => status("messageStatus", friendlyError(e), "error"));
-
-  chatUnsubscribe = ref.collection("items").orderBy("createdAt", "asc").limit(100)
-    .onSnapshot(s => {
-      const el = $("chatMessages");
-      el.replaceChildren();
-
-      s.forEach(d => {
-        const m = d.data();
-        const b = document.createElement("div");
-        b.className = "chat-bubble" + (m.uid === currentUser.uid ? " mine" : "");
-        b.textContent = m.text || "";
-        el.append(b);
-      });
-      el.scrollTop = el.scrollHeight;
-    }, e => status("messageStatus", friendlyError(e), "error"));
-}
-
-$("messageForm").addEventListener("submit", async e => {
-  e.preventDefault();
-  if (!currentUser || !activeChatUser) {
-    status("messageStatus", "Search for and select a user first.", "error");
-    return;
-  }
-
-  const text = $("messageInput").value.trim();
-  if (!text) return;
-
-  try {
-    const ref = db.collection("messages").doc(convoId(currentUser.uid, activeChatUser.uid));
-    await ref.set({
-      participants: [currentUser.uid, activeChatUser.uid],
-      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-    }, { merge: true });
-
-    await ref.collection("items").add({
-      uid: currentUser.uid,
+    await db.collection("messages").add({
+      senderUid: currentUser.uid,
+      senderName: currentProfile?.name || "EyeBook User",
+      recipientUid: match.docs[0].id,
+      recipientEyeId: recipient,
       text,
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
     });
 
-    $("messageInput").value = "";
-    status("messageStatus", "");
+    $("messageText").value = "";
+    setMessage("Message sent!");
+    await loadMessages();
   } catch (err) {
-    status("messageStatus", friendlyError(err), "error");
+    setMessage(friendlyError(err), true);
   }
-});
+};
+
+async function loadMessages() {
+  if (!currentUser) return;
+  try {
+    const snap = await db.collection("messages").limit(100).get();
+    const list = $("messagesList");
+    list.innerHTML = "";
+
+    const messages = snap.docs.map(doc => doc.data())
+      .filter(m => m.senderUid === currentUser.uid ||
+                   m.recipientUid === currentUser.uid)
+      .sort((a, b) =>
+        (b.createdAt?.toMillis?.() || 0) -
+        (a.createdAt?.toMillis?.() || 0)
+      );
+
+    if (!messages.length) {
+      list.textContent = "No messages yet.";
+      return;
+    }
+
+    messages.slice(0, 30).forEach(m => {
+      const p = document.createElement("p");
+      p.className = "post";
+      p.textContent =
+        (m.senderUid === currentUser.uid
+          ? "To @" + m.recipientEyeId
+          : "From " + m.senderName) + ": " + m.text;
+      list.appendChild(p);
+    });
+  } catch (_) {
+    $("messagesList").textContent = "Unable to load messages.";
+  }
+}
+
+function startEditProfile() {
+  $("editProfilePanel").classList.remove("hidden");
+  $("editName").value = currentProfile?.name || "";
+  $("editId").value = currentProfile?.eyeId || "";
+  $("editBio").value = currentProfile?.bio || "";
+}
+$("editProfile").onclick = startEditProfile;
+$("editProfile2").onclick = startEditProfile;
+$("cancelEdit").onclick = () =>
+  $("editProfilePanel").classList.add("hidden");
+
+$("saveProfile").onclick = async () => {
+  const name = $("editName").value.trim();
+  const eyeId = normalizeEyeId($("editId").value);
+  const bio = $("editBio").value.trim();
+
+  if (name.length < 2 || eyeId.length < 3) {
+    setMessage("Enter a valid name and EyeBook ID.", true);
+    return;
+  }
+
+  try {
+    const existing = await getEyeIdOwner(eyeId);
+    if (!existing.empty && existing.docs[0].id !== currentUser.uid) {
+      setMessage("That EyeBook ID is already taken.", true);
+      return;
+    }
+
+    await db.collection("users").doc(currentUser.uid).set({
+      uid: currentUser.uid,
+      name,
+      eyeId,
+      eyeIdLower: eyeId.toLowerCase(),
+      bio,
+      phoneNumber: currentUser.phoneNumber || "",
+      email: currentUser.email || "",
+      photoURL: currentProfile?.photoURL || ""
+    }, { merge: true });
+
+    currentProfile = { ...currentProfile, name, eyeId, bio };
+    $("editProfilePanel").classList.add("hidden");
+    await openApp(currentUser);
+    setMessage("Profile updated.");
+  } catch (err) {
+    setMessage(friendlyError(err), true);
+  }
+};
 </script>
 </body>
- </html>
+</html>
