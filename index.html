@@ -7,105 +7,133 @@
 
 <style>
 :root {
-  --green: #138b50;
-  --dark: #08733d;
-  --light: #eaf8ef;
-  --border: #d9e6dd;
+  --primary: #059669;
+  --primary-dark: #047857;
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
 }
 * { box-sizing: border-box; }
 body {
   margin: 0;
-  background: #f2f7f3;
-  color: #17251c;
-  font-family: Arial, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-main);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 header {
-  background: var(--green);
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
   color: white;
-  padding: 12px;
+  padding: 12px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
   position: sticky;
   top: 0;
-  z-index: 5;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 .logo {
   color: white;
   font-weight: 800;
-  font-size: 22px;
+  font-size: 20px;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.5px;
+}
+.logo-icon {
+  background: rgba(255, 255, 255, 0.2);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
 }
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 button, .button {
   border: 0;
-  border-radius: 9px;
-  padding: 11px 13px;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-}
-.primary { background: var(--green); color: white; }
-.secondary { background: white; color: var(--dark); }
-.apk-download {
-  background: white;
-  color: var(--dark);
-  padding: 9px;
   border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+button:active { opacity: 0.85; }
+.primary { background: var(--primary); color: white; }
+.secondary { background: #f1f5f9; color: var(--text-main); border: 1px solid var(--border-color); }
+.apk-download {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 600;
   text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 main {
-  max-width: 720px;
+  max-width: 680px;
   margin: 20px auto;
   padding: 0 12px 40px;
 }
 .card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 15px;
-  padding: 17px;
-  margin-bottom: 15px;
-  box-shadow: 0 3px 12px #102e1a0b;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
-h2, h3 { margin-top: 0; }
+h2, h3 { margin-top: 0; color: #0f172a; }
 input, textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid #cbd9cf;
-  border-radius: 9px;
-  margin: 6px 0 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin: 6px 0 14px;
   font: inherit;
+  background: #fff;
+}
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
 }
 textarea { min-height: 80px; resize: vertical; }
-label { font-size: 14px; font-weight: bold; }
-.full { width: 100%; margin-top: 7px; }
+label { font-size: 13px; font-weight: 600; color: #475569; }
+.full { width: 100%; margin-top: 6px; }
 .hidden { display: none !important; }
-.muted { color: #65746a; font-size: 13px; line-height: 1.5; }
-.error { color: #b42318; font-size: 13px; white-space: pre-wrap; }
-.success { color: #08733d; font-size: 13px; }
-.tabs { display: flex; gap: 7px; flex-wrap: wrap; }
-.tabs button { flex: 1; min-width: 90px; }
+.muted { color: var(--text-muted); font-size: 13px; line-height: 1.5; }
+.error { color: #dc2626; font-size: 13px; white-space: pre-wrap; margin-top: 5px; }
+.success { color: var(--primary); font-size: 13px; }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.tabs button { flex: 1; min-width: 80px; font-size: 13px; padding: 8px 10px; }
 .phone-input {
   display: flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid #cbd9cf;
-  border-radius: 9px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
   padding: 0 10px;
-  margin: 6px 0 12px;
+  margin: 6px 0 14px;
   background: white;
 }
 .country-code {
-  font-weight: bold;
+  font-weight: 600;
   white-space: nowrap;
-  color: var(--dark);
+  color: var(--text-main);
 }
 .phone-input input {
   border: none;
@@ -114,29 +142,30 @@ label { font-size: 14px; font-weight: bold; }
   min-width: 0;
   flex: 1;
   padding: 12px 4px;
+  box-shadow: none !important;
 }
 .post {
   padding: 14px 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-color);
 }
 .post:last-child { border-bottom: 0; }
 .post img, .post video {
   max-width: 100%;
-  border-radius: 10px;
+  border-radius: 8px;
   margin-top: 8px;
 }
-.story-list { display: flex; gap: 10px; overflow-x: auto; }
+.story-list { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; }
 .story {
   min-width: 110px;
-  border: 2px solid var(--green);
-  border-radius: 12px;
+  border: 2px solid var(--primary);
+  border-radius: 10px;
   padding: 10px;
+  background: #f0fdf4;
 }
 @media(max-width:480px) {
   .logo { font-size: 18px; }
-  header { padding: 9px; }
-  .apk-download { font-size: 10px; }
-  .card { padding: 13px; }
+  header { padding: 10px 14px; }
+  .card { padding: 15px; }
 }
 </style>
 </head>
@@ -144,76 +173,71 @@ label { font-size: 14px; font-weight: bold; }
 <body>
 
 <header>
-  <a href="#" class="logo" id="homeLogo">◉ EyeBook</a>
+  <a href="#" class="logo" id="homeLogo">
+    <div class="logo-icon">E</div>
+    EyeBook
+  </a>
   <div class="header-actions">
     <a href="eyebook.apk" class="apk-download" download>⬇ APK</a>
-    <button class="secondary" id="headerLogin">Login</button>
-    <button class="secondary hidden" id="headerLogout">Log out</button>
+    <button class="secondary" id="headerLogin" style="padding: 7px 12px; font-size: 13px;">Login</button>
+    <button class="secondary hidden" id="headerLogout" style="padding: 7px 12px; font-size: 13px;">Log out</button>
   </div>
 </header>
 
 <main>
-  <div id="message" class="muted"></div>
+  <div id="message" class="muted" style="margin-bottom: 10px;"></div>
 
   <!-- LOGIN AND EMAIL REGISTRATION -->
   <section id="authPage" class="card">
     <h2>Welcome to EyeBook</h2>
     <p class="muted">Connect with friends and share your moments.</p>
 
-    <div class="tabs">
+    <div class="tabs" style="margin-top: 15px;">
       <button class="primary" id="showLogin">Login</button>
       <button class="secondary" id="showEmailSignup">Email Sign Up</button>
     </div>
 
     <form id="emailForm">
       <label>Email Address</label>
-      <input id="email" type="email" autocomplete="email"
-             placeholder="you@example.com" required>
+      <input id="email" type="email" autocomplete="email" placeholder="you@example.com" required>
 
       <label>Password</label>
-      <input id="password" type="password" minlength="6"
-             autocomplete="current-password"
-             placeholder="At least 6 characters" required>
+      <input id="password" type="password" minlength="6" autocomplete="current-password" placeholder="At least 6 characters" required>
 
       <button class="primary full" id="emailSubmit" type="submit">Login</button>
     </form>
 
     <button class="secondary full" id="googleLogin">Continue with Google</button>
 
-    <hr style="border:0;border-top:1px solid var(--border);margin:20px 0">
+    <hr style="border:0;border-top:1px solid var(--border-color);margin:20px 0">
 
     <button class="primary full" id="openPhoneSignup">
       📱 Create Account with Mobile Number
     </button>
-    <p class="muted">
+    <p class="muted" style="margin-top: 8px;">
       Indian country code +91 is already selected. Enter only your 10-digit mobile number.
     </p>
   </section>
 
   <!-- PHONE SIGNUP -->
   <section id="phonePage" class="card hidden">
-    <button class="secondary" id="backToAuth">← Back</button>
+    <button class="secondary" id="backToAuth" style="margin-bottom: 15px;">← Back</button>
     <h2>Create Account with Mobile Number</h2>
 
     <div id="phoneStep">
       <label>Indian Mobile Number</label>
-
       <div class="phone-input">
         <span class="country-code">🇮🇳 +91</span>
-        <input id="phoneNumber" type="tel" inputmode="numeric"
-               maxlength="10" autocomplete="tel-national"
-               placeholder="Enter 10-digit number">
+        <input id="phoneNumber" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel-national" placeholder="Enter 10-digit number">
       </div>
 
-      <div id="recaptcha-container"></div>
+      <div id="recaptcha-container" style="margin-bottom: 10px;"></div>
       <button class="primary full" id="sendOtp">Continue</button>
     </div>
 
     <div id="otpStep" class="hidden">
       <label>Enter SMS OTP</label>
-      <input id="otpCode" type="text" inputmode="numeric"
-             autocomplete="one-time-code" maxlength="6"
-             placeholder="Enter 6-digit OTP">
+      <input id="otpCode" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="Enter 6-digit OTP">
       <button class="primary full" id="verifyOtp">Verify & Continue</button>
       <button class="secondary full" id="resendOtp">Change Number / Resend OTP</button>
     </div>
@@ -226,8 +250,7 @@ label { font-size: 14px; font-weight: bold; }
       <input id="profileName" maxlength="60" placeholder="Enter your name">
 
       <label>Create EyeBook ID</label>
-      <input id="eyeBookId" maxlength="24"
-             placeholder="e.g. ayaan123">
+      <input id="eyeBookId" maxlength="24" placeholder="e.g. ayaan123">
 
       <label>Profile Photo (optional)</label>
       <input id="profilePhoto" type="file" accept="image/*">
@@ -243,12 +266,12 @@ label { font-size: 14px; font-weight: bold; }
   <section id="appPage" class="hidden">
     <div class="card">
       <h2 id="welcomeTitle">Welcome to EyeBook</h2>
-      <div id="myProfile"></div>
+      <div id="myProfile" class="muted" style="margin-bottom: 10px;"></div>
       <button class="secondary" id="editProfile">Edit Profile</button>
     </div>
 
-    <div class="card">
-      <div class="tabs">
+    <div class="card" style="padding: 10px;">
+      <div class="tabs" style="margin-bottom: 0;">
         <button class="primary" data-tab="feed">🏠 Feed</button>
         <button class="secondary" data-tab="stories">⭕ Stories</button>
         <button class="secondary" data-tab="search">🔎 Users</button>
@@ -289,7 +312,7 @@ label { font-size: 14px; font-weight: bold; }
         <h3>Find People</h3>
         <input id="userSearch" placeholder="Search name or EyeBook ID">
         <button class="primary full" id="searchUsers">Search</button>
-        <div id="usersList"></div>
+        <div id="usersList" style="margin-top: 10px;"></div>
       </div>
     </section>
 
@@ -308,7 +331,7 @@ label { font-size: 14px; font-weight: bold; }
     <section id="profileTab" class="hidden">
       <div class="card">
         <h3>My Profile</h3>
-        <div id="profileDetails"></div>
+        <div id="profileDetails" class="muted" style="margin-bottom: 15px; word-break: break-all;"></div>
         <button class="primary full" id="editProfile2">Edit Profile</button>
       </div>
     </section>
@@ -322,7 +345,7 @@ label { font-size: 14px; font-weight: bold; }
       <label>Bio</label>
       <textarea id="editBio"></textarea>
       <button class="primary full" id="saveProfile">Save Profile</button>
-      <button class="secondary full" id="cancelEdit">Cancel</button>
+      <button class="secondary full" id="cancelEdit" style="margin-top: 8px;">Cancel</button>
     </section>
   </section>
 </main>
@@ -333,10 +356,6 @@ label { font-size: 14px; font-weight: bold; }
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
 
 <script>
-/*
-  Firebase Console > Project settings > Your apps
-  से अपनी वास्तविक configuration भरें।
-*/
 const firebaseConfig = {
   apiKey: "// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -425,11 +444,15 @@ $("showLogin").onclick = () => {
   isEmailSignup = false;
   $("emailSubmit").textContent = "Login";
   $("password").autocomplete = "current-password";
+  $("showLogin").className = "primary";
+  $("showEmailSignup").className = "secondary";
 };
 $("showEmailSignup").onclick = () => {
   isEmailSignup = true;
   $("emailSubmit").textContent = "Create Email Account";
   $("password").autocomplete = "new-password";
+  $("showEmailSignup").className = "primary";
+  $("showLogin").className = "secondary";
 };
 
 $("emailForm").addEventListener("submit", async event => {
@@ -486,10 +509,8 @@ $("backToAuth").onclick = () => {
   showPage("authPage");
 };
 
-/* INDIA: +91 is fixed; user enters only 10 digits. */
 $("phoneNumber").addEventListener("input", () => {
-  $("phoneNumber").value =
-    $("phoneNumber").value.replace(/\D/g, "").slice(0, 10);
+  $("phoneNumber").value = $("phoneNumber").value.replace(/\D/g, "").slice(0, 10);
 });
 
 $("sendOtp").onclick = async () => {
@@ -506,10 +527,7 @@ $("sendOtp").onclick = async () => {
     phoneStatus("Sending OTP…");
     if (!recaptchaVerifier) await setupRecaptcha();
 
-    confirmationResult = await auth.signInWithPhoneNumber(
-      phone,
-      recaptchaVerifier
-    );
+    confirmationResult = await auth.signInWithPhoneNumber(phone, recaptchaVerifier);
 
     $("phoneStep").classList.add("hidden");
     $("otpStep").classList.remove("hidden");
@@ -558,8 +576,7 @@ $("verifyOtp").onclick = async () => {
 async function uploadFile(file, folder) {
   if (!file) return "";
   const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
-  const path = folder + "/" + currentUser.uid + "/" +
-    Date.now() + "_" + safeName;
+  const path = folder + "/" + currentUser.uid + "/" + Date.now() + "_" + safeName;
   const ref = storage.ref().child(path);
   await ref.put(file);
   return ref.getDownloadURL();
@@ -642,8 +659,7 @@ async function ensureProfile(user) {
   const eyeId = "user_" + user.uid.slice(0, 8).toLowerCase();
   const profile = {
     uid: user.uid,
-    name: user.displayName ||
-      (user.email ? user.email.split("@")[0] : "New User"),
+    name: user.displayName || (user.email ? user.email.split("@")[0] : "New User"),
     eyeId,
     eyeIdLower: eyeId,
     bio: "",
@@ -710,10 +726,7 @@ auth.onAuthStateChanged(async user => {
     }
     await openApp(user);
   } catch (err) {
-    setMessage(
-      "Profile could not load. Check Firestore setup and security rules. " +
-      friendlyError(err), true
-    );
+    setMessage("Profile could not load. Check Firestore setup and security rules. " + friendlyError(err), true);
   }
 });
 
@@ -751,8 +764,7 @@ document.querySelectorAll("[data-tab]").forEach(btn => {
 async function loadPosts() {
   if (!currentUser) return;
   try {
-    const snap = await db.collection("posts")
-      .orderBy("createdAt", "desc").limit(50).get();
+    const snap = await db.collection("posts").orderBy("createdAt", "desc").limit(50).get();
     const list = $("postsList");
     list.innerHTML = "";
 
@@ -796,6 +808,8 @@ async function loadPosts() {
       const likes = p.likes || [];
       const like = document.createElement("button");
       like.className = "secondary";
+      like.style.padding = "6px 12px";
+      like.style.marginTop = "8px";
       like.textContent = likes.includes(currentUser.uid) ? "♥ Liked" : "♡ Like";
       node.appendChild(like);
 
@@ -821,42 +835,10 @@ async function loadPosts() {
           setMessage(friendlyError(err), true);
         }
       };
-
-      const commentsTitle = document.createElement("p");
-      commentsTitle.className = "muted";
-      commentsTitle.textContent = "Comments";
-      node.appendChild(commentsTitle);
-
-      const commentInput = document.createElement("input");
-      commentInput.placeholder = "Write a comment…";
-      node.appendChild(commentInput);
-
-      const commentBtn = document.createElement("button");
-      commentBtn.className = "secondary";
-      commentBtn.textContent = "Comment";
-      commentBtn.onclick = async () => {
-        const text = commentInput.value.trim();
-        if (!text) return;
-        try {
-          await db.collection("posts").doc(doc.id)
-            .collection("comments").add({
-              uid: currentUser.uid,
-              name: currentProfile?.name || "EyeBook User",
-              text,
-              createdAt: firebase.firestore.FieldValue.serverTimestamp()
-            });
-          commentInput.value = "";
-          setMessage("Comment added.");
-        } catch (err) {
-          setMessage(friendlyError(err), true);
-        }
-      };
-      node.appendChild(commentBtn);
       list.appendChild(node);
     });
   } catch (err) {
-    $("postsList").textContent =
-      "Unable to load posts. Check Firestore configuration and rules.";
+    $("postsList").textContent = "Unable to load posts. Check Firestore configuration and rules.";
   }
 }
 
@@ -896,8 +878,7 @@ $("publishPost").onclick = async () => {
 async function loadStories() {
   if (!currentUser) return;
   try {
-    const snap = await db.collection("stories")
-      .orderBy("createdAt", "desc").limit(30).get();
+    const snap = await db.collection("stories").orderBy("createdAt", "desc").limit(30).get();
     const list = $("storiesList");
     list.innerHTML = "";
 
@@ -916,6 +897,7 @@ async function loadStories() {
       node.appendChild(name);
 
       const text = document.createElement("p");
+      text.style.fontSize = "12px";
       text.textContent = s.text || "";
       node.appendChild(text);
 
@@ -924,6 +906,7 @@ async function loadStories() {
         link.href = s.mediaURL;
         link.target = "_blank";
         link.rel = "noopener";
+        link.style.fontSize = "12px";
         link.textContent = "View media";
         node.appendChild(link);
       }
@@ -992,6 +975,7 @@ $("searchUsers").onclick = async () => {
       div.appendChild(name);
 
       const id = document.createElement("p");
+      id.className = "muted";
       id.textContent = "@" + (u.eyeId || "");
       div.appendChild(id);
 
@@ -1014,8 +998,7 @@ $("sendMessage").onclick = async () => {
   }
 
   try {
-    const match = await db.collection("users")
-      .where("eyeIdLower", "==", recipient).limit(1).get();
+    const match = await db.collection("users").where("eyeIdLower", "==", recipient).limit(1).get();
 
     if (match.empty) {
       setMessage("No user found with that EyeBook ID.", true);
@@ -1047,12 +1030,8 @@ async function loadMessages() {
     list.innerHTML = "";
 
     const messages = snap.docs.map(doc => doc.data())
-      .filter(m => m.senderUid === currentUser.uid ||
-                   m.recipientUid === currentUser.uid)
-      .sort((a, b) =>
-        (b.createdAt?.toMillis?.() || 0) -
-        (a.createdAt?.toMillis?.() || 0)
-      );
+      .filter(m => m.senderUid === currentUser.uid || m.recipientUid === currentUser.uid)
+      .sort((a, b) => (b.createdAt?.toMillis?.() || 0) - (a.createdAt?.toMillis?.() || 0));
 
     if (!messages.length) {
       list.textContent = "No messages yet.";
@@ -1062,10 +1041,7 @@ async function loadMessages() {
     messages.slice(0, 30).forEach(m => {
       const p = document.createElement("p");
       p.className = "post";
-      p.textContent =
-        (m.senderUid === currentUser.uid
-          ? "To @" + m.recipientEyeId
-          : "From " + m.senderName) + ": " + m.text;
+      p.textContent = (m.senderUid === currentUser.uid ? "To @" + m.recipientEyeId : "From " + m.senderName) + ": " + m.text;
       list.appendChild(p);
     });
   } catch (_) {
@@ -1081,8 +1057,7 @@ function startEditProfile() {
 }
 $("editProfile").onclick = startEditProfile;
 $("editProfile2").onclick = startEditProfile;
-$("cancelEdit").onclick = () =>
-  $("editProfilePanel").classList.add("hidden");
+$("cancelEdit").onclick = () => $("editProfilePanel").classList.add("hidden");
 
 $("saveProfile").onclick = async () => {
   const name = $("editName").value.trim();
