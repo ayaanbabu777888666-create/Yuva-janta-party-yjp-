@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#071c14">
-
-<title>EyeBook - Connect With People</title>
+<title>EyeBook — Connect With People</title>
 
 <style>
 :root {
@@ -19,42 +18,28 @@
   --border: #294b3a;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: Arial, sans-serif;
+  font-family: system-ui, Arial, sans-serif;
 }
 
-button, input, textarea {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-button:disabled {
-  opacity: .6;
-  cursor: wait;
-}
-
-.hidden {
-  display: none !important;
-}
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+button:disabled { opacity: .6; cursor: wait; }
+.hidden { display: none !important; }
 
 header {
-  height: 62px;
+  min-height: 64px;
   background: #04130d;
   border-bottom: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 12px;
+  padding: 10px 14px;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -63,39 +48,41 @@ header {
 .brand {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-size: 23px;
-  font-weight: 800;
+  font-weight: 850;
   color: #60d99b;
   cursor: pointer;
 }
 
 .brand-icon {
-  width: 35px;
-  height: 35px;
-  border-radius: 11px;
-  background: linear-gradient(135deg, #20a568, #075e3c);
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
   display: grid;
   place-items: center;
+  background: linear-gradient(145deg, #35e39a, #159763, #075b3a);
+  border: 1px solid #50e6a5;
+  box-shadow: 0 4px 14px #20a56835;
   color: white;
-  font-size: 22px;
-  box-shadow: 0 0 12px #20a56840;
+  font-size: 25px;
+  font-weight: 900;
 }
 
 .header-right {
   display: flex;
-  gap: 7px;
+  gap: 8px;
   align-items: center;
 }
 
-.apk-button {
+.apk-button, .logout-button {
   background: #164a34;
   color: #c4ffdf;
   border: 1px solid #277950;
-  border-radius: 8px;
-  padding: 7px 9px;
-  font-size: 11px;
-  font-weight: 700;
+  border-radius: 9px;
+  padding: 9px 11px;
+  font-size: 12px;
+  font-weight: 750;
   text-decoration: none;
 }
 
@@ -103,14 +90,11 @@ header {
   background: #263d31;
   color: white;
   border: 0;
-  border-radius: 8px;
-  padding: 8px;
-  font-size: 12px;
 }
 
 main {
   width: min(700px, 100%);
-  margin: 22px auto;
+  margin: 20px auto;
   padding: 0 12px 35px;
 }
 
@@ -120,10 +104,10 @@ main {
 }
 
 .hero-logo {
-  font-size: 48px;
-  font-weight: 900;
+  font-size: clamp(42px, 10vw, 54px);
+  font-weight: 950;
   color: #5de49b;
-  letter-spacing: -2px;
+  letter-spacing: -2.5px;
 }
 
 .hero p {
@@ -134,15 +118,13 @@ main {
 .card {
   background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 17px;
+  border-radius: 18px;
   padding: 20px;
   margin-bottom: 15px;
   box-shadow: 0 8px 25px #00000018;
 }
 
-h2, h3 {
-  margin-top: 0;
-}
+h2, h3 { margin-top: 0; }
 
 .muted {
   color: var(--muted);
@@ -154,17 +136,15 @@ h2, h3 {
   display: block;
   width: 100%;
   border: 0;
-  border-radius: 10px;
+  border-radius: 11px;
   padding: 13px;
   margin-top: 10px;
-  font-weight: 700;
+  font-weight: 750;
   background: var(--green);
   color: white;
 }
 
-.btn:hover {
-  background: var(--green2);
-}
+.btn:hover { background: var(--green2); }
 
 .btn-secondary {
   background: var(--panel2);
@@ -204,17 +184,6 @@ label {
   line-height: 1.5;
   overflow-wrap: anywhere;
   margin-top: 10px;
-}
-
-.success {
-  color: #7af0ad;
-}
-
-.divider {
-  text-align: center;
-  color: var(--muted);
-  margin: 17px 0;
-  font-size: 13px;
 }
 
 .row {
@@ -265,6 +234,7 @@ label {
   border-radius: 14px;
   padding: 15px;
   margin-bottom: 12px;
+  overflow-wrap: anywhere;
 }
 
 .post p {
@@ -298,10 +268,10 @@ label {
   width: 43px;
   height: 43px;
   border-radius: 50%;
-  background: #1b704b;
+  background: linear-gradient(145deg, #20a568, #075b3a);
   display: grid;
   place-items: center;
-  font-weight: bold;
+  font-weight: 900;
   flex-shrink: 0;
 }
 
@@ -312,9 +282,9 @@ footer {
   font-size: 12px;
 }
 
-@media (max-width: 400px) {
+@media(max-width: 400px) {
   .brand { font-size: 19px; }
-  .hero-logo { font-size: 42px; }
+  .brand-icon { width: 38px; height: 38px; }
   .card { padding: 16px; }
 }
 </style>
@@ -329,20 +299,15 @@ footer {
   </div>
 
   <div class="header-right">
-    <a class="apk-button"
-       id="apkDownload"
-       href="#"
-       onclick="return downloadAPK(event)">
-       ↓ APK
+    <a class="apk-button" href="#" onclick="return downloadAPK(event)">
+      ↓ APK
     </a>
-
-    <button id="logoutButton"
-      class="logout-button hidden"
-      onclick="logout()">Logout</button>
+    <button id="logoutButton" class="logout-button hidden"
+      onclick="logout()">Log out</button>
   </div>
 </header>
 
-<!-- LOGIN -->
+<!-- LOGIN SCREEN -->
 <section id="authScreen">
   <main>
     <div class="hero">
@@ -351,6 +316,7 @@ footer {
     </div>
 
     <div class="card">
+
       <div id="startScreen">
         <h2>Welcome to EyeBook</h2>
         <p class="muted">Connect with people and share your world.</p>
@@ -376,20 +342,20 @@ footer {
 
         <div class="row">
           <span class="country-code">+91</span>
-          <input id="mobileNumber"
-            type="tel"
-            inputmode="numeric"
-            maxlength="10"
+          <input id="mobileNumber" type="tel"
+            inputmode="numeric" maxlength="10"
             placeholder="Enter 10-digit number">
         </div>
 
         <div id="recaptcha-container"></div>
 
-        <button class="btn" id="continuePhone"
-          onclick="sendOTP()">Continue</button>
+        <button class="btn" id="continuePhone" onclick="sendOTP()">
+          Send OTP
+        </button>
 
-        <button class="btn btn-secondary"
-          onclick="backToStart()">Back</button>
+        <button class="btn btn-secondary" onclick="backToStart()">
+          Back
+        </button>
       </div>
 
       <div id="otpScreen" class="hidden">
@@ -399,39 +365,43 @@ footer {
         </p>
 
         <label for="otpInput">OTP</label>
-        <input id="otpInput"
-          type="text"
-          inputmode="numeric"
-          autocomplete="one-time-code"
-          maxlength="6"
+        <input id="otpInput" type="text" inputmode="numeric"
+          maxlength="6" autocomplete="one-time-code"
           placeholder="Enter 6-digit OTP">
 
-        <button class="btn" id="verifyButton"
-          onclick="verifyOTP()">Verify and Continue</button>
+        <button class="btn" id="verifyButton" onclick="verifyOTP()">
+          Verify and Continue
+        </button>
 
-        <button class="btn btn-secondary"
-          onclick="backToPhone()">Change Number</button>
+        <button class="btn btn-secondary" onclick="backToPhone()">
+          Change Number
+        </button>
       </div>
 
       <div id="emailScreen" class="hidden">
         <h3>Email Login</h3>
 
+        <label for="emailInput">Email Address</label>
         <input id="emailInput" type="email"
-          placeholder="Email address">
+          autocomplete="email" placeholder="Email address">
 
+        <label for="passwordInput">Password</label>
         <input id="passwordInput" type="password"
-          placeholder="Password">
+          autocomplete="current-password" placeholder="Password">
 
-        <button class="btn" onclick="emailLogin()">Log In</button>
-        <button class="btn btn-secondary" onclick="emailSignup()">
-          Create Account
+        <button class="btn" id="emailLoginButton" onclick="emailLogin()">
+          Log In
         </button>
+
+        <button class="btn btn-secondary" id="emailSignupButton"
+          onclick="emailSignup()">Create Account</button>
+
         <button class="btn btn-secondary" onclick="backToStart()">
           Back
         </button>
       </div>
 
-      <div id="authError" class="error"></div>
+      <div id="authError" class="error" role="status"></div>
     </div>
   </main>
 </section>
@@ -440,7 +410,7 @@ footer {
 <section id="setupScreen" class="hidden">
   <main>
     <div class="card">
-      <h2>Create Your ID</h2>
+      <h2>Create Your EyeBook ID</h2>
       <p class="muted">
         Choose your name and unique username to finish registration.
       </p>
@@ -459,7 +429,7 @@ footer {
       <button class="btn" id="createProfileButton"
         onclick="createProfile()">Create My ID</button>
 
-      <div id="setupError" class="error"></div>
+      <div id="setupError" class="error" role="status"></div>
     </div>
   </main>
 </section>
@@ -484,8 +454,10 @@ footer {
         <textarea id="postText" maxlength="3000"
           placeholder="What's on your mind?"></textarea>
 
-        <button class="btn" onclick="publishPost()">Publish Post</button>
-        <div id="postError" class="error"></div>
+        <button class="btn" id="publishButton"
+          onclick="publishPost()">Publish Post</button>
+
+        <div id="postError" class="error" role="status"></div>
       </div>
 
       <h3>Latest Posts</h3>
@@ -497,8 +469,9 @@ footer {
     <section id="searchTab" class="hidden">
       <div class="card">
         <h2>Find People</h2>
-        <input id="searchInput" placeholder="Enter a username">
-        <button class="btn" onclick="searchUsers()">Search</button>
+        <input id="searchInput" placeholder="Enter a username or name">
+        <button class="btn" id="searchButton"
+          onclick="searchUsers()">Search</button>
         <div id="searchResults"></div>
       </div>
     </section>
@@ -515,6 +488,7 @@ footer {
 
         <p id="profileBio"></p>
         <p id="profilePhone" class="muted"></p>
+        <p id="profileEmail" class="muted"></p>
       </div>
     </section>
   </main>
@@ -550,21 +524,13 @@ import {
   orderBy,
   limit,
   serverTimestamp,
-  onSnapshot
+  onSnapshot,
+  runTransaction
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
-/* Replace the API key with your real Firebase Web API key. */
+/* IMPORTANT: Add your real Firebase Web API key below. */
 const firebaseConfig = {
-  apiKey: "// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyCBafjBLFjhwX00mFVZPu5aaN0kU5P8kPA",
-  authDomain: "eyebook-7885f.firebaseapp.com",
-  projectId: "eyebook-7885f",
-  storageBucket: "eyebook-7885f.firebasestorage.app",
-  messagingSenderId: "297441359052",
-  appId: "1:297441359052:web:3aa43bbd674731f6143e69",
-  measurementId: "G-5MW8F30GQD"
-};",
+  apiKey: "PASTE_YOUR_REAL_FIREBASE_API_KEY",
   authDomain: "eyebook-7885f.firebaseapp.com",
   projectId: "eyebook-7885f",
   storageBucket: "eyebook-7885f.firebasestorage.app",
@@ -572,35 +538,21 @@ const firebaseConfig = {
   appId: "1:297441359052:web:3aa43bbd674731f6143e69"
 };
 
-let app, auth, db;
+const $ = id => document.getElementById(id);
+
+let app = null;
+let auth = null;
+let db = null;
 let currentUser = null;
 let profile = null;
 let confirmation = null;
 let recaptcha = null;
 let feedUnsubscribe = null;
+let firebaseReady = false;
 
-const $ = id => document.getElementById(id);
-
-function errorMessage(error) {
-  const messages = {
-    "auth/invalid-phone-number": "Enter a valid mobile number.",
-    "auth/invalid-verification-code": "The OTP is incorrect.",
-    "auth/code-expired": "OTP expired. Please try again.",
-    "auth/too-many-requests": "Too many attempts. Try again later.",
-    "auth/quota-exceeded": "SMS quota reached. Check Firebase limits.",
-    "auth/operation-not-allowed": "Enable this login method in Firebase.",
-    "auth/unauthorized-domain": "Add this website domain to Firebase Authorized domains.",
-    "auth/invalid-credential": "Incorrect login details.",
-    "permission-denied": "Firestore security rules denied this request."
-  };
-
-  return messages[error?.code] ||
-    error?.message ||
-    "Something went wrong. Please try again.";
-}
-
-function showError(id, text) {
-  $(id).textContent = text || "";
+function showError(id, message) {
+  const el = $(id);
+  if (el) el.textContent = message || "";
 }
 
 function busy(id, value, text) {
@@ -608,13 +560,65 @@ function busy(id, value, text) {
   if (!button) return;
 
   if (value) {
-    button.dataset.oldText = button.textContent;
+    if (!button.dataset.oldText) {
+      button.dataset.oldText = button.textContent;
+    }
     button.textContent = text;
     button.disabled = true;
   } else {
-    button.textContent = button.dataset.oldText || button.textContent;
+    button.textContent =
+      button.dataset.oldText || button.textContent;
     button.disabled = false;
   }
+}
+
+function ensureFirebase() {
+  if (firebaseReady && auth && db) return true;
+
+  showError("authError",
+    "Firebase setup incomplete. Add your real Web API key.");
+  return false;
+}
+
+function errorMessage(error) {
+  const messages = {
+    "auth/invalid-phone-number":
+      "Enter a valid mobile number.",
+    "auth/invalid-verification-code":
+      "The OTP is incorrect.",
+    "auth/code-expired":
+      "The OTP expired. Request a new one.",
+    "auth/too-many-requests":
+      "Too many attempts. Try again later.",
+    "auth/quota-exceeded":
+      "SMS quota reached. Check Firebase limits.",
+    "auth/operation-not-allowed":
+      "Enable this login method in Firebase Authentication.",
+    "auth/unauthorized-domain":
+      "Add this website domain to Firebase Authorized domains.",
+    "auth/invalid-credential":
+      "Incorrect login details or invalid credentials.",
+    "auth/email-already-in-use":
+      "This email already has an account. Try logging in.",
+    "auth/weak-password":
+      "Password must contain at least 6 characters.",
+    "auth/invalid-email":
+      "Enter a valid email address.",
+    "auth/popup-closed-by-user":
+      "Google sign-in was closed before finishing.",
+    "auth/popup-blocked":
+      "Browser blocked the Google sign-in popup.",
+    "auth/network-request-failed":
+      "Network error. Check your internet connection.",
+    "permission-denied":
+      "Firestore rules denied this request. Check Security Rules.",
+    "unavailable":
+      "Firebase is temporarily unavailable. Try again."
+  };
+
+  return messages[error?.code] ||
+    error?.message ||
+    "Something went wrong. Please try again.";
 }
 
 function hideAllAuthSteps() {
@@ -634,31 +638,35 @@ window.showPhoneScreen = function() {
   showError("authError", "");
 };
 
-window.backToPhone = function() {
-  confirmation = null;
-  hideAllAuthSteps();
-  $("phoneScreen").classList.remove("hidden");
-  showError("authError", "");
-};
-
 window.showEmailScreen = function() {
   hideAllAuthSteps();
   $("emailScreen").classList.remove("hidden");
   showError("authError", "");
 };
 
+window.backToPhone = function() {
+  confirmation = null;
+  hideAllAuthSteps();
+  $("phoneScreen").classList.remove("hidden");
+  showError("authError", "");
+
+  if (recaptcha) {
+    try { recaptcha.clear(); } catch (_) {}
+    recaptcha = null;
+  }
+
+  $("recaptcha-container").innerHTML = "";
+};
+
 window.sendOTP = async function() {
   showError("authError", "");
+  if (!ensureFirebase()) return;
 
   const digits = $("mobileNumber").value.replace(/\D/g, "");
 
   if (!/^[6-9]\d{9}$/.test(digits)) {
-    showError("authError", "Enter a valid 10-digit Indian mobile number.");
-    return;
-  }
-
-  if (firebaseConfig.apiKey === "PASTE_YOUR_REAL_FIREBASE_API_KEY") {
-    showError("authError", "First add your real Firebase Web API key.");
+    showError("authError",
+      "Enter a valid 10-digit Indian mobile number.");
     return;
   }
 
@@ -666,7 +674,7 @@ window.sendOTP = async function() {
 
   try {
     if (recaptcha) {
-      recaptcha.clear();
+      try { recaptcha.clear(); } catch (_) {}
       recaptcha = null;
     }
 
@@ -681,9 +689,7 @@ window.sendOTP = async function() {
     await recaptcha.render();
 
     confirmation = await signInWithPhoneNumber(
-      auth,
-      "+91" + digits,
-      recaptcha
+      auth, "+91" + digits, recaptcha
     );
 
     $("otpMessage").textContent =
@@ -708,10 +714,13 @@ window.sendOTP = async function() {
 };
 
 window.verifyOTP = async function() {
+  showError("authError", "");
+  if (!ensureFirebase()) return;
+
   const code = $("otpInput").value.trim();
 
   if (!confirmation) {
-    showError("authError", "Go back and request an OTP first.");
+    showError("authError", "Request an OTP first.");
     return;
   }
 
@@ -733,36 +742,65 @@ window.verifyOTP = async function() {
 };
 
 window.emailLogin = async function() {
+  showError("authError", "");
+  if (!ensureFirebase()) return;
+
+  const email = $("emailInput").value.trim();
+  const password = $("passwordInput").value;
+
+  if (!email || !password) {
+    showError("authError", "Enter your email and password.");
+    return;
+  }
+
+  busy("emailLoginButton", true, "Logging in...");
+
   try {
-    await signInWithEmailAndPassword(
-      auth,
-      $("emailInput").value.trim(),
-      $("passwordInput").value
-    );
+    await signInWithEmailAndPassword(auth, email, password);
   } catch (error) {
     showError("authError", errorMessage(error));
+  } finally {
+    busy("emailLoginButton", false);
   }
 };
 
 window.emailSignup = async function() {
+  showError("authError", "");
+  if (!ensureFirebase()) return;
+
   const email = $("emailInput").value.trim();
   const password = $("passwordInput").value;
 
-  if (password.length < 6) {
-    showError("authError", "Password must be at least 6 characters.");
+  if (!email) {
+    showError("authError", "Enter your email address.");
     return;
   }
+
+  if (password.length < 6) {
+    showError("authError",
+      "Password must contain at least 6 characters.");
+    return;
+  }
+
+  busy("emailSignupButton", true, "Creating account...");
 
   try {
     await createUserWithEmailAndPassword(auth, email, password);
   } catch (error) {
     showError("authError", errorMessage(error));
+  } finally {
+    busy("emailSignupButton", false);
   }
 };
 
 window.googleLogin = async function() {
+  showError("authError", "");
+  if (!ensureFirebase()) return;
+
   try {
-    await signInWithPopup(auth, new GoogleAuthProvider());
+    const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: "select_account" });
+    await signInWithPopup(auth, provider);
   } catch (error) {
     showError("authError", errorMessage(error));
   }
@@ -775,12 +813,23 @@ function showMainScreen(screen) {
   $("logoutButton").classList.toggle("hidden", screen === "auth");
 }
 
-onAuthStateChanged(auth, async user => {
+function showSetupForUser(user) {
+  showMainScreen("setup");
+  $("fullName").value =
+    user.displayName || user.email?.split("@")[0] || "";
+}
+
+async function handleAuthState(user) {
   currentUser = user;
 
   if (!user) {
     profile = null;
-    if (feedUnsubscribe) feedUnsubscribe();
+
+    if (feedUnsubscribe) {
+      feedUnsubscribe();
+      feedUnsubscribe = null;
+    }
+
     showMainScreen("auth");
     window.backToStart();
     return;
@@ -792,9 +841,7 @@ onAuthStateChanged(auth, async user => {
     if (!snap.exists() ||
         !snap.data().name ||
         !snap.data().username) {
-      showMainScreen("setup");
-      $("fullName").value =
-        user.displayName || user.email?.split("@")[0] || "";
+      showSetupForUser(user);
       return;
     }
 
@@ -803,15 +850,22 @@ onAuthStateChanged(auth, async user => {
 
   } catch (error) {
     showMainScreen("auth");
-    showError("authError", errorMessage(error));
+    showError("authError",
+      "Could not load profile: " + errorMessage(error));
   }
-});
+}
 
 window.createProfile = async function() {
   showError("setupError", "");
 
+  if (!ensureFirebase() || !currentUser) {
+    showError("setupError", "Please sign in again.");
+    return;
+  }
+
   const name = $("fullName").value.trim();
-  const username = $("username").value.trim().toLowerCase().replace(/^@/, "");
+  const username = $("username").value
+    .trim().toLowerCase().replace(/^@/, "");
   const bio = $("bio").value.trim();
 
   if (name.length < 2) {
@@ -820,36 +874,39 @@ window.createProfile = async function() {
   }
 
   if (!/^[a-z0-9_.]{3,24}$/.test(username)) {
-    showError("setupError", "Username must be 3-24 letters, numbers, dots or underscores.");
+    showError("setupError",
+      "Username must be 3-24 letters, numbers, dots or underscores.");
     return;
   }
 
   busy("createProfileButton", true, "Creating ID...");
 
   try {
-    const users = await getDocs(
-      query(collection(db, "users"), limit(500))
-    );
+    const usernameRef = doc(db, "usernames", username);
 
-    const taken = users.docs.some(item =>
-      item.id !== currentUser.uid &&
-      item.data().username === username
-    );
+    await runTransaction(db, async transaction => {
+      const usernameSnap = await transaction.get(usernameRef);
 
-    if (taken) {
-      showError("setupError", "This username is already taken.");
-      return;
-    }
+      if (usernameSnap.exists() &&
+          usernameSnap.data().uid !== currentUser.uid) {
+        throw new Error("USERNAME_TAKEN");
+      }
 
-    await setDoc(doc(db, "users", currentUser.uid), {
-      uid: currentUser.uid,
-      name,
-      username,
-      bio,
-      phoneNumber: currentUser.phoneNumber || "",
-      email: currentUser.email || "",
-      createdAt: serverTimestamp()
-    }, { merge: true });
+      transaction.set(usernameRef, {
+        uid: currentUser.uid,
+        username
+      });
+
+      transaction.set(doc(db, "users", currentUser.uid), {
+        uid: currentUser.uid,
+        name,
+        username,
+        bio,
+        phoneNumber: currentUser.phoneNumber || "",
+        email: currentUser.email || "",
+        createdAt: serverTimestamp()
+      }, { merge: true });
+    });
 
     const snap = await getDoc(doc(db, "users", currentUser.uid));
     profile = snap.data();
@@ -857,7 +914,10 @@ window.createProfile = async function() {
     await openApp();
 
   } catch (error) {
-    showError("setupError", errorMessage(error));
+    showError("setupError",
+      error.message === "USERNAME_TAKEN"
+        ? "Username already taken. Try another."
+        : errorMessage(error));
   } finally {
     busy("createProfileButton", false);
   }
@@ -866,12 +926,14 @@ window.createProfile = async function() {
 async function openApp() {
   showMainScreen("app");
 
-  $("profileName").textContent = profile.name;
-  $("profileUsername").textContent = "@" + profile.username;
-  $("profileBio").textContent = profile.bio || "";
-  $("profilePhone").textContent = profile.phoneNumber
-    ? "Mobile: " + profile.phoneNumber
-    : "";
+  $("profileName").textContent = profile?.name || "EyeBook User";
+  $("profileUsername").textContent =
+    profile?.username ? "@" + profile.username : "";
+  $("profileBio").textContent = profile?.bio || "";
+  $("profilePhone").textContent =
+    profile?.phoneNumber ? "Mobile: " + profile.phoneNumber : "";
+  $("profileEmail").textContent =
+    profile?.email ? "Email: " + profile.email : "";
 
   startFeed();
 }
@@ -890,7 +952,12 @@ window.openTab = function(id, button) {
 
 window.goHome = function() {
   if (currentUser && profile) {
-    document.querySelector(".nav button").click();
+    showMainScreen("app");
+    const homeButton = document.querySelector(".nav button");
+
+    if (homeButton) {
+      window.openTab("homeTab", homeButton);
+    }
   } else {
     showMainScreen("auth");
     window.backToStart();
@@ -900,12 +967,19 @@ window.goHome = function() {
 window.publishPost = async function() {
   showError("postError", "");
 
+  if (!currentUser || !profile) {
+    showError("postError", "Please sign in first.");
+    return;
+  }
+
   const text = $("postText").value.trim();
 
   if (!text) {
     showError("postError", "Write something before publishing.");
     return;
   }
+
+  busy("publishButton", true, "Publishing...");
 
   try {
     await addDoc(collection(db, "posts"), {
@@ -921,79 +995,101 @@ window.publishPost = async function() {
 
   } catch (error) {
     showError("postError", errorMessage(error));
+  } finally {
+    busy("publishButton", false);
   }
 };
 
 function startFeed() {
-  if (feedUnsubscribe) feedUnsubscribe();
+  if (feedUnsubscribe) {
+    feedUnsubscribe();
+    feedUnsubscribe = null;
+  }
 
-  feedUnsubscribe = onSnapshot(
-    query(collection(db, "posts"), orderBy("createdAt", "desc"), limit(50)),
-    snapshot => {
-      const feed = $("postFeed");
-      feed.innerHTML = "";
+  const postsQuery = query(
+    collection(db, "posts"),
+    orderBy("createdAt", "desc"),
+    limit(50)
+  );
 
-      if (snapshot.empty) {
-        feed.textContent = "No posts yet. Create the first post!";
-        return;
-      }
+  feedUnsubscribe = onSnapshot(postsQuery, snapshot => {
+    const feed = $("postFeed");
+    feed.replaceChildren();
 
-      snapshot.forEach(item => {
-        const data = item.data();
-        const post = document.createElement("article");
-        post.className = "post";
+    if (snapshot.empty) {
+      const p = document.createElement("p");
+      p.className = "muted";
+      p.textContent = "No posts yet. Create the first post!";
+      feed.appendChild(p);
+      return;
+    }
 
-        const user = document.createElement("strong");
-        user.textContent = (data.name || "User") +
-          "  @" + (data.username || "");
+    snapshot.forEach(item => {
+      const data = item.data();
+      const post = document.createElement("article");
+      post.className = "post";
 
-        const content = document.createElement("p");
-        content.textContent = data.text || "";
+      const user = document.createElement("strong");
+      user.textContent =
+        (data.name || "User") + " @" + (data.username || "");
 
-        const actions = document.createElement("div");
-        actions.className = "post-actions";
+      const content = document.createElement("p");
+      content.textContent = data.text || "";
 
-        const like = document.createElement("button");
-        const likes = Array.isArray(data.likes) ? data.likes : [];
+      const actions = document.createElement("div");
+      actions.className = "post-actions";
 
-        like.textContent =
-          (likes.includes(currentUser.uid) ? "❤️ Liked " : "🤍 Like ") +
-          "(" + likes.length + ")";
+      const like = document.createElement("button");
+      const likes = Array.isArray(data.likes) ? data.likes : [];
 
-        like.onclick = async () => {
-          try {
-            const latest = await getDoc(doc(db, "posts", item.id));
+      like.textContent =
+        (likes.includes(currentUser.uid) ? "❤️ Liked " : "🤍 Like ") +
+        "(" + likes.length + ")";
+
+      like.onclick = async () => {
+        like.disabled = true;
+
+        try {
+          const postRef = doc(db, "posts", item.id);
+
+          await runTransaction(db, async transaction => {
+            const latest = await transaction.get(postRef);
             if (!latest.exists()) return;
 
-            const oldLikes = latest.data().likes || [];
+            const oldLikes = Array.isArray(latest.data().likes)
+              ? latest.data().likes : [];
+
             const newLikes = oldLikes.includes(currentUser.uid)
               ? oldLikes.filter(uid => uid !== currentUser.uid)
               : [...oldLikes, currentUser.uid];
 
-            await setDoc(
-              doc(db, "posts", item.id),
-              { likes: newLikes },
-              { merge: true }
-            );
-          } catch (error) {
-            alert(errorMessage(error));
-          }
-        };
+            transaction.update(postRef, { likes: newLikes });
+          });
 
-        actions.appendChild(like);
-        post.append(user, content, actions);
-        feed.appendChild(post);
-      });
-    },
-    error => {
-      $("postFeed").textContent = errorMessage(error);
-    }
-  );
+        } catch (error) {
+          alert(errorMessage(error));
+        } finally {
+          like.disabled = false;
+        }
+      };
+
+      actions.appendChild(like);
+      post.append(user, content, actions);
+      feed.appendChild(post);
+    });
+
+  }, error => {
+    $("postFeed").textContent =
+      "Could not load posts: " + errorMessage(error);
+  });
 }
 
 window.searchUsers = async function() {
+  if (!currentUser) return;
+
   const term = $("searchInput").value.trim().toLowerCase();
   const results = $("searchResults");
+
   results.textContent = "Searching...";
 
   if (term.length < 2) {
@@ -1001,17 +1097,20 @@ window.searchUsers = async function() {
     return;
   }
 
+  busy("searchButton", true, "Searching...");
+
   try {
     const users = await getDocs(
       query(collection(db, "users"), limit(500))
     );
 
-    results.innerHTML = "";
+    results.replaceChildren();
 
     const matches = users.docs.filter(item => {
       const data = item.data();
+
       return item.id !== currentUser.uid &&
-        ((data.username || "").includes(term) ||
+        ((data.username || "").toLowerCase().includes(term) ||
          (data.name || "").toLowerCase().includes(term));
     });
 
@@ -1037,10 +1136,14 @@ window.searchUsers = async function() {
 
   } catch (error) {
     results.textContent = errorMessage(error);
+  } finally {
+    busy("searchButton", false);
   }
 };
 
 window.logout = async function() {
+  if (!ensureFirebase()) return;
+
   try {
     await signOut(auth);
   } catch (error) {
@@ -1048,42 +1151,51 @@ window.logout = async function() {
   }
 };
 
-/* APK button: set a real APK URL before enabling download. */
 window.downloadAPK = function(event) {
   event.preventDefault();
 
   alert(
-    "The APK is not uploaded yet. Upload your Android APK to a trusted download location, then set its URL in the downloadAPK function."
+    "APK is not uploaded yet. Add a real APK download URL after building your Android app."
   );
 
   return false;
 };
 
 $("mobileNumber").addEventListener("input", event => {
-  event.target.value = event.target.value.replace(/\D/g, "").slice(0, 10);
+  event.target.value =
+    event.target.value.replace(/\D/g, "").slice(0, 10);
 });
 
 $("otpInput").addEventListener("input", event => {
-  event.target.value = event.target.value.replace(/\D/g, "").slice(0, 6);
+  event.target.value =
+    event.target.value.replace(/\D/g, "").slice(0, 6);
 });
 
-/* Initialize Firebase and report startup errors visibly. */
-try {
-  if (firebaseConfig.apiKey === "PASTE_YOUR_REAL_FIREBASE_API_KEY") {
-    throw new Error(
-      "Firebase API key is missing. Replace PASTE_YOUR_REAL_FIREBASE_API_KEY in index.html."
-    );
+/* Firebase starts BEFORE auth-state listener registration. */
+if (firebaseConfig.apiKey === "PASTE_YOUR_REAL_FIREBASE_API_KEY" ||
+    !firebaseConfig.apiKey.trim()) {
+
+  showMainScreen("auth");
+  showError("authError",
+    "Setup required: add your real Firebase Web API key in index.html.");
+
+} else {
+  try {
+    app = initializeApp(firebaseConfig);
+    auth = getAuth(app);
+    db = getFirestore(app);
+    firebaseReady = true;
+
+    onAuthStateChanged(auth, user => {
+      handleAuthState(user);
+    });
+
+  } catch (error) {
+    console.error("EyeBook startup error:", error);
+    showMainScreen("auth");
+    showError("authError",
+      "Firebase could not start: " + errorMessage(error));
   }
-
-  app = initializeApp(firebaseConfig);
-  auth = getAuth(app);
-  db = getFirestore(app);
-
-} catch (error) {
-  console.error("EyeBook startup error:", error);
-
-  $("authScreen").classList.remove("hidden");
-  showError("authError", error.message);
 }
 </script>
 
