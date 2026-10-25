@@ -3,289 +3,501 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#071c14">
-<title>EyeBook — Connect With People</title>
+<meta name="theme-color" content="#061810">
+
+<title>EyeBook — Connect. Share. Discover.</title>
 
 <style>
 :root {
-  --bg: #071c14;
+  --bg: #061810;
+  --header: #03110b;
   --panel: #10291f;
   --panel2: #163629;
   --green: #168653;
   --green2: #20a568;
+  --bright: #65f0ac;
   --text: #f1fff7;
   --muted: #a9c7b7;
   --border: #294b3a;
+  --danger: #ff9d9d;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
+  min-height: 100vh;
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, Arial, sans-serif;
+  font-family: Inter, system-ui, Arial, sans-serif;
 }
 
-button, input, textarea { font: inherit; }
-button { cursor: pointer; }
-button:disabled { opacity: .6; cursor: wait; }
-.hidden { display: none !important; }
+button, input, textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: .65;
+  cursor: wait;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ===== PROFESSIONAL HEADER ===== */
 
 header {
-  min-height: 64px;
-  background: #04130d;
-  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  min-height: 76px;
+  padding: 11px 16px;
+  background: rgba(3, 17, 11, .97);
+  border-bottom: 1px solid #24553c;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 14px;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  gap: 12px;
+  backdrop-filter: blur(14px);
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 23px;
-  font-weight: 850;
-  color: #60d99b;
+  gap: 11px;
+  min-width: 0;
   cursor: pointer;
+  user-select: none;
 }
 
-.brand-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 13px;
+/* Eye-inspired E logo */
+.logo-mark {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
   display: grid;
   place-items: center;
-  background: linear-gradient(145deg, #35e39a, #159763, #075b3a);
-  border: 1px solid #50e6a5;
-  box-shadow: 0 4px 14px #20a56835;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  background: linear-gradient(
+    145deg,
+    #49f0a4 0%,
+    #159b65 45%,
+    #075b3a 100%
+  );
+  border: 1px solid rgba(133, 255, 192, .65);
+  box-shadow:
+    0 5px 18px rgba(32, 165, 104, .25),
+    inset 0 1px 1px rgba(255, 255, 255, .24);
+}
+
+.logo-mark::before {
+  content: "";
+  position: absolute;
+  width: 37px;
+  height: 23px;
+  border: 2px solid rgba(255,255,255,.86);
+  border-radius: 70% 20% 70% 20%;
+  transform: rotate(-8deg);
+}
+
+.logo-mark::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #f5fff9;
+  border: 3px solid #08774b;
+  border-radius: 50%;
+  box-shadow: 0 0 9px rgba(255,255,255,.35);
+}
+
+.logo-letter {
+  position: relative;
+  z-index: 2;
+  font-size: 22px;
+  font-weight: 950;
   color: white;
+  text-shadow: 0 2px 5px #034b2b;
+  transform: translateY(-1px);
+}
+
+.brand-copy {
+  min-width: 0;
+}
+
+.brand-name {
   font-size: 25px;
-  font-weight: 900;
+  line-height: 1.1;
+  font-weight: 950;
+  letter-spacing: -1px;
+  white-space: nowrap;
+  background: linear-gradient(
+    100deg,
+    #e0ffed 0%,
+    #69f0ad 42%,
+    #20b975 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-tagline {
+  margin-top: 4px;
+  color: #92bba5;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
 .header-right {
   display: flex;
-  gap: 8px;
   align-items: center;
+  gap: 7px;
 }
 
-.apk-button, .logout-button {
-  background: #164a34;
-  color: #c4ffdf;
-  border: 1px solid #277950;
-  border-radius: 9px;
-  padding: 9px 11px;
+.apk-button,
+.logout-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  border-radius: 11px;
+  border: 1px solid #287c54;
+  background: linear-gradient(145deg, #174e35, #103d2a);
+  color: #d2ffe4;
   font-size: 12px;
-  font-weight: 750;
+  font-weight: 800;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .logout-button {
+  border-color: #42604e;
   background: #263d31;
   color: white;
-  border: 0;
 }
+
+/* ===== PAGE LAYOUT ===== */
 
 main {
   width: min(700px, 100%);
-  margin: 20px auto;
-  padding: 0 12px 35px;
+  margin: 22px auto;
+  padding: 0 14px 35px;
 }
 
 .hero {
+  padding: 35px 8px 30px;
   text-align: center;
-  padding: 30px 8px 25px;
 }
 
 .hero-logo {
-  font-size: clamp(42px, 10vw, 54px);
+  display: inline-block;
+  font-size: clamp(43px, 10vw, 61px);
+  line-height: 1.15;
   font-weight: 950;
-  color: #5de49b;
-  letter-spacing: -2.5px;
+  letter-spacing: -3px;
+  background: linear-gradient(
+    110deg,
+    #baffd8,
+    #53e69b 45%,
+    #13ad70
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 5px 17px rgba(31, 199, 121, .12));
 }
 
 .hero p {
+  margin-top: 15px;
   color: var(--muted);
   font-size: 16px;
+  letter-spacing: .25px;
 }
 
 .card {
-  background: var(--panel);
+  background: linear-gradient(
+    145deg,
+    rgba(18, 46, 34, .98),
+    rgba(13, 36, 26, .98)
+  );
   border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 20px;
-  margin-bottom: 15px;
-  box-shadow: 0 8px 25px #00000018;
+  border-radius: 20px;
+  padding: 22px;
+  margin-bottom: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .12);
 }
 
-h2, h3 { margin-top: 0; }
+h2, h3 {
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 25px;
+  letter-spacing: -.5px;
+}
+
+h3 {
+  font-size: 19px;
+}
 
 .muted {
   color: var(--muted);
-  line-height: 1.5;
+  line-height: 1.6;
   font-size: 14px;
 }
 
 .btn {
-  display: block;
   width: 100%;
-  border: 0;
-  border-radius: 11px;
-  padding: 13px;
-  margin-top: 10px;
-  font-weight: 750;
-  background: var(--green);
+  display: block;
+  padding: 14px 12px;
+  margin-top: 11px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: linear-gradient(110deg, #168653, #1da66b);
   color: white;
+  font-weight: 800;
+  transition: background .2s, transform .2s;
 }
 
-.btn:hover { background: var(--green2); }
+.btn:hover {
+  background: linear-gradient(110deg, #20a568, #28bd7c);
+}
+
+.btn:active {
+  transform: scale(.99);
+}
 
 .btn-secondary {
-  background: var(--panel2);
-  border: 1px solid var(--border);
   color: var(--text);
+  background: #15382a;
+  border-color: #294b3a;
+}
+
+.btn-secondary:hover {
+  background: #1b4934;
 }
 
 input, textarea {
-  display: block;
   width: 100%;
+  display: block;
   padding: 13px;
-  border: 1px solid #355644;
-  background: #091e15;
+  margin: 9px 0 13px;
   color: white;
-  border-radius: 10px;
-  margin: 9px 0;
+  background: #081e14;
+  border: 1px solid #355644;
+  border-radius: 11px;
   outline: none;
 }
 
 input:focus, textarea:focus {
-  border-color: #32c982;
+  border-color: #36d78b;
+  box-shadow: 0 0 0 3px rgba(32,165,104,.10);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #789987;
 }
 
 textarea {
-  min-height: 90px;
+  min-height: 95px;
   resize: vertical;
 }
 
 label {
+  display: block;
+  margin-top: 10px;
+  color: #c3dfce;
   font-size: 13px;
-  color: var(--muted);
+  font-weight: 650;
 }
 
 .error {
-  color: #ff9d9d;
+  margin-top: 12px;
+  color: var(--danger);
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.6;
   overflow-wrap: anywhere;
-  margin-top: 10px;
+}
+
+.success {
+  color: #7af0ad;
+}
+
+.divider {
+  margin: 18px 0;
+  color: var(--muted);
+  text-align: center;
+  font-size: 12px;
 }
 
 .row {
   display: flex;
-  gap: 8px;
   align-items: center;
+  gap: 8px;
 }
 
 .country-code {
   padding: 13px;
-  background: var(--panel2);
-  border-radius: 10px;
   border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--panel2);
+  white-space: nowrap;
 }
 
 #recaptcha-container {
-  margin: 12px 0;
+  margin: 14px 0;
   overflow-x: auto;
 }
 
+/* ===== NAVIGATION ===== */
+
 .nav {
   display: flex;
-  gap: 7px;
+  gap: 8px;
+  margin-bottom: 18px;
+  padding-bottom: 4px;
   overflow-x: auto;
-  margin-bottom: 15px;
 }
 
 .nav button {
   flex: 1;
-  min-width: 65px;
-  padding: 11px 7px;
-  background: var(--panel);
+  min-width: 75px;
+  padding: 12px 8px;
   color: var(--muted);
+  background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 9px;
-  font-size: 12px;
+  border-radius: 11px;
+  font-size: 13px;
+  font-weight: 750;
 }
 
 .nav button.active {
-  background: #17603f;
   color: white;
-  border-color: #29a66c;
+  background: linear-gradient(110deg, #17603f, #168653);
+  border-color: #36bd7e;
 }
 
+/* ===== POSTS ===== */
+
 .post {
-  background: var(--panel);
+  padding: 17px;
+  margin-bottom: 13px;
   border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 15px;
-  margin-bottom: 12px;
+  border-radius: 16px;
+  background: var(--panel);
   overflow-wrap: anywhere;
 }
 
 .post p {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+  line-height: 1.6;
 }
 
 .post-actions {
   display: flex;
   gap: 8px;
+  padding-top: 12px;
+  margin-top: 12px;
   border-top: 1px solid var(--border);
-  padding-top: 10px;
-  margin-top: 10px;
 }
 
 .post-actions button {
-  background: var(--panel2);
+  padding: 9px 13px;
   color: white;
-  border: 0;
-  border-radius: 8px;
-  padding: 9px 12px;
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  border-radius: 9px;
 }
 
 .user-row {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .avatar {
-  width: 43px;
-  height: 43px;
-  border-radius: 50%;
-  background: linear-gradient(145deg, #20a568, #075b3a);
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
   display: grid;
   place-items: center;
+  border-radius: 50%;
+  color: white;
+  font-size: 20px;
   font-weight: 900;
-  flex-shrink: 0;
+  background: linear-gradient(145deg, #35d98f, #075b3a);
+  border: 1px solid #56dca0;
 }
 
 footer {
+  padding: 28px 12px;
   text-align: center;
-  padding: 25px 10px;
-  color: var(--muted);
+  color: #94b6a3;
   font-size: 12px;
 }
 
-@media(max-width: 400px) {
-  .brand { font-size: 19px; }
-  .brand-icon { width: 38px; height: 38px; }
-  .card { padding: 16px; }
+@media (max-width: 430px) {
+  header {
+    padding: 10px 11px;
+  }
+
+  .logo-mark {
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+  }
+
+  .logo-mark::before {
+    width: 32px;
+    height: 20px;
+  }
+
+  .brand {
+    gap: 8px;
+  }
+
+  .brand-name {
+    font-size: 22px;
+  }
+
+  .brand-tagline {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .apk-button,
+  .logout-button {
+    padding: 9px 8px;
+    font-size: 11px;
+  }
+
+  main {
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+
+  .card {
+    padding: 18px;
+  }
 }
 </style>
 </head>
@@ -293,21 +505,32 @@ footer {
 <body>
 
 <header>
-  <div class="brand" onclick="goHome()">
-    <span class="brand-icon">E</span>
-    <span>EyeBook</span>
+  <div class="brand" onclick="goHome()" aria-label="EyeBook Home">
+    <span class="logo-mark">
+      <span class="logo-letter">E</span>
+    </span>
+
+    <span class="brand-copy">
+      <span class="brand-name">EyeBook</span>
+      <span class="brand-tagline">Connect your world</span>
+    </span>
   </div>
 
   <div class="header-right">
     <a class="apk-button" href="#" onclick="return downloadAPK(event)">
       ↓ APK
     </a>
-    <button id="logoutButton" class="logout-button hidden"
-      onclick="logout()">Log out</button>
+
+    <button id="logoutButton"
+      class="logout-button hidden"
+      onclick="logout()">
+      Log out
+    </button>
   </div>
 </header>
 
-<!-- LOGIN SCREEN -->
+<!-- LOGIN -->
+
 <section id="authScreen">
   <main>
     <div class="hero">
@@ -319,7 +542,9 @@ footer {
 
       <div id="startScreen">
         <h2>Welcome to EyeBook</h2>
-        <p class="muted">Connect with people and share your world.</p>
+        <p class="muted">
+          Connect with people and share your world.
+        </p>
 
         <button class="btn" onclick="showPhoneScreen()">
           Continue with Mobile Number
@@ -342,14 +567,16 @@ footer {
 
         <div class="row">
           <span class="country-code">+91</span>
-          <input id="mobileNumber" type="tel"
-            inputmode="numeric" maxlength="10"
+          <input id="mobileNumber"
+            type="tel"
+            inputmode="numeric"
+            maxlength="10"
             placeholder="Enter 10-digit number">
         </div>
 
         <div id="recaptcha-container"></div>
 
-        <button class="btn" id="continuePhone" onclick="sendOTP()">
+        <button id="continuePhone" class="btn" onclick="sendOTP()">
           Send OTP
         </button>
 
@@ -360,16 +587,19 @@ footer {
 
       <div id="otpScreen" class="hidden">
         <h3>Verify Your Number</h3>
-        <p class="muted" id="otpMessage">
+        <p id="otpMessage" class="muted">
           Enter the verification code sent by SMS.
         </p>
 
         <label for="otpInput">OTP</label>
-        <input id="otpInput" type="text" inputmode="numeric"
-          maxlength="6" autocomplete="one-time-code"
+        <input id="otpInput"
+          type="text"
+          inputmode="numeric"
+          autocomplete="one-time-code"
+          maxlength="6"
           placeholder="Enter 6-digit OTP">
 
-        <button class="btn" id="verifyButton" onclick="verifyOTP()">
+        <button id="verifyButton" class="btn" onclick="verifyOTP()">
           Verify and Continue
         </button>
 
@@ -382,19 +612,26 @@ footer {
         <h3>Email Login</h3>
 
         <label for="emailInput">Email Address</label>
-        <input id="emailInput" type="email"
-          autocomplete="email" placeholder="Email address">
+        <input id="emailInput"
+          type="email"
+          autocomplete="email"
+          placeholder="Email address">
 
         <label for="passwordInput">Password</label>
-        <input id="passwordInput" type="password"
-          autocomplete="current-password" placeholder="Password">
+        <input id="passwordInput"
+          type="password"
+          autocomplete="current-password"
+          placeholder="Password">
 
-        <button class="btn" id="emailLoginButton" onclick="emailLogin()">
+        <button id="emailLoginButton" class="btn" onclick="emailLogin()">
           Log In
         </button>
 
-        <button class="btn btn-secondary" id="emailSignupButton"
-          onclick="emailSignup()">Create Account</button>
+        <button id="emailSignupButton"
+          class="btn btn-secondary"
+          onclick="emailSignup()">
+          Create Account
+        </button>
 
         <button class="btn btn-secondary" onclick="backToStart()">
           Back
@@ -407,27 +644,33 @@ footer {
 </section>
 
 <!-- PROFILE SETUP -->
+
 <section id="setupScreen" class="hidden">
   <main>
     <div class="card">
       <h2>Create Your EyeBook ID</h2>
       <p class="muted">
-        Choose your name and unique username to finish registration.
+        Choose your name and a unique username.
       </p>
 
       <label for="fullName">Your Name</label>
       <input id="fullName" maxlength="60" placeholder="Enter your name">
 
       <label for="username">Username</label>
-      <input id="username" maxlength="24"
+      <input id="username"
+        maxlength="24"
         placeholder="Choose a username">
 
       <label for="bio">About You (optional)</label>
-      <textarea id="bio" maxlength="250"
+      <textarea id="bio"
+        maxlength="250"
         placeholder="Write a short bio"></textarea>
 
-      <button class="btn" id="createProfileButton"
-        onclick="createProfile()">Create My ID</button>
+      <button id="createProfileButton"
+        class="btn"
+        onclick="createProfile()">
+        Create My ID
+      </button>
 
       <div id="setupError" class="error" role="status"></div>
     </div>
@@ -435,32 +678,44 @@ footer {
 </section>
 
 <!-- MAIN APP -->
+
 <section id="appScreen" class="hidden">
   <main>
     <nav class="nav">
-      <button class="active" onclick="openTab('homeTab',this)">Home</button>
+      <button class="active"
+        onclick="openTab('homeTab',this)">Home</button>
+
       <button onclick="openTab('searchTab',this)">Search</button>
+
       <button onclick="openTab('profileTab',this)">Profile</button>
     </nav>
 
     <section id="homeTab">
       <div class="card">
         <h2>Welcome to EyeBook 🌿</h2>
-        <p class="muted">Share something with your community.</p>
+        <p class="muted">
+          Share something with your community.
+        </p>
       </div>
 
       <div class="card">
         <h3>Create a Post</h3>
-        <textarea id="postText" maxlength="3000"
+
+        <textarea id="postText"
+          maxlength="3000"
           placeholder="What's on your mind?"></textarea>
 
-        <button class="btn" id="publishButton"
-          onclick="publishPost()">Publish Post</button>
+        <button id="publishButton"
+          class="btn"
+          onclick="publishPost()">
+          Publish Post
+        </button>
 
         <div id="postError" class="error" role="status"></div>
       </div>
 
       <h3>Latest Posts</h3>
+
       <div id="postFeed">
         <p class="muted">Loading posts...</p>
       </div>
@@ -469,9 +724,16 @@ footer {
     <section id="searchTab" class="hidden">
       <div class="card">
         <h2>Find People</h2>
-        <input id="searchInput" placeholder="Enter a username or name">
-        <button class="btn" id="searchButton"
-          onclick="searchUsers()">Search</button>
+
+        <input id="searchInput"
+          placeholder="Enter a username or name">
+
+        <button id="searchButton"
+          class="btn"
+          onclick="searchUsers()">
+          Search
+        </button>
+
         <div id="searchResults"></div>
       </div>
     </section>
@@ -480,6 +742,7 @@ footer {
       <div class="card">
         <div class="user-row">
           <div class="avatar">E</div>
+
           <div>
             <h2 id="profileName">My Profile</h2>
             <p id="profileUsername" class="muted"></p>
@@ -494,11 +757,12 @@ footer {
   </main>
 </section>
 
-<footer>EyeBook · Connect with people</footer>
+<footer>EyeBook · Connect your world</footer>
 
 <script type="module">
-import { initializeApp }
-  from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 
 import {
   getAuth,
@@ -528,7 +792,12 @@ import {
   runTransaction
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
-/* IMPORTANT: Add your real Firebase Web API key below. */
+/*
+  IMPORTANT:
+  Replace the placeholder API key with your actual Firebase Web API key.
+  Keep the rest of the configuration matching your Firebase project.
+*/
+
 const firebaseConfig = {
   apiKey: "// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -558,10 +827,11 @@ let confirmation = null;
 let recaptcha = null;
 let feedUnsubscribe = null;
 let firebaseReady = false;
+let authOperation = 0;
 
 function showError(id, message) {
-  const el = $(id);
-  if (el) el.textContent = message || "";
+  const element = $(id);
+  if (element) element.textContent = message || "";
 }
 
 function busy(id, value, text) {
@@ -569,58 +839,66 @@ function busy(id, value, text) {
   if (!button) return;
 
   if (value) {
-    if (!button.dataset.oldText) {
+    if (!button.disabled) {
       button.dataset.oldText = button.textContent;
     }
-    button.textContent = text;
+
     button.disabled = true;
+    button.textContent = text;
   } else {
+    button.disabled = false;
     button.textContent =
       button.dataset.oldText || button.textContent;
-    button.disabled = false;
   }
-}
-
-function ensureFirebase() {
-  if (firebaseReady && auth && db) return true;
-
-  showError("authError",
-    "Firebase setup incomplete. Add your real Web API key.");
-  return false;
 }
 
 function errorMessage(error) {
   const messages = {
     "auth/invalid-phone-number":
       "Enter a valid mobile number.",
+
     "auth/invalid-verification-code":
       "The OTP is incorrect.",
+
     "auth/code-expired":
       "The OTP expired. Request a new one.",
+
     "auth/too-many-requests":
       "Too many attempts. Try again later.",
+
     "auth/quota-exceeded":
       "SMS quota reached. Check Firebase limits.",
+
     "auth/operation-not-allowed":
-      "Enable this login method in Firebase Authentication.",
+      "Enable this sign-in method in Firebase Authentication.",
+
     "auth/unauthorized-domain":
-      "Add this website domain to Firebase Authorized domains.",
+      "Add your website domain to Firebase Authorized domains.",
+
     "auth/invalid-credential":
       "Incorrect login details or invalid credentials.",
+
     "auth/email-already-in-use":
       "This email already has an account. Try logging in.",
+
     "auth/weak-password":
       "Password must contain at least 6 characters.",
+
     "auth/invalid-email":
       "Enter a valid email address.",
+
     "auth/popup-closed-by-user":
       "Google sign-in was closed before finishing.",
+
     "auth/popup-blocked":
-      "Browser blocked the Google sign-in popup.",
+      "The browser blocked the Google sign-in popup.",
+
     "auth/network-request-failed":
       "Network error. Check your internet connection.",
+
     "permission-denied":
-      "Firestore rules denied this request. Check Security Rules.",
+      "Firestore rules denied the request. Check your database rules.",
+
     "unavailable":
       "Firebase is temporarily unavailable. Try again."
   };
@@ -630,9 +908,24 @@ function errorMessage(error) {
     "Something went wrong. Please try again.";
 }
 
+function ensureFirebase() {
+  if (firebaseReady && auth && db) return true;
+
+  showError(
+    "authError",
+    "Firebase is not configured. Check the API key in index.html."
+  );
+
+  return false;
+}
+
 function hideAllAuthSteps() {
-  ["startScreen", "phoneScreen", "otpScreen", "emailScreen"]
-    .forEach(id => $(id).classList.add("hidden"));
+  [
+    "startScreen",
+    "phoneScreen",
+    "otpScreen",
+    "emailScreen"
+  ].forEach(id => $(id).classList.add("hidden"));
 }
 
 window.backToStart = function() {
@@ -660,22 +953,28 @@ window.backToPhone = function() {
   showError("authError", "");
 
   if (recaptcha) {
-    try { recaptcha.clear(); } catch (_) {}
+    try {
+      recaptcha.clear();
+    } catch (_) {}
+
     recaptcha = null;
   }
 
-  $("recaptcha-container").innerHTML = "";
+  $("recaptcha-container").replaceChildren();
 };
 
 window.sendOTP = async function() {
   showError("authError", "");
+
   if (!ensureFirebase()) return;
 
   const digits = $("mobileNumber").value.replace(/\D/g, "");
 
   if (!/^[6-9]\d{9}$/.test(digits)) {
-    showError("authError",
-      "Enter a valid 10-digit Indian mobile number.");
+    showError(
+      "authError",
+      "Enter a valid 10-digit Indian mobile number."
+    );
     return;
   }
 
@@ -683,11 +982,14 @@ window.sendOTP = async function() {
 
   try {
     if (recaptcha) {
-      try { recaptcha.clear(); } catch (_) {}
+      try {
+        recaptcha.clear();
+      } catch (_) {}
+
       recaptcha = null;
     }
 
-    $("recaptcha-container").innerHTML = "";
+    $("recaptcha-container").replaceChildren();
 
     recaptcha = new RecaptchaVerifier(
       auth,
@@ -698,7 +1000,9 @@ window.sendOTP = async function() {
     await recaptcha.render();
 
     confirmation = await signInWithPhoneNumber(
-      auth, "+91" + digits, recaptcha
+      auth,
+      "+91" + digits,
+      recaptcha
     );
 
     $("otpMessage").textContent =
@@ -712,11 +1016,15 @@ window.sendOTP = async function() {
     showError("authError", errorMessage(error));
 
     if (recaptcha) {
-      try { recaptcha.clear(); } catch (_) {}
+      try {
+        recaptcha.clear();
+      } catch (_) {}
+
       recaptcha = null;
     }
 
-    $("recaptcha-container").innerHTML = "";
+    $("recaptcha-container").replaceChildren();
+
   } finally {
     busy("continuePhone", false);
   }
@@ -724,14 +1032,15 @@ window.sendOTP = async function() {
 
 window.verifyOTP = async function() {
   showError("authError", "");
-  if (!ensureFirebase()) return;
 
-  const code = $("otpInput").value.trim();
+  if (!ensureFirebase()) return;
 
   if (!confirmation) {
     showError("authError", "Request an OTP first.");
     return;
   }
+
+  const code = $("otpInput").value.trim();
 
   if (!/^\d{6}$/.test(code)) {
     showError("authError", "Enter the 6-digit OTP.");
@@ -752,6 +1061,7 @@ window.verifyOTP = async function() {
 
 window.emailLogin = async function() {
   showError("authError", "");
+
   if (!ensureFirebase()) return;
 
   const email = $("emailInput").value.trim();
@@ -775,6 +1085,7 @@ window.emailLogin = async function() {
 
 window.emailSignup = async function() {
   showError("authError", "");
+
   if (!ensureFirebase()) return;
 
   const email = $("emailInput").value.trim();
@@ -786,15 +1097,21 @@ window.emailSignup = async function() {
   }
 
   if (password.length < 6) {
-    showError("authError",
-      "Password must contain at least 6 characters.");
+    showError(
+      "authError",
+      "Password must contain at least 6 characters."
+    );
     return;
   }
 
   busy("emailSignupButton", true, "Creating account...");
 
   try {
-    await createUserWithEmailAndPassword(auth, email, password);
+    await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
   } catch (error) {
     showError("authError", errorMessage(error));
   } finally {
@@ -804,11 +1121,16 @@ window.emailSignup = async function() {
 
 window.googleLogin = async function() {
   showError("authError", "");
+
   if (!ensureFirebase()) return;
 
   try {
     const provider = new GoogleAuthProvider();
-    provider.setCustomParameters({ prompt: "select_account" });
+
+    provider.setCustomParameters({
+      prompt: "select_account"
+    });
+
     await signInWithPopup(auth, provider);
   } catch (error) {
     showError("authError", errorMessage(error));
@@ -819,16 +1141,15 @@ function showMainScreen(screen) {
   $("authScreen").classList.toggle("hidden", screen !== "auth");
   $("setupScreen").classList.toggle("hidden", screen !== "setup");
   $("appScreen").classList.toggle("hidden", screen !== "app");
-  $("logoutButton").classList.toggle("hidden", screen === "auth");
-}
 
-function showSetupForUser(user) {
-  showMainScreen("setup");
-  $("fullName").value =
-    user.displayName || user.email?.split("@")[0] || "";
+  $("logoutButton").classList.toggle(
+    "hidden",
+    screen === "auth"
+  );
 }
 
 async function handleAuthState(user) {
+  const operation = ++authOperation;
   currentUser = user;
 
   if (!user) {
@@ -845,12 +1166,24 @@ async function handleAuthState(user) {
   }
 
   try {
-    const snap = await getDoc(doc(db, "users", user.uid));
+    const snap = await getDoc(
+      doc(db, "users", user.uid)
+    );
 
-    if (!snap.exists() ||
-        !snap.data().name ||
-        !snap.data().username) {
-      showSetupForUser(user);
+    if (operation !== authOperation) return;
+
+    if (
+      !snap.exists() ||
+      !snap.data().name ||
+      !snap.data().username
+    ) {
+      showMainScreen("setup");
+
+      $("fullName").value =
+        user.displayName ||
+        user.email?.split("@")[0] ||
+        "";
+
       return;
     }
 
@@ -858,9 +1191,14 @@ async function handleAuthState(user) {
     await openApp();
 
   } catch (error) {
+    if (operation !== authOperation) return;
+
     showMainScreen("auth");
-    showError("authError",
-      "Could not load profile: " + errorMessage(error));
+
+    showError(
+      "authError",
+      "Could not load profile: " + errorMessage(error)
+    );
   }
 }
 
@@ -873,8 +1211,12 @@ window.createProfile = async function() {
   }
 
   const name = $("fullName").value.trim();
-  const username = $("username").value
-    .trim().toLowerCase().replace(/^@/, "");
+
+  const username = $("username")
+    .value.trim()
+    .toLowerCase()
+    .replace(/^@/, "");
+
   const bio = $("bio").value.trim();
 
   if (name.length < 2) {
@@ -883,8 +1225,10 @@ window.createProfile = async function() {
   }
 
   if (!/^[a-z0-9_.]{3,24}$/.test(username)) {
-    showError("setupError",
-      "Username must be 3-24 letters, numbers, dots or underscores.");
+    showError(
+      "setupError",
+      "Username must be 3-24 letters, numbers, dots or underscores."
+    );
     return;
   }
 
@@ -892,12 +1236,15 @@ window.createProfile = async function() {
 
   try {
     const usernameRef = doc(db, "usernames", username);
+    const userRef = doc(db, "users", currentUser.uid);
 
     await runTransaction(db, async transaction => {
-      const usernameSnap = await transaction.get(usernameRef);
+      const existing = await transaction.get(usernameRef);
 
-      if (usernameSnap.exists() &&
-          usernameSnap.data().uid !== currentUser.uid) {
+      if (
+        existing.exists() &&
+        existing.data().uid !== currentUser.uid
+      ) {
         throw new Error("USERNAME_TAKEN");
       }
 
@@ -906,7 +1253,7 @@ window.createProfile = async function() {
         username
       });
 
-      transaction.set(doc(db, "users", currentUser.uid), {
+      transaction.set(userRef, {
         uid: currentUser.uid,
         name,
         username,
@@ -917,32 +1264,53 @@ window.createProfile = async function() {
       }, { merge: true });
     });
 
-    const snap = await getDoc(doc(db, "users", currentUser.uid));
+    const snap = await getDoc(userRef);
+
     profile = snap.data();
 
     await openApp();
 
   } catch (error) {
-    showError("setupError",
+    showError(
+      "setupError",
       error.message === "USERNAME_TAKEN"
-        ? "Username already taken. Try another."
-        : errorMessage(error));
+        ? "This username is already taken. Choose another."
+        : errorMessage(error)
+    );
   } finally {
     busy("createProfileButton", false);
   }
 };
 
 async function openApp() {
+  if (!profile || !currentUser) return;
+
   showMainScreen("app");
 
-  $("profileName").textContent = profile?.name || "EyeBook User";
+  $("profileName").textContent =
+    profile.name || "EyeBook User";
+
   $("profileUsername").textContent =
-    profile?.username ? "@" + profile.username : "";
-  $("profileBio").textContent = profile?.bio || "";
+    profile.username ? "@" + profile.username : "";
+
+  $("profileBio").textContent =
+    profile.bio || "";
+
   $("profilePhone").textContent =
-    profile?.phoneNumber ? "Mobile: " + profile.phoneNumber : "";
+    profile.phoneNumber
+      ? "Mobile: " + profile.phoneNumber
+      : "";
+
   $("profileEmail").textContent =
-    profile?.email ? "Email: " + profile.email : "";
+    profile.email
+      ? "Email: " + profile.email
+      : "";
+
+  const homeButton = document.querySelector(".nav button");
+
+  if (homeButton) {
+    window.openTab("homeTab", homeButton);
+  }
 
   startFeed();
 }
@@ -962,10 +1330,11 @@ window.openTab = function(id, button) {
 window.goHome = function() {
   if (currentUser && profile) {
     showMainScreen("app");
-    const homeButton = document.querySelector(".nav button");
 
-    if (homeButton) {
-      window.openTab("homeTab", homeButton);
+    const button = document.querySelector(".nav button");
+
+    if (button) {
+      window.openTab("homeTab", button);
     }
   } else {
     showMainScreen("auth");
@@ -1021,82 +1390,104 @@ function startFeed() {
     limit(50)
   );
 
-  feedUnsubscribe = onSnapshot(postsQuery, snapshot => {
-    const feed = $("postFeed");
-    feed.replaceChildren();
+  feedUnsubscribe = onSnapshot(
+    postsQuery,
+    snapshot => {
+      const feed = $("postFeed");
+      feed.replaceChildren();
 
-    if (snapshot.empty) {
-      const p = document.createElement("p");
-      p.className = "muted";
-      p.textContent = "No posts yet. Create the first post!";
-      feed.appendChild(p);
-      return;
+      if (snapshot.empty) {
+        const message = document.createElement("p");
+        message.className = "muted";
+        message.textContent =
+          "No posts yet. Create the first post!";
+
+        feed.appendChild(message);
+        return;
+      }
+
+      snapshot.forEach(item => {
+        const data = item.data();
+
+        const post = document.createElement("article");
+        post.className = "post";
+
+        const user = document.createElement("strong");
+
+        user.textContent =
+          (data.name || "EyeBook User") +
+          "  @" + (data.username || "");
+
+        const content = document.createElement("p");
+        content.textContent = data.text || "";
+
+        const actions = document.createElement("div");
+        actions.className = "post-actions";
+
+        const like = document.createElement("button");
+
+        const likes = Array.isArray(data.likes)
+          ? data.likes
+          : [];
+
+        like.textContent =
+          (likes.includes(currentUser.uid)
+            ? "❤️ Liked "
+            : "🤍 Like ") +
+          "(" + likes.length + ")";
+
+        like.onclick = async () => {
+          like.disabled = true;
+
+          try {
+            const postRef = doc(db, "posts", item.id);
+
+            await runTransaction(db, async transaction => {
+              const latest = await transaction.get(postRef);
+
+              if (!latest.exists()) return;
+
+              const oldLikes =
+                Array.isArray(latest.data().likes)
+                  ? latest.data().likes
+                  : [];
+
+              const newLikes = oldLikes.includes(currentUser.uid)
+                ? oldLikes.filter(uid => uid !== currentUser.uid)
+                : [...oldLikes, currentUser.uid];
+
+              transaction.update(postRef, {
+                likes: newLikes
+              });
+            });
+
+          } catch (error) {
+            alert(errorMessage(error));
+          } finally {
+            like.disabled = false;
+          }
+        };
+
+        actions.appendChild(like);
+
+        post.append(user, content, actions);
+        feed.appendChild(post);
+      });
+
+    },
+    error => {
+      $("postFeed").textContent =
+        "Could not load posts: " + errorMessage(error);
     }
-
-    snapshot.forEach(item => {
-      const data = item.data();
-      const post = document.createElement("article");
-      post.className = "post";
-
-      const user = document.createElement("strong");
-      user.textContent =
-        (data.name || "User") + " @" + (data.username || "");
-
-      const content = document.createElement("p");
-      content.textContent = data.text || "";
-
-      const actions = document.createElement("div");
-      actions.className = "post-actions";
-
-      const like = document.createElement("button");
-      const likes = Array.isArray(data.likes) ? data.likes : [];
-
-      like.textContent =
-        (likes.includes(currentUser.uid) ? "❤️ Liked " : "🤍 Like ") +
-        "(" + likes.length + ")";
-
-      like.onclick = async () => {
-        like.disabled = true;
-
-        try {
-          const postRef = doc(db, "posts", item.id);
-
-          await runTransaction(db, async transaction => {
-            const latest = await transaction.get(postRef);
-            if (!latest.exists()) return;
-
-            const oldLikes = Array.isArray(latest.data().likes)
-              ? latest.data().likes : [];
-
-            const newLikes = oldLikes.includes(currentUser.uid)
-              ? oldLikes.filter(uid => uid !== currentUser.uid)
-              : [...oldLikes, currentUser.uid];
-
-            transaction.update(postRef, { likes: newLikes });
-          });
-
-        } catch (error) {
-          alert(errorMessage(error));
-        } finally {
-          like.disabled = false;
-        }
-      };
-
-      actions.appendChild(like);
-      post.append(user, content, actions);
-      feed.appendChild(post);
-    });
-
-  }, error => {
-    $("postFeed").textContent =
-      "Could not load posts: " + errorMessage(error);
-  });
+  );
 }
 
 window.searchUsers = async function() {
   if (!currentUser) return;
 
-  const term = $("searchInput").value.trim().toLowerCase();
+  const term = $("searchInput")
+    .value.trim().toLowerCase();
+
   const results = $("searchResults");
 
   results.textContent = "Searching...";
@@ -1119,8 +1510,12 @@ window.searchUsers = async function() {
       const data = item.data();
 
       return item.id !== currentUser.uid &&
-        ((data.username || "").toLowerCase().includes(term) ||
-         (data.name || "").toLowerCase().includes(term));
+        (
+          (data.username || "")
+            .toLowerCase().includes(term) ||
+          (data.name || "")
+            .toLowerCase().includes(term)
+        );
     });
 
     if (!matches.length) {
@@ -1133,11 +1528,16 @@ window.searchUsers = async function() {
       row.className = "card";
 
       const name = document.createElement("strong");
-      name.textContent = item.data().name || "EyeBook User";
+
+      name.textContent =
+        item.data().name || "EyeBook User";
 
       const username = document.createElement("p");
+
       username.className = "muted";
-      username.textContent = "@" + (item.data().username || "");
+
+      username.textContent =
+        "@" + (item.data().username || "");
 
       row.append(name, username);
       results.appendChild(row);
@@ -1160,15 +1560,22 @@ window.logout = async function() {
   }
 };
 
+/*
+  This button does not create an APK.
+  Add a real APK download URL after building and uploading
+  the Android application.
+*/
 window.downloadAPK = function(event) {
   event.preventDefault();
 
   alert(
-    "APK is not uploaded yet. Add a real APK download URL after building your Android app."
+    "The APK is not uploaded yet. Build your Android app and add its download URL."
   );
 
   return false;
 };
+
+/* Input validation */
 
 $("mobileNumber").addEventListener("input", event => {
   event.target.value =
@@ -1180,31 +1587,41 @@ $("otpInput").addEventListener("input", event => {
     event.target.value.replace(/\D/g, "").slice(0, 6);
 });
 
-/* Firebase starts BEFORE auth-state listener registration. */
-if (firebaseConfig.apiKey === "PASTE_YOUR_REAL_FIREBASE_API_KEY" ||
-    !firebaseConfig.apiKey.trim()) {
+/* Initialize Firebase before registering the auth listener. */
 
-  showMainScreen("auth");
-  showError("authError",
-    "Setup required: add your real Firebase Web API key in index.html.");
+try {
+  if (
+    !firebaseConfig.apiKey ||
+    firebaseConfig.apiKey === "PASTE_YOUR_REAL_FIREBASE_API_KEY"
+  ) {
+    showMainScreen("auth");
 
-} else {
-  try {
+    showError(
+      "authError",
+      "Setup required: Add your real Firebase Web API key in index.html."
+    );
+
+  } else {
     app = initializeApp(firebaseConfig);
     auth = getAuth(app);
     db = getFirestore(app);
+
     firebaseReady = true;
 
     onAuthStateChanged(auth, user => {
       handleAuthState(user);
     });
-
-  } catch (error) {
-    console.error("EyeBook startup error:", error);
-    showMainScreen("auth");
-    showError("authError",
-      "Firebase could not start: " + errorMessage(error));
   }
+
+} catch (error) {
+  console.error("EyeBook initialization error:", error);
+
+  showMainScreen("auth");
+
+  showError(
+    "authError",
+    "Firebase initialization failed: " + errorMessage(error)
+  );
 }
 </script>
 
