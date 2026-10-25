@@ -749,7 +749,14 @@ import {
 */
 
 const firebaseConfig = {
-  apiKey: "PASTE_YOUR_REAL_FIREBASE_API_KEY",
+  apiKey: " "AIzaSyCBafjBLFjhwX00mFVZPu5aaN0kU5P8kPA",
+  authDomain: "eyebook-7885f.firebaseapp.com",
+  projectId: "eyebook-7885f",
+  storageBucket: "eyebook-7885f.firebasestorage.app",
+  messagingSenderId: "297441359052",
+  appId: "1:297441359052:web:3aa43bbd674731f6143e69",
+  measurementId: "G-5MW8F30GQD"
+};",
   authDomain: "eyebook-7885f.firebaseapp.com",
   projectId: "eyebook-7885f",
   storageBucket: "eyebook-7885f.firebasestorage.app",
@@ -803,81 +810,76 @@ function firebaseError(error) {
 
   const messages = {
     "auth/invalid-api-key":
-      "Firebase API Key गलत है। अपनी Web API Key जाँचें.",
+      "The Firebase API Key is invalid. Check your Web API Key.",
 
     "auth/operation-not-allowed":
-      "यह Login Method Firebase Authentication में Enable करें.",
+      "Enable this login method in Firebase Authentication.",
 
     "auth/unauthorized-domain":
-      "Firebase Authentication > Settings > Authorized domains में अपनी वेबसाइट का hostname जोड़ें.",
+      "Add your website hostname under Firebase Authentication > Settings > Authorized domains.",
 
     "auth/invalid-phone-number":
-      "सही 10 अंकों का मोबाइल नंबर डालें.",
+      "Enter a valid 10-digit Indian mobile number.",
 
     "auth/invalid-verification-code":
-      "OTP गलत है. दोबारा जाँचें.",
+      "The OTP is incorrect. Please check it and try again.",
 
     "auth/code-expired":
-      "OTP की समय-सीमा समाप्त हो गई. नया OTP माँगें.",
+      "The OTP has expired. Request a new OTP.",
 
     "auth/too-many-requests":
-      "बहुत अधिक प्रयास हुए हैं. कुछ समय बाद कोशिश करें.",
+      "Too many attempts. Please try again later.",
 
     "auth/quota-exceeded":
-      "Firebase SMS quota समाप्त हो सकती है. Firebase Console में सीमा जाँचें.",
+      "The Firebase SMS quota may be exhausted. Check your Firebase Console limits.",
 
     "auth/captcha-check-failed":
-      "reCAPTCHA जाँच असफल हुई. पेज रीफ्रेश करके पुनः प्रयास करें.",
+      "The reCAPTCHA verification failed. Refresh the page and try again.",
 
     "auth/missing-phone-number":
-      "मोबाइल नंबर डालें.",
+      "Enter your mobile number.",
 
     "auth/invalid-email":
-      "सही ईमेल एड्रेस डालें.",
+      "Enter a valid email address.",
 
     "auth/weak-password":
-      "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए.",
+      "The password must contain at least 6 characters.",
 
     "auth/email-already-in-use":
-      "इस ईमेल का अकाउंट पहले से मौजूद है. Log In करें.",
+      "An account with this email already exists. Please log in.",
 
     "auth/invalid-credential":
-      "ईमेल या पासवर्ड गलत है.",
+      "The email or password is incorrect.",
 
     "auth/user-not-found":
-      "इस ईमेल का अकाउंट नहीं मिला.",
+      "No account was found with this email.",
 
     "auth/wrong-password":
-      "पासवर्ड गलत है.",
+      "The password is incorrect.",
 
     "auth/popup-blocked":
-      "ब्राउज़र ने Google Login Popup को ब्लॉक किया.",
+      "The browser blocked the Google Login popup.",
 
     "auth/popup-closed-by-user":
-      "Google Login पूरा होने से पहले Popup बंद हो गया.",
+      "The Google Login popup was closed before the process finished.",
 
     "auth/network-request-failed":
-      "इंटरनेट कनेक्शन जाँचें.",
+      "Check your internet connection.",
 
     "permission-denied":
-      "Firestore Rules ने अनुरोध रोक दिया. Database Rules जाँचें.",
+      "Firestore Rules blocked the request. Check your database rules.",
 
     "unavailable":
-      "Firebase अभी उपलब्ध नहीं है. थोड़ी देर बाद कोशिश करें."
+      "Firebase is currently unavailable. Please try again later."
   };
 
   if (messages[code]) return messages[code];
 
   if (code.startsWith("auth/")) {
-    return messages[code] ||
-      "Authentication Error: " + code;
+    return "Authentication Error: " + code;
   }
 
-  if (code === "permission-denied") {
-    return messages[code];
-  }
-
-  return error?.message || "कुछ गलत हुआ. दोबारा कोशिश करें.";
+  return error?.message || "Something went wrong. Please try again.";
 }
 
 function ensureFirebase() {
@@ -885,7 +887,7 @@ function ensureFirebase() {
 
   showError(
     "authError",
-    "Firebase तैयार नहीं है. API Key और Firebase Configuration जाँचें."
+    "Firebase is not ready. Check your API Key and Firebase Configuration."
   );
 
   return false;
@@ -948,7 +950,7 @@ window.sendOTP = async function() {
   const digits = $("mobileNumber").value.replace(/\D/g, "");
 
   if (!/^[6-9]\d{9}$/.test(digits)) {
-    showError("authError", "सही 10 अंकों का भारतीय मोबाइल नंबर डालें.");
+    showError("authError", "Enter a valid 10-digit Indian mobile number.");
     return;
   }
 
@@ -974,7 +976,7 @@ window.sendOTP = async function() {
     );
 
     $("otpMessage").textContent =
-      "SMS से +91 " + digits + " पर आया OTP डालें.";
+      "Enter the OTP sent by SMS to +91 " + digits + ".";
 
     hideAuthForms();
     $("otpScreen").classList.remove("hidden");
@@ -995,14 +997,14 @@ window.verifyOTP = async function() {
   if (!ensureFirebase()) return;
 
   if (!confirmation) {
-    showError("authError", "पहले नया OTP माँगें.");
+    showError("authError", "Request a new OTP first.");
     return;
   }
 
   const code = $("otpInput").value.trim();
 
   if (!/^\d{6}$/.test(code)) {
-    showError("authError", "6 अंकों का OTP डालें.");
+    showError("authError", "Enter the 6-digit OTP.");
     return;
   }
 
@@ -1014,7 +1016,7 @@ window.verifyOTP = async function() {
     confirmation = null;
     currentUser = result.user;
 
-    // Auth state listener will open the profile or app.
+    // The authentication state listener will open the profile or app.
 
   } catch (error) {
     showError("authError", firebaseError(error));
@@ -1035,7 +1037,7 @@ window.emailLogin = async function() {
   const password = $("passwordInput").value;
 
   if (!email || !password) {
-    showError("authError", "ईमेल और पासवर्ड दोनों डालें.");
+    showError("authError", "Enter both your email and password.");
     return;
   }
 
@@ -1061,12 +1063,12 @@ window.emailSignup = async function() {
   const password = $("passwordInput").value;
 
   if (!email) {
-    showError("authError", "अपना ईमेल एड्रेस डालें.");
+    showError("authError", "Enter your email address.");
     return;
   }
 
   if (password.length < 6) {
-    showError("authError", "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए.");
+    showError("authError", "The password must contain at least 6 characters.");
     return;
   }
 
@@ -1091,7 +1093,7 @@ window.resetPassword = async function() {
   const email = $("emailInput").value.trim();
 
   if (!email) {
-    showError("authError", "पहले अपना ईमेल एड्रेस डालें.");
+    showError("authError", "Enter your email address first.");
     return;
   }
 
@@ -1100,7 +1102,7 @@ window.resetPassword = async function() {
 
     showError(
       "authError",
-      "यदि इस ईमेल के लिए अकाउंट उपलब्ध है, तो पासवर्ड रीसेट निर्देश भेजे जाएँगे."
+      "If an account exists for this email, password reset instructions will be sent."
     );
 
   } catch (error) {
@@ -1139,7 +1141,7 @@ function showMainScreen(screen) {
   $("logoutButton").classList.toggle("hidden", screen === "auth");
 }
 
-/* ===== AUTH STATE ===== */
+/* ===== AUTHENTICATION STATE ===== */
 
 async function handleAuthState(user) {
   const operation = ++authOperation;
@@ -1196,7 +1198,7 @@ async function handleAuthState(user) {
 
     showError(
       "authError",
-      "प्रोफाइल लोड नहीं हो सकी: " + firebaseError(error)
+      "Unable to load your profile: " + firebaseError(error)
     );
   }
 }
@@ -1222,7 +1224,7 @@ window.createProfile = async function() {
   showError("setupError");
 
   if (!ensureFirebase() || !currentUser) {
-    showError("setupError", "पहले लॉगिन करें.");
+    showError("setupError", "Please log in first.");
     return;
   }
 
@@ -1236,14 +1238,14 @@ window.createProfile = async function() {
   const bio = $("bio").value.trim();
 
   if (name.length < 2) {
-    showError("setupError", "अपना नाम सही से डालें.");
+    showError("setupError", "Please enter a valid name.");
     return;
   }
 
   if (!/^[a-z0-9_.]{3,24}$/.test(username)) {
     showError(
       "setupError",
-      "Username 3-24 अक्षरों का हो. केवल a-z, 0-9, dot और underscore इस्तेमाल करें."
+      "The username must contain 3–24 characters. Use only a-z, 0-9, dots, and underscores."
     );
     return;
   }
@@ -1267,7 +1269,7 @@ window.createProfile = async function() {
         throw new Error("USERNAME_TAKEN");
       }
 
-      // Read the old username mapping before writing anything.
+      // Read the previous username mapping before writing any changes.
       if (previousUsername && previousUsername !== username) {
         const oldRef = doc(db, "usernames", previousUsername);
         const oldMapping = await transaction.get(oldRef);
@@ -1311,7 +1313,7 @@ window.createProfile = async function() {
 
   } catch (error) {
     const message = error.message === "USERNAME_TAKEN"
-      ? "यह Username किसी और ने ले लिया है. दूसरा Username चुनें."
+      ? "This username is already taken. Please choose another username."
       : firebaseError(error);
 
     showError("setupError", message);
@@ -1386,14 +1388,14 @@ window.publishPost = async function() {
   showError("postError");
 
   if (!ensureFirebase() || !currentUser || !profile) {
-    showError("postError", "पोस्ट करने के लिए पहले लॉगिन करें.");
+    showError("postError", "Please log in before publishing a post.");
     return;
   }
 
   const text = $("postText").value.trim();
 
   if (!text) {
-    showError("postError", "पहले कुछ लिखें.");
+    showError("postError", "Write something before publishing.");
     return;
   }
 
@@ -1411,7 +1413,7 @@ window.publishPost = async function() {
 
     $("postText").value = "";
 
-    showError("postError", "पोस्ट सफलतापूर्वक प्रकाशित हुई.");
+    showError("postError", "Your post was published successfully.");
 
   } catch (error) {
     showError("postError", firebaseError(error));
@@ -1445,7 +1447,7 @@ function startFeed() {
       if (snapshot.empty) {
         const message = document.createElement("p");
         message.className = "muted";
-        message.textContent = "अभी कोई पोस्ट नहीं है. पहली पोस्ट तुम करो!";
+        message.textContent = "There are no posts yet. Be the first to post!";
         feed.appendChild(message);
         return;
       }
@@ -1531,12 +1533,12 @@ function startFeed() {
           remove.textContent = "Delete";
 
           remove.onclick = async () => {
-            if (!confirm("क्या तुम यह पोस्ट हटाना चाहते हो?")) return;
+            if (!confirm("Do you want to delete this post?")) return;
 
             remove.disabled = true;
 
             try {
-              // The actual ownership check is enforced by Firestore Rules.
+              // Firestore Rules must enforce post ownership.
               const { deleteDoc } = await import(
                 "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js"
               );
@@ -1561,7 +1563,7 @@ function startFeed() {
 
     error => {
       $("postFeed").textContent =
-        "Posts लोड नहीं हो सके: " + firebaseError(error);
+        "Unable to load posts: " + firebaseError(error);
     }
   );
 }
@@ -1577,7 +1579,7 @@ window.searchUsers = async function() {
   results.replaceChildren();
 
   if (term.length < 2) {
-    results.textContent = "कम से कम 2 अक्षर डालें.";
+    results.textContent = "Enter at least 2 characters.";
     return;
   }
 
@@ -1605,7 +1607,7 @@ window.searchUsers = async function() {
     });
 
     if (!matches.length) {
-      results.textContent = "कोई यूज़र नहीं मिला.";
+      results.textContent = "No users found.";
       return;
     }
 
@@ -1672,20 +1674,13 @@ $("username").addEventListener("input", event => {
 try {
   if (
     !firebaseConfig.apiKey ||
-    firebaseConfig.apiKey === " "AIzaSyCBafjBLFjhwX00mFVZPu5aaN0kU5P8kPA",
-  authDomain: "eyebook-7885f.firebaseapp.com",
-  projectId: "eyebook-7885f",
-  storageBucket: "eyebook-7885f.firebasestorage.app",
-  messagingSenderId: "297441359052",
-  appId: "1:297441359052:web:3aa43bbd674731f6143e69",
-  measurementId: "G-5MW8F30GQD"
-};"
+    firebaseConfig.apiKey === "PASTE_YOUR_REAL_FIREBASE_API_KEY"
   ) {
     showMainScreen("auth");
 
     showError(
       "authError",
-      "Setup Required: index.html में अपनी असली Firebase Web API Key डालें."
+      "Setup Required: Enter your actual Firebase Web API Key in index.html."
     );
 
   } else {
@@ -1708,7 +1703,7 @@ try {
 
   showError(
     "authError",
-    "Firebase शुरू नहीं हुआ: " + firebaseError(error)
+    "Firebase initialization failed: " + firebaseError(error)
   );
 }
 </script>
